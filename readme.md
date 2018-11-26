@@ -5,7 +5,7 @@
 *Rafael Garcia-Perez
 *Perry Gill
 *Sam Low
-*Brent Patterson
+*Brent Paterson
 *Jovany Pena
 
 **Purpose**
