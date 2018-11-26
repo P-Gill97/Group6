@@ -1,8 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class UserInterface {
     private static JFrame frame;
+    private final static String frameName = "Group 6 GitHub Metrics";
 
     // START TEST CODE //////////////////////////////////////
     public static void main(String[] args) {
@@ -19,12 +22,14 @@ public class UserInterface {
     }
 
     private static void makeEmptyFrame() {
-        frame = new JFrame("Group 6 GitHub Metrics"); // name can be changed later. Or this is fine.
+        frame.dispose();
+        frame = new JFrame(frameName); // name can be changed later. Or this is fine.
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private static void init() {
-        makeEmptyFrame();
+        frame = new JFrame(frameName); // name can be changed later. Or this is fine.
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //frame.setPreferredSize(new Dimension(400, 300)); // may be useless. Keeping in case it's needed
 
@@ -36,6 +41,13 @@ public class UserInterface {
         frame.setLayout(new FlowLayout(FlowLayout.CENTER));
         frame.add(oldRepoList);
 
+        // add newRepo button listener
+        newRepo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                addNewRepo();
+            }
+        });
+
         frame.pack(); // sizes window to fit everything
         frame.setVisible(true); // display
     }
@@ -43,12 +55,16 @@ public class UserInterface {
     private static void addNewRepo() {
         makeEmptyFrame();
 
-        // add text field for github repo
-
+        // create text field for github repo and button
         JTextField repoInputField = new JTextField(20);
+        JButton addRepoButton = new JButton("add");
 
-
+        // add text box and button
         frame.add(repoInputField);
+        frame.add(addRepoButton);
+
+        frame.pack(); // sizes window to fit everything
+        frame.setVisible(true); // display
     }
 
 }
