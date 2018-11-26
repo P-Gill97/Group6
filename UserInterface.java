@@ -14,7 +14,10 @@ public class UserInterface {
     // END TEST CODE ////////////////////////////////////////
 
 
-
+    /**
+     * This will intake the database of git repos
+     * Then it will run the JFrames
+     */
     public static void run() {
         // need to input database
         init();
@@ -22,6 +25,8 @@ public class UserInterface {
     }
 
     /**
+     * UTILITY FUNCTION
+     *
      * This function will be used any time the frame needs to be wiped
      * it remakes a new frame in the exact position of the last one.
      * This is the case even if the user manually moves the frame.
@@ -39,6 +44,8 @@ public class UserInterface {
     }
 
     /**
+     * UTILITY FUNCTION
+     *
      * This will set the frame to the center of the user's screen.
      */
     private static void setFrameCentered() {
