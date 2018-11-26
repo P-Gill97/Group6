@@ -21,10 +21,29 @@ public class UserInterface {
         // call to get metrics?
     }
 
+    /**
+     * This function will be used any time the frame needs to be wiped
+     * it remakes a new frame in the exact position of the last one.
+     * This is the case even if the user manually moves the frame.
+     */
     private static void makeEmptyFrame() {
+        // get old frame's location
+        Point location = frame.getLocation();
+
         frame.dispose();
         frame = new JFrame(frameName); // name can be changed later. Or this is fine.
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // set location to the same as previous location
+        frame.setLocation((int) location.getX(), (int) location.getY());
+    }
+
+    /**
+     * This will set the frame to the center of the user's screen.
+     */
+    private static void setFrameCentered() {
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height / 2 - frame.getSize().height / 2);
     }
 
     /**
@@ -36,6 +55,7 @@ public class UserInterface {
     private static void init() {
         frame = new JFrame(frameName); // name can be changed later. Or this is fine.
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setFrameCentered();
 
         //frame.setPreferredSize(new Dimension(400, 300)); // may be useless. Keeping in case it's needed
 
@@ -67,6 +87,10 @@ public class UserInterface {
         frame.setVisible(true); // display
     }
 
+    /**
+     * resets frame to allow user to add new github repo to the database.
+     * will then go to list of repos to get metrics.
+     */
     private static void addNewRepo() {
         makeEmptyFrame();
 
@@ -76,9 +100,10 @@ public class UserInterface {
         JButton addRepoButton = new JButton("add");
 
         label.setText("Enter GitHub repo URL:");
-        label.setBounds(10, 10, 100, 100);
-        addRepoButton.setBounds(100, 100, 140, 40);
-        repoInputField.setBounds(110, 50, 130, 30);
+        label.setBounds(10, 1, 250, 100);
+        repoInputField.setBounds(10, 75, 130, 30);
+        addRepoButton.setBounds(10, 115, 140, 20);
+
 
 
         // add text box and button
@@ -86,7 +111,7 @@ public class UserInterface {
         frame.add(addRepoButton);
         frame.add(label);
 
-        frame.setSize(300, 300);
+        frame.setSize(175, 200);
         frame.setLayout(null);
 
         frame.setVisible(true); // display
