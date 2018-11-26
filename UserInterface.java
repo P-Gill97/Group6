@@ -27,6 +27,12 @@ public class UserInterface {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    /**
+     * This function creates the initial frame
+     * it will consist of two buttons only
+     * one will allow the user to input a new github repo
+     * the other will allow the user to select between repos that they already have used
+     */
     private static void init() {
         frame = new JFrame(frameName); // name can be changed later. Or this is fine.
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,6 +54,15 @@ public class UserInterface {
             }
         });
 
+        // go straight to previous list
+        oldRepoList.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                // add text box repo to database
+
+                repoListBox();
+            }
+        });
+
         frame.pack(); // sizes window to fit everything
         frame.setVisible(true); // display
     }
@@ -56,15 +71,37 @@ public class UserInterface {
         makeEmptyFrame();
 
         // create text field for github repo and button
+        JLabel label = new JLabel();
         JTextField repoInputField = new JTextField(20);
         JButton addRepoButton = new JButton("add");
+
+        label.setText("Enter GitHub repo URL:");
+        label.setBounds(10, 10, 100, 100);
+        addRepoButton.setBounds(100, 100, 140, 40);
+        repoInputField.setBounds(110, 50, 130, 30);
+
 
         // add text box and button
         frame.add(repoInputField);
         frame.add(addRepoButton);
+        frame.add(label);
 
-        frame.pack(); // sizes window to fit everything
+        frame.setSize(300, 300);
+        frame.setLayout(null);
+
         frame.setVisible(true); // display
+
+        addRepoButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                // add text box repo to database
+
+                repoListBox();
+            }
+        });
+    }
+
+    private static void repoListBox() {
+
     }
 
 }
