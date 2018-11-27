@@ -89,7 +89,7 @@ public class UserInterface {
         // ask user if they want to add new repo
         JButton newRepo = new JButton("Add new repo");
         frame.add(newRepo);
-        JButton oldRepoList = new JButton("List of old repos");
+        JButton oldRepoList = new JButton("List of Repo Metrics");
         frame.setLayout(new FlowLayout(FlowLayout.CENTER));
         frame.add(oldRepoList);
 
@@ -187,7 +187,7 @@ public class UserInterface {
 
         // add frame elements
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(4,3));
+        panel.setLayout(new BoxLayout(4,3));
 
         // first row
         frame.add(panel);
