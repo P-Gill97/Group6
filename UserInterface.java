@@ -161,12 +161,10 @@ public class UserInterface {
     private static void repoListBox() {
         makeEmptyFrame();
 
-        JLabel header = new JLabel();
-        header.setText("Select a repo to get metrics on: ");
-
         // drop down list of repos
         /*
             NEED TO ACCESS OLD REPOS
+            reposArray will be filled from database
          */
         String[] reposArray = {"repo 1", "https://github.com/CSC131Fall2018/Group6", "repo 3"};
 
@@ -176,6 +174,8 @@ public class UserInterface {
         JButton runMetricsButton = new JButton("Run Metrics");
         // button to go back to addNewRepo()
         JButton addNewRepoButton = new JButton("Add New Repo");
+        // button to delete this repo
+        JButton deleteRepoButton = new JButton("Delete This Repo");
         // metrics
         // metrics labels
         JLabel linesHeader = new JLabel();
@@ -191,11 +191,13 @@ public class UserInterface {
 
         // first row
         frame.add(panel);
-        panel.add(header);
         panel.add(repoDropdownList);
+        panel.add(runMetricsButton);
         // second row, buttons
         panel.add(addNewRepoButton);
-        panel.add(runMetricsButton);
+        panel.add(deleteRepoButton);
+
+
 
         // third row, metrics headers
         panel.add(linesHeader);
@@ -209,6 +211,15 @@ public class UserInterface {
         addNewRepoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 addNewRepo();
+            }
+        });
+
+        runMetricsButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                // run metrics and update
+                /*
+                    NEED ACCESS TO METRICS
+                 */
             }
         });
 
