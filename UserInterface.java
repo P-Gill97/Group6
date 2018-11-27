@@ -155,11 +155,11 @@ public class UserInterface {
 
     /**
      * takes in URL for repo and deletes it from database
-     * 
+     *
      * @param repoAddress
      */
     private static void deleteRepo(String repoAddress) {
-
+        
     }
 
     /**
@@ -223,12 +223,9 @@ public class UserInterface {
             }
         });
 
-        runMetricsButton.addActionListener(new ActionListener() {
+        deleteRepoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                // run metrics and update
-                /*
-                    NEED ACCESS TO METRICS
-                 */
+                deleteRepo(repoDropdownList.getSelectedItem().toString());
             }
         });
 
