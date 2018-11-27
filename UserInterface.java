@@ -178,6 +178,10 @@ public class UserInterface {
         JLabel errorText = new JLabel();
         errorText.setText(e.toString());
 
+        // set location and bounds of text
+        errorHeader.setBounds(1, 1, 100, 100);
+        errorText.setBounds(30, 30, 100, 100);
+
         frame.add(errorHeader);
         frame.add(errorText);
 
