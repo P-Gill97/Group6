@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.lang.Exception;
 
 public class UserInterface {
     private static JFrame frame;
@@ -9,7 +10,12 @@ public class UserInterface {
 
     // START TEST CODE //////////////////////////////////////
     public static void main(String[] args) {
-        run();
+        try {
+            run();
+        } catch Exception(e) {
+            System.out.println("test, exception caught");
+            handleError(e);
+        }
     }
     // END TEST CODE ////////////////////////////////////////
 
@@ -19,11 +25,8 @@ public class UserInterface {
      * Then it will run the JFrames
      */
     public static void run() throws Exception {
-        try {
+
             init();
-        } catch (Exception e) {
-            handleError(e);
-        }
 
     }
 
@@ -63,11 +66,18 @@ public class UserInterface {
      * the other will allow the user to select between repos that they already have used
      */
     private static void init() {
+        // TEST CODE //////////////////////////////////////////
+        int[] throwErrorArray = new int[5];
+        for (int i = 0; i < 10; i++)
+            throwErrorArray[i] = 5;
+
+        //Exception e = new Exception("test exception");
+        //throw e;
+        // TEST CODE //////////////////////////////////////////
+
         frame = new JFrame(frameName); // name can be changed later. Or this is fine.
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setFrameCentered();
-
-        //frame.setPreferredSize(new Dimension(400, 300)); // may be useless. Keeping in case it's needed
 
         // create buttons
         // ask user if they want to add new repo
@@ -136,12 +146,7 @@ public class UserInterface {
     }
 
     private static void repoListBox() {
-        /*int[] throwErrorArray = new int[5];
-        for (int i = 0; i < 10; i++)
-            throwErrorArray[i] = 5;
-        */
-        Exception e = new Exception("test exception");
-        throw e;
+
 
 
 
