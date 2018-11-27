@@ -196,6 +196,8 @@ public class UserInterface {
         panel.add(addNewRepoButton);
 
         // second row
+        panel.add(linesHeader);
+        panel.add(wordsHeader);
 
 
         frame.setLayout(new GridLayout(4,3));
