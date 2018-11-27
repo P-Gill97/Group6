@@ -23,11 +23,6 @@ public class UserInterface {
      */
     public static void run() {
         try {
-            int[] errorTest = new int[5];
-            errorTest[6] = 5;
-
-
-
             init();
         } catch (Exception e) {
             // catch works on init exceptions, but doesn't catch entire program?
@@ -184,7 +179,6 @@ public class UserInterface {
 
         frame.add(errorHeader);
         frame.add(errorText);
-
 
         frame.setSize(e.toString().length() * 10, 200);
         frame.setVisible(true);
