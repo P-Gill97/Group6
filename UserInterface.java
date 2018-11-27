@@ -20,6 +20,9 @@ public class UserInterface {
      */
     public static void run() {
         try {
+            boolean exception = true;
+            if (exception)
+                throw new Exception();
             init();
         } catch (Exception e) {
             handleError(e);
@@ -153,7 +156,7 @@ public class UserInterface {
         makeEmptyFrame();
 
         JLabel errorText = new JLabel();
-        
+        errorText.setText(e.toString());
     }
 
 }
