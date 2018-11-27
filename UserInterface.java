@@ -18,7 +18,7 @@ public class UserInterface {
      * This will intake the database of git repos
      * Then it will run the JFrames
      */
-    public static void run() {
+    public static void run() throws Exception {
         try {
             init();
         } catch (Exception e) {
@@ -136,11 +136,12 @@ public class UserInterface {
     }
 
     private static void repoListBox() {
-        // TEST CODE //////////////////////////
-        boolean exception = true;
-        if (exception)
-            throw new Exception();
-
+        /*int[] throwErrorArray = new int[5];
+        for (int i = 0; i < 10; i++)
+            throwErrorArray[i] = 5;
+        */
+        Exception e = new Exception("test exception");
+        throw e;
 
 
 
