@@ -130,12 +130,16 @@ public class UserInterface {
         repoInputField.setBounds(10, 75, 130, 30);
         addRepoButton.setBounds(10, 115, 140, 20);
 
-
+        // add frame elements
+        JPanel panel = new JPanel();
+        // set layout as a grid of width 2, height variable
+        panel.setLayout(new GridLayout(0,1));
+        frame.add(panel);
 
         // add text box and button
-        frame.add(repoInputField);
-        frame.add(addRepoButton);
-        frame.add(label);
+        panel.add(repoInputField);
+        panel.add(addRepoButton);
+        panel.add(label);
 
         frame.setSize(175, 200);
         frame.setLayout(null);
@@ -187,22 +191,22 @@ public class UserInterface {
 
         // add frame elements
         JPanel panel = new JPanel();
+        // set layout as a grid of width 2, height variable
         panel.setLayout(new GridLayout(0,2));
 
         // first row
         frame.add(panel);
         panel.add(header);
         panel.add(repoDropdownList);
+        // second row, buttons
         panel.add(addNewRepoButton);
         panel.add(runMetricsButton);
 
-        // second row
+        // third row, metrics headers
         panel.add(linesHeader);
         panel.add(wordsHeader);
 
-
-
-        frame.pack(); // this is change-able to an actual size
+        frame.pack();
 
         frame.setVisible(true);
 
