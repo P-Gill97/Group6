@@ -151,15 +151,27 @@ public class UserInterface {
         });
     }
 
+    /**
+     * this is the main frame. It will display a drop down list
+     * of the repos. It will also display metrics and a button
+     * that allows the user to refresh the metrics
+     */
     private static void repoListBox() {
         makeEmptyFrame();
 
         // drop down list of repos
+        String[] reposArray = {"repo 1", "repo 2", "repo 3"};
+        JComboBox<String> repoDropdownList = new JComboBox<String>(reposArray);
 
         // button to go back to addNewRepo()
         // metrics
         // button to run metrics
 
+        // add frame elements
+        frame.add(repoDropdownList);
+
+
+        frame.pack(); // this is change-able to an actual size
         frame.setVisible(true);
     }
 
