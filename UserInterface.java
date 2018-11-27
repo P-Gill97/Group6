@@ -187,6 +187,7 @@ public class UserInterface {
 
         // add frame elements
         JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(4,3));
 
         // first row
         frame.add(panel);
@@ -200,7 +201,7 @@ public class UserInterface {
         panel.add(wordsHeader);
 
 
-        frame.setLayout(new GridLayout(4,3));
+
         frame.pack(); // this is change-able to an actual size
 
         frame.setVisible(true);
