@@ -41,10 +41,12 @@ public class UserInterface {
      * This is the case even if the user manually moves the frame.
      */
     private static void makeEmptyFrame() {
+        // get old frame's location (if exists, otherwise null?)
+        Point location = frame.getLocation();
+
         // check if frame already exists
         if (frame != null) {
-            // get old frame's location
-            Point location = frame.getLocation();
+
 
             frame.dispose();
         }
@@ -80,14 +82,11 @@ public class UserInterface {
      */
     private static void init() throws Exception {
 
-
-        frame = new JFrame(frameName); // name can be changed later. Or this is fine.
+        makeEmptyFrame();
+        /*frame = new JFrame(frameName); // name can be changed later. Or this is fine.
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setFrameCentered();
-        if (frame != null)
-            System.out.println("no");
-        else
-            System.out.println("yes");
+        setFrameCentered();*/
+
         // create buttons
         // ask user if they want to add new repo
         JButton newRepo = new JButton("Add new repo");
