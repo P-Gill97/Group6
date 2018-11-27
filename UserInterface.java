@@ -41,12 +41,13 @@ public class UserInterface {
      * This is the case even if the user manually moves the frame.
      */
     private static void makeEmptyFrame() {
-        // get old frame's location (if exists, otherwise null?)
-        Point location = frame.getLocation();
+        // initialize location
+        Point location = new Point();
 
         // check if frame already exists
         if (frame != null) {
-
+            // get old frame's location (if exists, otherwise null?)
+            location = frame.getLocation();
 
             frame.dispose();
         }
