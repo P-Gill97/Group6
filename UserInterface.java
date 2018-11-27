@@ -23,6 +23,9 @@ public class UserInterface {
      */
     public static void run() {
         try {
+            int[] errorTest = new int[5];
+            errorTest[6] = 5;
+
 
 
             init();
@@ -169,9 +172,16 @@ public class UserInterface {
     private static void handleError(Exception e) {
         // error caught, close everything, make empty frame
         makeEmptyFrame();
-
+        
         JLabel errorText = new JLabel();
         errorText.setText(e.toString());
+
+
+        frame.add(errorText);
+
+
+        frame.pack();
+        frame.setVisible(true);
     }
 
 }
