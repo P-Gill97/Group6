@@ -43,9 +43,12 @@ public class UserInterface {
     private static void makeEmptyFrame() {
         // initialize location
         Point location = new Point();
+        boolean existingFrame = false;
 
         // check if frame already exists
         if (frame != null) {
+            existingFrame = true;
+
             // get old frame's location (if exists, otherwise null?)
             location = frame.getLocation();
 
@@ -55,7 +58,7 @@ public class UserInterface {
         frame = new JFrame(frameName); // name can be changed later. Or this is fine.
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        if (frame != null) {
+        if (existingFrame) {
             // set location to the same as previous location
             frame.setLocation((int) location.getX(), (int) location.getY());
         } else {
