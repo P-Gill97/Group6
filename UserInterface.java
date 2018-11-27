@@ -154,6 +154,15 @@ public class UserInterface {
     }
 
     /**
+     * takes in URL for repo and deletes it from database
+     * 
+     * @param repoAddress
+     */
+    private static void deleteRepo(String repoAddress) {
+
+    }
+
+    /**
      * this is the main frame. It will display a drop down list
      * of the repos. It will also display metrics and a button
      * that allows the user to refresh the metrics
