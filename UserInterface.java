@@ -191,6 +191,13 @@ public class UserInterface {
 
         frame.pack(); // this is change-able to an actual size
         frame.setVisible(true);
+
+        // action listeners on buttons
+        addNewRepoButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                addNewRepo();
+            }
+        });
     }
 
     /**
