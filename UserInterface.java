@@ -187,14 +187,14 @@ public class UserInterface {
 
         // add frame elements
         JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(4,3));
+        panel.setLayout(new GridLayout(0,2));
 
         // first row
         frame.add(panel);
         panel.add(header);
         panel.add(repoDropdownList);
-        panel.add(runMetricsButton);
         panel.add(addNewRepoButton);
+        panel.add(runMetricsButton);
 
         // second row
         panel.add(linesHeader);
