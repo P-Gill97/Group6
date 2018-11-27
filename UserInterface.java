@@ -137,13 +137,11 @@ public class UserInterface {
         frame.add(panel);
 
         // add text box and button
+        panel.add(label);
         panel.add(repoInputField);
         panel.add(addRepoButton);
-        panel.add(label);
 
-        frame.setSize(175, 200);
-        frame.setLayout(null);
-
+        frame.pack();
         frame.setVisible(true); // display
 
         addRepoButton.addActionListener(new ActionListener() {
