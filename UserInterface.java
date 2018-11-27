@@ -22,7 +22,7 @@ public class UserInterface {
         try {
             init();
         } catch (Exception e) {
-            
+
         }
 
     }
@@ -140,6 +140,16 @@ public class UserInterface {
         // button to go back to addNewRepo()
         // metrics
         // button to run metrics
+    }
+
+    /**
+     * this will take any exceptions and open a jframe
+     * that will display the error message to user
+     * 
+     * @param e is the exception that is thrown
+     */
+    private static void handleError(Exception e) {
+
     }
 
 }
