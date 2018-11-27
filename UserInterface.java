@@ -20,9 +20,6 @@ public class UserInterface {
      */
     public static void run() {
         try {
-            boolean exception = true;
-            if (exception)
-                throw new Exception();
             init();
         } catch (Exception e) {
             handleError(e);
@@ -139,6 +136,14 @@ public class UserInterface {
     }
 
     private static void repoListBox() {
+        // TEST CODE //////////////////////////
+        boolean exception = true;
+        if (exception)
+            throw new Exception();
+
+
+
+
         // drop down list of repos
         // button to go back to addNewRepo()
         // metrics
