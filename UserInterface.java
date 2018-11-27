@@ -152,10 +152,15 @@ public class UserInterface {
     }
 
     private static void repoListBox() {
+        makeEmptyFrame();
+
         // drop down list of repos
+
         // button to go back to addNewRepo()
         // metrics
         // button to run metrics
+
+        frame.setVisible(true);
     }
 
     /**
