@@ -173,9 +173,12 @@ public class UserInterface {
 
         JComboBox<String> repoDropdownList = new JComboBox<String>(reposArray);
 
-        // button to go back to addNewRepo()
-        // metrics
         // button to run metrics
+        JButton runMetricsButton = new JButton("Run Metrics");
+        // button to go back to addNewRepo()
+        JButton addNewRepoButton = new JButton("Add New Repo");
+        // metrics
+
 
         // add frame elements
         JPanel panel = new JPanel();
@@ -183,6 +186,8 @@ public class UserInterface {
         frame.add(panel);
         panel.add(header);
         panel.add(repoDropdownList);
+        panel.add(runMetricsButton);
+        panel.add(addNewRepoButton);
 
         frame.pack(); // this is change-able to an actual size
         frame.setVisible(true);
