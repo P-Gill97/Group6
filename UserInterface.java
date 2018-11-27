@@ -23,9 +23,12 @@ public class UserInterface {
      */
     public static void run() {
         try {
+
+
             init();
         } catch (Exception e) {
-            System.out.println("test, exception caught");
+            // catch works on init exceptions, but doesn't catch entire program?
+            e.printStackTrace(); // print to console
             handleError(e);
         }
     }
@@ -38,15 +41,25 @@ public class UserInterface {
      * This is the case even if the user manually moves the frame.
      */
     private static void makeEmptyFrame() {
-        // get old frame's location
-        Point location = frame.getLocation();
+        // check if frame already exists
+        if (frame != null) {
+            // get old frame's location
+            Point location = frame.getLocation();
 
-        frame.dispose();
+            frame.dispose();
+        }
+
         frame = new JFrame(frameName); // name can be changed later. Or this is fine.
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // set location to the same as previous location
-        frame.setLocation((int) location.getX(), (int) location.getY());
+        if (frame != null) {
+            // set location to the same as previous location
+            frame.setLocation((int) location.getX(), (int) location.getY());
+        } else {
+            // set location to center screen
+            setFrameCentered();
+        }
+
     }
 
     /**
@@ -71,7 +84,10 @@ public class UserInterface {
         frame = new JFrame(frameName); // name can be changed later. Or this is fine.
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setFrameCentered();
-
+        if (frame != null)
+            System.out.println("no");
+        else
+            System.out.println("yes");
         // create buttons
         // ask user if they want to add new repo
         JButton newRepo = new JButton("Add new repo");
@@ -139,17 +155,6 @@ public class UserInterface {
     }
 
     private static void repoListBox() {
-        // TEST CODE //////////////////////////////////////////
-        int[] throwErrorArray = new int[5];
-        for (int i = 0; i < 10; i++)
-            throwErrorArray[i] = 5;
-
-        //Exception e = new Exception("test exception");
-        //throw e;
-        // TEST CODE //////////////////////////////////////////
-
-
-
         // drop down list of repos
         // button to go back to addNewRepo()
         // metrics
