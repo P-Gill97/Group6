@@ -126,9 +126,6 @@ public class UserInterface {
         JButton addRepoButton = new JButton("add");
 
         label.setText("Enter GitHub repo URL:");
-        label.setBounds(10, 1, 250, 100);
-        repoInputField.setBounds(10, 75, 130, 30);
-        addRepoButton.setBounds(10, 115, 140, 20);
 
         // add frame elements
         JPanel panel = new JPanel();
