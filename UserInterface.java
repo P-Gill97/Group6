@@ -145,6 +145,9 @@ public class UserInterface {
         addRepoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 // add text box repo to database
+                /*
+                    NEED TO ACCESS AND ADD TO REPO DATABASE
+                 */
 
                 repoListBox();
             }
@@ -159,8 +162,15 @@ public class UserInterface {
     private static void repoListBox() {
         makeEmptyFrame();
 
+        JLabel header = new JLabel();
+        header.setText("Select a repo to get metrics on: ");
+
         // drop down list of repos
-        String[] reposArray = {"repo 1", "repo 2", "repo 3"};
+        /*
+            NEED TO ACCESS OLD REPOS
+         */
+        String[] reposArray = {"repo 1", "https://github.com/CSC131Fall2018/Group6", "repo 3"};
+
         JComboBox<String> repoDropdownList = new JComboBox<String>(reposArray);
 
         // button to go back to addNewRepo()
@@ -168,8 +178,11 @@ public class UserInterface {
         // button to run metrics
 
         // add frame elements
-        frame.add(repoDropdownList);
+        JPanel panel = new JPanel();
 
+        frame.add(panel);
+        panel.add(header);
+        panel.add(repoDropdownList);
 
         frame.pack(); // this is change-able to an actual size
         frame.setVisible(true);
