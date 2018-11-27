@@ -178,24 +178,44 @@ public class UserInterface {
         // button to go back to addNewRepo()
         JButton addNewRepoButton = new JButton("Add New Repo");
         // metrics
+        // metrics labels
+        JLabel linesHeader = new JLabel();
+        linesHeader.setText("Lines");
+        JLabel wordsHeader = new JLabel();
+        wordsHeader.setText("Words");
 
 
         // add frame elements
         JPanel panel = new JPanel();
 
+        // first row
         frame.add(panel);
         panel.add(header);
         panel.add(repoDropdownList);
         panel.add(runMetricsButton);
         panel.add(addNewRepoButton);
 
+        // second row
+
+
+        frame.setLayout(new GridLayout(4,3));
         frame.pack(); // this is change-able to an actual size
+
         frame.setVisible(true);
 
         // action listeners on buttons
         addNewRepoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 addNewRepo();
+            }
+        });
+
+        runMetricsButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                // run metrics and update
+                /*
+                    NEED ACCESS TO METRICS
+                 */
             }
         });
     }
