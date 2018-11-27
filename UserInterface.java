@@ -19,9 +19,12 @@ public class UserInterface {
      * Then it will run the JFrames
      */
     public static void run() {
-        // need to input database
-        init();
-        // call to get metrics?
+        try {
+            init();
+        } catch (Exception e) {
+            
+        }
+
     }
 
     /**
