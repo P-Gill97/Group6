@@ -176,17 +176,17 @@ public class UserInterface {
         JLabel errorHeader = new JLabel();
         errorHeader.setText("Caught an error: ");
         JLabel errorText = new JLabel();
-        errorText.setText(e.toString());
+        errorText.setText("<html>"+ e.toString() +"</html>");
 
         // set location and bounds of text
         errorHeader.setBounds(1, 1, 100, 100);
-        errorText.setBounds(30, 30, 100, 100);
+        errorText.setBounds(100, 100, 100, 100);
 
         frame.add(errorHeader);
         frame.add(errorText);
 
 
-        frame.pack();
+        frame.setSize(e.toString().length() * 10, 200);
         frame.setVisible(true);
     }
 
