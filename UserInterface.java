@@ -22,7 +22,7 @@ public class UserInterface {
         try {
             init();
         } catch (Exception e) {
-
+            handleError(e);
         }
 
     }
@@ -145,11 +145,15 @@ public class UserInterface {
     /**
      * this will take any exceptions and open a jframe
      * that will display the error message to user
-     * 
+     *
      * @param e is the exception that is thrown
      */
     private static void handleError(Exception e) {
+        // error caught, close everything, make empty frame
+        makeEmptyFrame();
 
+        JLabel errorText = new JLabel();
+        
     }
 
 }
