@@ -10,12 +10,9 @@ public class UserInterface {
 
     // START TEST CODE //////////////////////////////////////
     public static void main(String[] args) {
-        try {
-            run();
-        } catch Exception(e) {
-            System.out.println("test, exception caught");
-            handleError(e);
-        }
+
+        run();
+
     }
     // END TEST CODE ////////////////////////////////////////
 
@@ -24,10 +21,13 @@ public class UserInterface {
      * This will intake the database of git repos
      * Then it will run the JFrames
      */
-    public static void run() throws Exception {
-
+    public static void run() {
+        try {
             init();
-
+        } catch (Exception e) {
+            System.out.println("test, exception caught");
+            handleError(e);
+        }
     }
 
     /**
@@ -65,15 +65,8 @@ public class UserInterface {
      * one will allow the user to input a new github repo
      * the other will allow the user to select between repos that they already have used
      */
-    private static void init() {
-        // TEST CODE //////////////////////////////////////////
-        int[] throwErrorArray = new int[5];
-        for (int i = 0; i < 10; i++)
-            throwErrorArray[i] = 5;
+    private static void init() throws Exception {
 
-        //Exception e = new Exception("test exception");
-        //throw e;
-        // TEST CODE //////////////////////////////////////////
 
         frame = new JFrame(frameName); // name can be changed later. Or this is fine.
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -146,7 +139,14 @@ public class UserInterface {
     }
 
     private static void repoListBox() {
+        // TEST CODE //////////////////////////////////////////
+        int[] throwErrorArray = new int[5];
+        for (int i = 0; i < 10; i++)
+            throwErrorArray[i] = 5;
 
+        //Exception e = new Exception("test exception");
+        //throw e;
+        // TEST CODE //////////////////////////////////////////
 
 
 
