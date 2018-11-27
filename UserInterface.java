@@ -172,11 +172,13 @@ public class UserInterface {
     private static void handleError(Exception e) {
         // error caught, close everything, make empty frame
         makeEmptyFrame();
-        
+
+        JLabel errorHeader = new JLabel();
+        errorHeader.setText("Caught an error: ");
         JLabel errorText = new JLabel();
         errorText.setText(e.toString());
 
-
+        frame.add(errorHeader);
         frame.add(errorText);
 
 
