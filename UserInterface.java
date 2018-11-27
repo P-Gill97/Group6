@@ -85,11 +85,7 @@ public class UserInterface {
      * the other will allow the user to select between repos that they already have used
      */
     private static void init() throws Exception {
-
         makeEmptyFrame();
-        /*frame = new JFrame(frameName); // name can be changed later. Or this is fine.
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setFrameCentered();*/
 
         // create buttons
         // ask user if they want to add new repo
