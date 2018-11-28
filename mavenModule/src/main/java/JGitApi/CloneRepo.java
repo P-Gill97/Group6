@@ -14,7 +14,7 @@ public class CloneRepo {
 
 
 
-    public Git clone(String uri)    {
+    public void clone(String uri, File file)    {
         File localPath = null;
         try {
             localPath = File.createTempFile("GitRepo","");
@@ -24,14 +24,14 @@ public class CloneRepo {
         try {
             Git cloneResult = Git.cloneRepository()
                 .setURI(uri)
-                .setDirectory(localPath)
+                .setDirectory(file)
                 .call();
-           return cloneResult ;
+
         } catch (GitAPIException e) {
             e.printStackTrace();
         }
 
-        return null;
+
     }
 
 }
