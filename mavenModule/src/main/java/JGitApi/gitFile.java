@@ -12,7 +12,7 @@ public class gitFile
     public File getRepo(String link){
       File file = new File("/Users/pdippygill/desktop"); // Math for mac chance this path to a path in your computer.
         CloneRepo cloneFile = null;
-        file = cloneFile.clone(link,file);
+        cloneFile.clone(link,file);
 
         return file;
     }
