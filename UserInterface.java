@@ -305,12 +305,16 @@ public class UserInterface {
         errorHeader.setText("<html>&nbsp;Caught an error:&nbsp;</html>");
         JLabel errorText = new JLabel();
         errorText.setText("<html>&nbsp;"+ e.toString() +"&nbsp;</html>");
+        JButton restartButton = new JButton("Restart Program");
+        JButton exitProgramButton = new JButton("Exit Program");
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(0, 1));
 
         panel.add(errorHeader);
         panel.add(errorText);
+        panel.add(restartButton);
+        panel.add(exitProgramButton);
 
         frame.add(panel);
 
