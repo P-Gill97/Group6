@@ -232,6 +232,7 @@ public class UserInterface {
         JButton addNewRepoButton = new JButton("Add New Repo");
         // button to delete this repo
         JButton deleteRepoButton = new JButton("Delete This Repo");
+
         // metrics
         // metrics labels
         JLabel linesHeader = new JLabel();
@@ -249,11 +250,10 @@ public class UserInterface {
         frame.add(panel);
         panel.add(repoDropdownList);
         panel.add(runMetricsButton);
+
         // second row, buttons
         panel.add(addNewRepoButton);
         panel.add(deleteRepoButton);
-
-
 
         // third row, metrics headers
         panel.add(linesHeader);
