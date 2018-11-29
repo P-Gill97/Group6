@@ -124,7 +124,7 @@ public class UserInterface {
         JLabel label = new JLabel();
         JTextField repoInputField = new JTextField(20);
         JButton addRepoButton = new JButton("Add");
-        JButton cancelButton - new JButton("Cancel");
+        JButton cancelButton = new JButton("Cancel");
 
         label.setText("Enter GitHub repo URL:");
 
@@ -138,6 +138,7 @@ public class UserInterface {
         panel.add(label);
         panel.add(repoInputField);
         panel.add(addRepoButton);
+        panel.add(cancelButton);
 
         frame.pack();
         frame.setVisible(true); // display
