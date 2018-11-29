@@ -302,9 +302,9 @@ public class UserInterface {
         System.out.println("caught an error: " + e);
 
         JLabel errorHeader = new JLabel();
-        errorHeader.setText("Caught an error: ");
+        errorHeader.setText("<html>&nbsp;Caught an error:&nbsp;</html>");
         JLabel errorText = new JLabel();
-        errorText.setText("<html>"+ e.toString() +"</html>");
+        errorText.setText("<html>&nbsp;"+ e.toString() +"&nbsp;</html>");
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(0, 1));
