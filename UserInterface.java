@@ -170,7 +170,7 @@ public class UserInterface {
         makeEmptyFrame();
 
         JLabel header = new JLabel();
-        JLabel repoAddress = new JLabel();
+        JLabel repoAddressLabel = new JLabel();
         JButton deleteButton = new JButton("Delete");
         JButton cancelButton = new JButton("Cancel");
 
