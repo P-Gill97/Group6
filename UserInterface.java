@@ -191,7 +191,16 @@ public class UserInterface {
         frame.pack();
         frame.setVisible(true);
 
+        deleteButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                // delete repoAddress from repo database
+                /*
+                    NEED TO ACCESS AND DELETE FROM REPO DATABASE
+                 */
 
+                repoListBox();
+            }
+        });
 
         cancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
