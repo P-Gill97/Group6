@@ -174,12 +174,10 @@ public class UserInterface {
         JButton deleteButton = new JButton("Delete");
         JButton cancelButton = new JButton("Cancel");
 
-        Font font = header.getFont();
-        Font boldFont = new Font(font.getFontName(), Font.BOLD, font.getSize());
-        header.setFont(boldFont);
 
-        header.setText("Would you like to delete the following repo? ");
-        repoAddressLabel.setText(repoAddress);
+
+        header.setText("<html>&nbsp;Would you like to delete the following repo?&nbsp;&nbsp;</html>");
+        repoAddressLabel.setText("<html><li>" + repoAddress + "&nbsp;&nbsp;</html>");
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(0, 2));
