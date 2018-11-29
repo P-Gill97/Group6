@@ -123,20 +123,22 @@ public class UserInterface {
         // create text field for github repo and button
         JLabel label = new JLabel();
         JTextField repoInputField = new JTextField(20);
-        JButton addRepoButton = new JButton("add");
+        JButton addRepoButton = new JButton("Add");
+        JButton cancelButton = new JButton("Cancel");
 
         label.setText("Enter GitHub repo URL:");
 
         // add frame elements
         JPanel panel = new JPanel();
         // set layout as a grid of width 2, height variable
-        panel.setLayout(new GridLayout(0,1));
+        panel.setLayout(new GridLayout(0, 1));
         frame.add(panel);
 
         // add text box and button
         panel.add(label);
         panel.add(repoInputField);
         panel.add(addRepoButton);
+        panel.add(cancelButton);
 
         frame.pack();
         frame.setVisible(true); // display
@@ -151,6 +153,12 @@ public class UserInterface {
                 repoListBox();
             }
         });
+
+        cancelButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                repoListBox();
+            }
+        });
     }
 
     /**
@@ -159,7 +167,34 @@ public class UserInterface {
      * @param repoAddress
      */
     private static void deleteRepo(String repoAddress) {
+        makeEmptyFrame();
 
+        JLabel header = new JLabel();
+        JLabel repoAddressLabel = new JLabel();
+        JButton deleteButton = new JButton("Delete");
+        JButton cancelButton = new JButton("Cancel");
+
+        header.setFont(header.getFont().deriveFont(header.getFont().getStyle() | Font.BOLD));
+        header.setText("Would you like to delete the following repo? ");
+        repoAddressLabel.setText(repoAddress);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(0, 2));
+        frame.add(panel);
+
+        panel.add(header);
+        panel.add(repoAddressLabel);
+        panel.add(deleteButton);
+        panel.add(cancelButton);
+
+        frame.pack();
+        frame.setVisible(true);
+
+        cancelButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                repoListBox();
+            }
+        });
     }
 
     /**
