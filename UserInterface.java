@@ -301,14 +301,13 @@ public class UserInterface {
         JLabel errorText = new JLabel();
         errorText.setText("<html>"+ e.toString() +"</html>");
 
-        // set location and bounds of text
-        errorHeader.setBounds(1, 1, 100, 100);
-        errorText.setBounds(100, 100, 100, 100);
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(0, 2));
 
-        frame.add(errorHeader);
-        frame.add(errorText);
+        panel.add(errorHeader);
+        panel.add(errorText);
 
-        frame.setSize(e.toString().length() * 10, 200);
+        frame.pack();
         frame.setVisible(true);
     }
 
