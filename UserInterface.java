@@ -131,7 +131,7 @@ public class UserInterface {
         // add frame elements
         JPanel panel = new JPanel();
         // set layout as a grid of width 2, height variable
-        panel.setLayout(new GridLayout(0, 1));
+        panel.setLayout(new GridLayout(0, 2));
         frame.add(panel);
 
         // add text box and button
