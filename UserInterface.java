@@ -320,6 +320,28 @@ public class UserInterface {
 
         frame.pack();
         frame.setVisible(true);
+
+        // button listeners
+
+        restartButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                // add text box repo to database
+                try {
+                    init();
+                } catch (Exception e) {
+                    handleError(e);
+                }
+            }
+        });
+
+        exitProgramButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                // add text box repo to database
+
+                frame.dispose();
+                
+            }
+        });
     }
 
 }
