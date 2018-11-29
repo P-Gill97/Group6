@@ -26,7 +26,6 @@ public class UserInterface {
             init();
         } catch (Exception e) {
             // catch works on init exceptions, but doesn't catch entire program?
-            e.printStackTrace(); // print to console
             handleError(e);
         }
     }
@@ -84,10 +83,6 @@ public class UserInterface {
      */
     private static void init() throws Exception {
         makeEmptyFrame();
-
-
-        int[] test = {1, 2};
-        test[3] = 5;
 
         // create buttons
         // ask user if they want to add new repo
@@ -299,7 +294,7 @@ public class UserInterface {
     private static void handleError(Exception e) {
         // error caught, close everything, make empty frame
         makeEmptyFrame();
-        System.out.println("caught an error: " + e);
+        e.printStackTrace(); // print to console
 
         JLabel errorHeader = new JLabel();
         errorHeader.setText("<html>&nbsp;Caught an error:&nbsp;</html>");
@@ -329,6 +324,7 @@ public class UserInterface {
                 try {
                     init();
                 } catch (Exception e) {
+
                     handleError(e);
                 }
             }
@@ -337,7 +333,6 @@ public class UserInterface {
         exitProgramButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 // add text box repo to database
-
                 frame.dispose();
                 System.exit(0);
             }
