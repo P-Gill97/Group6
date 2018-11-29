@@ -174,8 +174,8 @@ public class UserInterface {
         JButton deleteButton = new JButton("Delete");
         JButton cancelButton = new JButton("Cancel");
 
-        header.setText("Delete this repo?");
-        header.setText(repoAddress);
+        header.setText("Delete this repo? ");
+        repoAddressLabel.setText(repoAddress);
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(0, 2));
