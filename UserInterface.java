@@ -131,7 +131,7 @@ public class UserInterface {
         // add frame elements
         JPanel panel = new JPanel();
         // set layout as a grid of width 2, height variable
-        panel.setLayout(new GridLayout(0,1));
+        panel.setLayout(new GridLayout(0, 1));
         frame.add(panel);
 
         // add text box and button
@@ -173,6 +173,9 @@ public class UserInterface {
         JLabel repoAddress = new JLabel();
         JButton deleteButton = new JButton("Delete");
         JButton cancelButton = new JButton("Cancel");
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(0, 1));
 
     }
 
