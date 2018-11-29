@@ -153,6 +153,12 @@ public class UserInterface {
                 repoListBox();
             }
         });
+
+        cancelButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                repoListBox();
+            }
+        });
     }
 
     /**
