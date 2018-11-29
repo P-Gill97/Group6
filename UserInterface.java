@@ -174,7 +174,10 @@ public class UserInterface {
         JButton deleteButton = new JButton("Delete");
         JButton cancelButton = new JButton("Cancel");
 
-        header.setFont(header.getFont().deriveFont(header.getFont().getStyle() | Font.BOLD));
+        Font font = header.getFont();
+        Font boldFont = new Font(font.getFontName(), Font.BOLD, font.getSize());
+        header.setFont(boldFont);
+
         header.setText("Would you like to delete the following repo? ");
         repoAddressLabel.setText(repoAddress);
 
@@ -189,6 +192,8 @@ public class UserInterface {
 
         frame.pack();
         frame.setVisible(true);
+
+
 
         cancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
