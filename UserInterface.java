@@ -176,9 +176,12 @@ public class UserInterface {
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(0, 1));
-
         frame.add(panel);
 
+        panel.add(header);
+        panel.add(repoAddressLabel);
+        panel.add(deleteButton);
+        panel.add(cancelButton);
 
         frame.pack();
         frame.setVisible(true);
