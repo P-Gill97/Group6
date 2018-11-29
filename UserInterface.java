@@ -85,6 +85,10 @@ public class UserInterface {
     private static void init() throws Exception {
         makeEmptyFrame();
 
+
+        int[] test = {1, 2};
+        test[3] = 5;
+
         // create buttons
         // ask user if they want to add new repo
         JButton newRepo = new JButton("Add new repo");
@@ -295,6 +299,7 @@ public class UserInterface {
     private static void handleError(Exception e) {
         // error caught, close everything, make empty frame
         makeEmptyFrame();
+        System.out.println("caught an error: " + e);
 
         JLabel errorHeader = new JLabel();
         errorHeader.setText("Caught an error: ");
@@ -302,10 +307,12 @@ public class UserInterface {
         errorText.setText("<html>"+ e.toString() +"</html>");
 
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(0, 2));
+        panel.setLayout(new GridLayout(0, 1));
 
         panel.add(errorHeader);
         panel.add(errorText);
+
+        frame.add(panel);
 
         frame.pack();
         frame.setVisible(true);
