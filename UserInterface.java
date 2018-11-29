@@ -167,6 +167,12 @@ public class UserInterface {
      * @param repoAddress
      */
     private static void deleteRepo(String repoAddress) {
+        makeEmptyFrame();
+
+        JLabel header = new JLabel();
+        JLabel repoAddress = new JLabel();
+        JButton deleteButton = new JButton("Delete");
+        JButton cancelButton = new JButton("Cancel");
 
     }
 
