@@ -177,6 +177,11 @@ public class UserInterface {
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(0, 1));
 
+        frame.add(panel);
+
+
+        frame.pack();
+        frame.setVisible(true);
     }
 
     /**
