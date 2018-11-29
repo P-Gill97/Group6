@@ -123,7 +123,8 @@ public class UserInterface {
         // create text field for github repo and button
         JLabel label = new JLabel();
         JTextField repoInputField = new JTextField(20);
-        JButton addRepoButton = new JButton("add");
+        JButton addRepoButton = new JButton("Add");
+        JButton cancelButton - new JButton("Cancel");
 
         label.setText("Enter GitHub repo URL:");
 
