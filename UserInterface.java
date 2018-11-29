@@ -339,7 +339,7 @@ public class UserInterface {
                 // add text box repo to database
 
                 frame.dispose();
-                
+                System.exit(0);
             }
         });
     }
