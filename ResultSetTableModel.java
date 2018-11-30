@@ -127,6 +127,15 @@ public class ResultSetTableModel extends AbstractTableModel
 
 			return numberOfRows;
 		}
+		
+		public Object getValueAt(int row,int column)
+				throws IllegalStateException
+		{
+			// ensure database connection is available
+			if (!connectedToDatabase)
+				throw new IllegalStateException("Not Connected to Database");
+
+			// obtain a value at specified ResultSet row and column
 
 
 
