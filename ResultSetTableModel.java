@@ -168,6 +168,14 @@ public class ResultSetTableModel extends AbstractTableModel
 				//notify JTable that model has changed
 				fireTableStructureChanged();
 		}
+		//close Statement and Connection
+		public void disconnectFromDatabase()
+		{
+			if (connectedToDatabase)
+			{
+				//close Statement and Connection
+				try
+				{
 
 
 
