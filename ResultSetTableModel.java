@@ -158,6 +158,16 @@ public class ResultSetTableModel extends AbstractTableModel
 
 				// specify query and execute it
 				resultSet =state.executeQuery(query);
+				// obtain metadata for ResultSet
+				metaData = resultSet.getMetaData();
+
+				// determine number of rows in ResultSet
+				resultSet.last(); // move to last row
+				numberOfRows = resultSet.getRow(); // get row number
+
+				//notify JTable that model has changed
+				fireTableStructureChanged();
+		}
 
 
 
