@@ -28,3 +28,26 @@ public class ResultSetTableModel extends AbstractTableModel
 		{
 				// connect to database
 				connect = DriverManager.getConnection(url, username, password);
+
+				//create Statement to query database
+				//INSENSITIVE The cursor can scroll forward and backward, and the 
+				//result set is not sensitive to changes made by others to the database
+				//that occur after the result set was created.
+				//The cursor can scroll forward and backward, and the result set is 
+				//sensitive to changes made by others to the database that occur after
+				//the result set was created.
+				state = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+				
+				//update database connection status
+				connectedToDatabase = true;
+
+				//set query and execute it
+				setQuery(query);
+		}
+		//get class that represents column type
+		public Class ColumnName(int column)throws IllegalStateException
+		{
+			// ensure database connection is available
+			if (!connectedToDatabase)
+				throw new IllegalStateException("Not Connected to Database");
+
