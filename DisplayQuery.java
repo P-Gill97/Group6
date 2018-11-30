@@ -55,3 +55,16 @@ public class DisplayQuery extends JFrame
 				queryArea = new JTextArea(DEFAULT_QUERY,3,100);
 				queryArea.setWrapStyleWord(true);
 				queryArea.setLineWrap(true);
+				
+				JScrollPane scrollPane = new JScrollPane(queryArea,
+						ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+						ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+				
+				//set up JButton for submitting queries
+				JButton submitButton = new JButton ("Submit Query");
+				
+				//create Box to manage placement of queryArea and
+				//submitButton in GUI
+				Box boxNorth = Box.createHorizontalBox();
+				boxNorth.add(scrollPane);
+				boxNorth.add(submitButton);
