@@ -105,6 +105,21 @@ public class ResultSetTableModel extends AbstractTableModel
 						return metaData.getColumnName(column + 1);
 					}
 					catch (SQLException sqlException)
+					
+					{
+						sqlException.printStackTrace();
+					}
+			}
+			else {
+				
+				throw new IllegalStateException("Not Connected to Database");
+			}
+
+			return ""; // if problems, return empty string for column name
+		}
+
+		// return number of rows in ResultSet
+
 
 
 
