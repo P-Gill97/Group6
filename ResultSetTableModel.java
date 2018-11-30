@@ -15,3 +15,9 @@ public class ResultSetTableModel extends AbstractTableModel
 	private ResultSetMetaData metaData;
 	private int numberOfRows;
 	//will be used to establish connection to database
+
+	private final Connection connect;
+	//variable used to store Statement for querying database
+	private final Statement state;
+	//will be used to keep track of database connection
+	private boolean connectedToDatabase = false;
