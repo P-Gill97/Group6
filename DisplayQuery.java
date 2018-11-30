@@ -19,3 +19,16 @@ import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 import javax.swing.table.TableModel;
+
+public class DisplayQuery extends JFrame 
+{
+	//database URL,username and password
+	static final String DATABASE_URL="jdbc:mysql://localhost:3306/FileDB?";
+		
+		//GAVE PublicKeyRetrival not allowed
+		//because of useSSL=false????
+		//useSSL was used to handle exception
+		//static final "jdbc:mysql://localhost:3306/FileDB?useSSL=false";
+	
+	static final String USERNAME="root";
+	static final String PASSWORD="SJ9Qwq27md9XcpK";
