@@ -148,6 +148,16 @@ public class ResultSetTableModel extends AbstractTableModel
 
 			return ""; // if problems, return empty string object
 		}
+		
+		public void setQuery(String query)
+				throws SQLException, IllegalStateException
+		{
+				// ensure database connection is available
+				if (!connectedToDatabase)
+					throw new IllegalStateException("Not Connected to Database");
+
+				// specify query and execute it
+				resultSet =state.executeQuery(query);
 
 
 
