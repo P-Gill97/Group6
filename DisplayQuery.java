@@ -40,3 +40,18 @@ public class DisplayQuery extends JFrame
 		private JTextArea queryArea;
 		
 		//create ResultSetModel and GUI
+		public DisplayQuery()
+		{
+			super("Displaying Database Results");
+			
+			//create ResultSetTableModel and display database table
+			try
+			{
+				//create TableModel for results of query SELECT * FROM FIELDS
+				tableModel = new ResultSetTableModel( DATABASE_URL,
+						USERNAME,PASSWORD, DEFAULT_QUERY);
+				
+				//set up JTextArea in which user types queries
+				queryArea = new JTextArea(DEFAULT_QUERY,3,100);
+				queryArea.setWrapStyleWord(true);
+				queryArea.setLineWrap(true);
