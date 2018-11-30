@@ -66,6 +66,20 @@ public class ResultSetTableModel extends AbstractTableModel
 			{
 				exception.printStackTrace();
 			}
+			return Object.class; // if problems occur above, assume type Object
+		}
+
+		// get number of columns in ResultSet
+		public int getColumnCount() throws IllegalStateException
+		{
+			// ensure database connection is available
+			if (connectedToDatabase)
+			{
+					//this will get the number of columns and pass it to function
+					try
+					{
+						return metaData.getColumnCount();
+					}
 
 
 
