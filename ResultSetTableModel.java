@@ -80,6 +80,32 @@ public class ResultSetTableModel extends AbstractTableModel
 					{
 						return metaData.getColumnCount();
 					}
+					catch (SQLException sqlException)
+					{
+						sqlException.printStackTrace();
+					}
+			}
+		
+			else
+			{
+				throw new IllegalStateException("Not Connected to Database");
+			}
+
+			return 0; // if problems occur above, return 0 for number of columns
+		}
+		//get name of a particular column in ResultSet
+		public String getColumnName(int column) throws IllegalStateException
+		{
+			// ensure database connection is available
+			if (connectedToDatabase)
+			{
+					// determine column name
+					try
+					{
+						return metaData.getColumnName(column + 1);
+					}
+					catch (SQLException sqlException)
+
 
 
 
