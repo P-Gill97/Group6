@@ -68,3 +68,17 @@ public class DisplayQuery extends JFrame
 				Box boxNorth = Box.createHorizontalBox();
 				boxNorth.add(scrollPane);
 				boxNorth.add(submitButton);
+				
+
+				/*
+				 * will create a new Help Button that describes how to use 
+				 * Submit Query Button and Filter Button
+				JButton HelpButton = new JButton ("Help");
+				Box boxSouth = Box.createHorizontalBox();
+				boxNorth.add(scrollPane);
+				boxNorth.add(submitButton);
+				
+				*/
+				
+				//create JTable based on the tableModel1
+				JTable resultTable = new JTable (tableModel);
