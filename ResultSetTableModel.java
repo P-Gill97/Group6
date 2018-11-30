@@ -136,6 +136,18 @@ public class ResultSetTableModel extends AbstractTableModel
 				throw new IllegalStateException("Not Connected to Database");
 
 			// obtain a value at specified ResultSet row and column
+			try
+			{
+				resultSet.absolute(row + 1);
+				return resultSet.getObject(column + 1);
+			}
+			catch (SQLException sqlException)
+			{
+				sqlException.printStackTrace();
+			}
+
+			return ""; // if problems, return empty string object
+		}
 
 
 
