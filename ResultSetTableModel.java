@@ -21,3 +21,10 @@ public class ResultSetTableModel extends AbstractTableModel
 	private final Statement state;
 	//will be used to keep track of database connection
 	private boolean connectedToDatabase = false;
+	
+	// constructor initializes resultSet and obtains its metadata object;
+	// determines number of rows
+	public ResultSetTableModel(String url, String username, String password, String query) throws SQLException
+		{
+				// connect to database
+				connect = DriverManager.getConnection(url, username, password);
