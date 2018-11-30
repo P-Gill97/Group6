@@ -119,6 +119,15 @@ public class ResultSetTableModel extends AbstractTableModel
 		}
 
 		// return number of rows in ResultSet
+		public int getRowCount() throws IllegalStateException
+		{
+			// ensure database connection is available
+			if (!connectedToDatabase)
+					throw new IllegalStateException("Not Connected to Database");
+
+			return numberOfRows;
+		}
+
 
 
 
