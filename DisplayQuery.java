@@ -32,3 +32,7 @@ public class DisplayQuery extends JFrame
 	
 	static final String USERNAME="root";
 	static final String PASSWORD="SJ9Qwq27md9XcpK";
+	
+	//default query retrives all data from table
+		static final String DEFAULT_QUERY = "SELECT * "
+											+ "	FROM Files;";
