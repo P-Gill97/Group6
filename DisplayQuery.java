@@ -36,3 +36,7 @@ public class DisplayQuery extends JFrame
 	//default query retrives all data from table
 		static final String DEFAULT_QUERY = "SELECT * "
 											+ "	FROM Files;";
+		private static ResultSetTableModel tableModel;
+		private JTextArea queryArea;
+		
+		//create ResultSetModel and GUI
