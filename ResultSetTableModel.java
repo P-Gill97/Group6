@@ -176,6 +176,24 @@ public class ResultSetTableModel extends AbstractTableModel
 				//close Statement and Connection
 				try
 				{
+					resultSet.close();
+					state.close();
+					connect.close();
+				}
+				catch (SQLException sqlException)
+				{
+					sqlException.printStackTrace();
+				}
+				finally // update database connection status
+				{
+					connectedToDatabase = false;
+				}
+			}
+		}
+	}//end class RseultSetTableModel
+
+
+				}
 
 
 
