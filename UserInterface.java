@@ -26,7 +26,6 @@ public class UserInterface {
             init();
         } catch (Exception e) {
             // catch works on init exceptions, but doesn't catch entire program?
-            e.printStackTrace(); // print to console
             handleError(e);
         }
     }
@@ -123,20 +122,22 @@ public class UserInterface {
         // create text field for github repo and button
         JLabel label = new JLabel();
         JTextField repoInputField = new JTextField(20);
-        JButton addRepoButton = new JButton("add");
+        JButton addRepoButton = new JButton("Add");
+        JButton cancelButton = new JButton("Cancel");
 
         label.setText("Enter GitHub repo URL:");
 
         // add frame elements
         JPanel panel = new JPanel();
         // set layout as a grid of width 2, height variable
-        panel.setLayout(new GridLayout(0,1));
+        panel.setLayout(new GridLayout(0, 2));
         frame.add(panel);
 
         // add text box and button
         panel.add(label);
         panel.add(repoInputField);
         panel.add(addRepoButton);
+        panel.add(cancelButton);
 
         frame.pack();
         frame.setVisible(true); // display
@@ -151,6 +152,12 @@ public class UserInterface {
                 repoListBox();
             }
         });
+
+        cancelButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                repoListBox();
+            }
+        });
     }
 
     /**
@@ -159,7 +166,46 @@ public class UserInterface {
      * @param repoAddress
      */
     private static void deleteRepo(String repoAddress) {
+        makeEmptyFrame();
 
+        JLabel header = new JLabel();
+        JLabel repoAddressLabel = new JLabel();
+        JButton deleteButton = new JButton("Delete");
+        JButton cancelButton = new JButton("Cancel");
+
+
+
+        header.setText("<html>&nbsp;Would you like to delete the following repo?&nbsp;&nbsp;</html>");
+        repoAddressLabel.setText("<html><li>" + repoAddress + "&nbsp;&nbsp;</html>");
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(0, 2));
+        frame.add(panel);
+
+        panel.add(header);
+        panel.add(repoAddressLabel);
+        panel.add(deleteButton);
+        panel.add(cancelButton);
+
+        frame.pack();
+        frame.setVisible(true);
+
+        deleteButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                // delete repoAddress from repo database
+                /*
+                    NEED TO ACCESS AND DELETE FROM REPO DATABASE
+                 */
+
+                repoListBox();
+            }
+        });
+
+        cancelButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                repoListBox();
+            }
+        });
     }
 
     /**
@@ -185,6 +231,7 @@ public class UserInterface {
         JButton addNewRepoButton = new JButton("Add New Repo");
         // button to delete this repo
         JButton deleteRepoButton = new JButton("Delete This Repo");
+
         // metrics
         // metrics labels
         JLabel linesHeader = new JLabel();
@@ -202,11 +249,10 @@ public class UserInterface {
         frame.add(panel);
         panel.add(repoDropdownList);
         panel.add(runMetricsButton);
+
         // second row, buttons
         panel.add(addNewRepoButton);
         panel.add(deleteRepoButton);
-
-
 
         // third row, metrics headers
         panel.add(linesHeader);
@@ -248,21 +294,49 @@ public class UserInterface {
     private static void handleError(Exception e) {
         // error caught, close everything, make empty frame
         makeEmptyFrame();
+        e.printStackTrace(); // print to console
 
         JLabel errorHeader = new JLabel();
-        errorHeader.setText("Caught an error: ");
+        errorHeader.setText("<html>&nbsp;Caught an error:&nbsp;</html>");
         JLabel errorText = new JLabel();
-        errorText.setText("<html>"+ e.toString() +"</html>");
+        errorText.setText("<html>&nbsp;"+ e.toString() +"&nbsp;</html>");
+        JButton restartButton = new JButton("Restart Program");
+        JButton exitProgramButton = new JButton("Exit Program");
 
-        // set location and bounds of text
-        errorHeader.setBounds(1, 1, 100, 100);
-        errorText.setBounds(100, 100, 100, 100);
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(0, 1));
 
-        frame.add(errorHeader);
-        frame.add(errorText);
+        panel.add(errorHeader);
+        panel.add(errorText);
+        panel.add(restartButton);
+        panel.add(exitProgramButton);
 
-        frame.setSize(e.toString().length() * 10, 200);
+        frame.add(panel);
+
+        frame.pack();
         frame.setVisible(true);
+
+        // button listeners
+
+        restartButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                // add text box repo to database
+                try {
+                    init();
+                } catch (Exception e) {
+
+                    handleError(e);
+                }
+            }
+        });
+
+        exitProgramButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                // add text box repo to database
+                frame.dispose();
+                System.exit(0);
+            }
+        });
     }
 
 }
