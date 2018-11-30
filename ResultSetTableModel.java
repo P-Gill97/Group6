@@ -50,4 +50,22 @@ public class ResultSetTableModel extends AbstractTableModel
 			// ensure database connection is available
 			if (!connectedToDatabase)
 				throw new IllegalStateException("Not Connected to Database");
+			
+			// determine Java class of column
+			try
+			{
+				//Returns the fully-qualified name of the Java class whose instances
+				//are manufactured if the method ResultSet.getObject is called to 
+				//retrieve a value from the column.
+				String nameOfClass = metaData.getColumnClassName(column + 1);
+
+				// return Class object that represents className
+				return Class.forName(nameOfClass);
+			}
+			catch (Exception exception)
+			{
+				exception.printStackTrace();
+			}
+
+
 
