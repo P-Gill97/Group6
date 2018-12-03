@@ -115,4 +115,18 @@ public class DisplayQuery extends JFrame
 											sqlException.getMessage(), "Database Error",
 											JOptionPane.ERROR_MESSAGE);
 
+									//try to recover from invalid user query
+									//by executing default query
+									try
+									{
+										tableModel.setQuery(DEFAULT_QUERY);
+										queryArea.setText(DEFAULT_QUERY);
+									}//end try
+									catch(SQLException sqlException2 )
+									{
+										JOptionPane.showMessageDialog(null, 
+												sqlException2.getMessage(), "Database error",
+												JOptionPane.ERROR_MESSAGE);
+
+
 				
