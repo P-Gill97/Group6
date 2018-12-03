@@ -12,21 +12,18 @@ that the metrics part of the app can call.
  */
 public class GitRepository {
     private File repo;
-    private ArrayList<File> Cfiles;         //= new ArrayList<>();
-    private ArrayList<File> javaFiles;      //= new ArrayList<>(); might not need to initaialize
+    private ArrayList<File> allFIles;         //= new ArrayList<>();
+
     public GitRepository ( File repo) throws GitAPIException {
 
         this.repo = repo;
 
 }
-    public ArrayList<File> getJavaFiles (){
+    public ArrayList<File> getFiles (){
         //Todo: need to add get java files from repo directory by using the extention
 
-       return javaFiles;
+       return allFIles;
     }
 
-    public ArrayList<File> getCFiles (){
-        //Todo: need to add get C files from repo directory by using the extention
-        return Cfiles;
-    }
+
 }
