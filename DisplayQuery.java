@@ -146,6 +146,20 @@ public class DisplayQuery extends JFrame
 				
 				filterButton.addActionListener(
 						new ActionListener()
+						public void actionPerformed(ActionEvent e)
+						{
+							String text = textForFilter.getText();
+							
+							if (text.length()==0)
+								sorter.setRowFilter(null);
+							else
+							{
+								try
+								{
+									sorter.setRowFilter(
+											RowFilter.regexFilter(text));
+								}//end try
+
 
 
 				
