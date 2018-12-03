@@ -1,5 +1,7 @@
 package JGitApi;
 
+import org.eclipse.jgit.api.errors.GitAPIException;
+
 import java.io.File;
 /*
  *  Programmer : Perry Gill
@@ -9,8 +11,8 @@ import java.io.File;
  *  */
 public class gitFile
 {
-    public File getRepo(String link){
-      File file = new File("/Users/pdippygill/desktop"); // Math for mac chance this path to a path in your computer.
+    public File getRepo(String link) throws GitAPIException {
+      File file = new File("/Users/pdippygill/desktop/DownloadedGitRepos"); // Math for mac chance this path to a path in your computer.
         CloneRepo cloneFile = null;
         cloneFile.clone(link,file);
 

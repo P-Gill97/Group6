@@ -14,18 +14,16 @@ public class CloneRepo {
 
 
 
-    public void clone(String uri, File file)    {
+    public void clone(String uri, File file) throws GitAPIException {
 
         // try to get repository
-        try {
+
             Git cloneResult = Git.cloneRepository()
                 .setURI(uri)
                 .setDirectory(file)
                 .call();
 
-        } catch (GitAPIException e) {
-            e.printStackTrace();
-        }
+
 
 
 
