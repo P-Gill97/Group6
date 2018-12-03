@@ -12,8 +12,8 @@ import java.io.File;
 public class gitFile
 {
     public File getRepo(String link, String location) throws GitAPIException {
-      File file = new File (location); // Math for mac chance this path to a path in your computer.
-        CloneRepo cloneFile = null;
+        File file = new File (location); // Math for mac chance this path to a path in your computer.
+        CloneRepo cloneFile = new CloneRepo();
         cloneFile.clone(link,file);
 
         return file;
