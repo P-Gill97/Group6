@@ -25,3 +25,12 @@ public class DB
     	
     	
     	int status =ps.executeUpdate();
+
+    	if(status !=0 ) 
+    	{
+    		System.out.println("Database was Connceted");
+    		System.out.println("Record WAS INSERTED");
+    	}
+    	new DisplayQuery();
+    }
+}
