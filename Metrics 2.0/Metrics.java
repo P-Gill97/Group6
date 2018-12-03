@@ -226,13 +226,13 @@ public class Metrics implements Runnable, IMetrics {
 }
     static void printer(boolean wcParams, boolean wasRead,ArrayList<String>allArgs){
         if(lines!=null||wcParams) {
-            System.out.print(totcount + "      ");
+            System.out.print("Lines "+totcount + "      ");
         }
         if(words!=null||wcParams) {
-            System.out.print(totword + "     ");
+            System.out.print("Words "+totword + "     ");
         }
         if (characters!=null||wcParams) {
-            System.out.print(totchar + "        ");
+            System.out.print("Characters "+totchar + "        ");
         }
         if (sourcelines!=null) {
             System.out.print(totSourceTrack + "           ");
@@ -244,7 +244,8 @@ public class Metrics implements Runnable, IMetrics {
             System.out.print("Total");
         }
         System.out.println("");
-        System.out.println("total operators:"+totalOperators);
+        //Commented out to make easier to test basic functions
+       /* System.out.println("total operators:"+totalOperators);
         System.out.println("total operands:"+totalOperands);
         System.out.println("unique operands:"+uniqOperands.size());
         System.out.println("unique operators:"+uniqOperators.size());
@@ -255,7 +256,7 @@ public class Metrics implements Runnable, IMetrics {
         System.out.println("Difficulty: "+testingThis.getDifficulty());
         System.out.println("effort:"+ testingThis.getEffort());
         System.out.println("time required to program in seconds: "+testingThis.getTimeReq());
-        System.out.println("delivered bugs: "+testingThis.getBugs());
+        System.out.println("delivered bugs: "+testingThis.getBugs());*/
 
     }
     public static void instructions(){
