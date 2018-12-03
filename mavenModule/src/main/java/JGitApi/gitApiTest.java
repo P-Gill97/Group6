@@ -2,6 +2,9 @@ package JGitApi;
 
 import org.eclipse.jgit.api.errors.GitAPIException;
 
+import java.io.File;
+import java.util.ArrayList;
+
 public class gitApiTest {
     public static void main(String[] args){
         String url = "";
@@ -9,10 +12,11 @@ public class gitApiTest {
         try {
             GitRepository GitRepo = new GitRepository(Controller.getRepo(url)); // calling GitRepository constructor.
 
-            GitRepo.getCFiles();
-            GitRepo.getJavaFiles();
+            ArrayList<File> testjavafiles = GitRepo.getJavaFiles();
+            ArrayList<File> testCfiles = GitRepo.getCFiles();
 
-            //Todo: add a for loop to display every item of the Cfiles array list and javaFiles array list.
+
+            //Todo: add a for loop to display every item of the TestCfiles array list and testjavaFiles array list.
 
 
 
