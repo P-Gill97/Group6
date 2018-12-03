@@ -127,6 +127,15 @@ public class DisplayQuery extends JFrame
 										JOptionPane.showMessageDialog(null, 
 												sqlException2.getMessage(), "Database error",
 												JOptionPane.ERROR_MESSAGE);
+										//ensure database connection is closed
+										tableModel.disconnectFromDatabase();
+										
+										System.exit(1); //terminate application
+									}//end inner catch	
+								}//end outer catch
+							}//end action Performed
+						}//end ActionListener inner class	
+					) ;//end call to addActionListener
 
 
 				
