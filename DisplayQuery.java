@@ -91,3 +91,13 @@ public class DisplayQuery extends JFrame
 				boxSouth.add(filter);
 				boxSouth.add(textForFilter);
 				boxSouth.add(filterButton);
+				
+				//placeGUI components on content pane
+				add( boxNorth, BorderLayout.NORTH);
+				add(new JScrollPane(resultTable), BorderLayout.CENTER);
+				add( boxSouth,BorderLayout.SOUTH);
+				//create event listener for submitButton
+				submitButton.addActionListener(
+						
+						new ActionListener()
+				
