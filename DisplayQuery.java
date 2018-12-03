@@ -159,6 +159,19 @@ public class DisplayQuery extends JFrame
 									sorter.setRowFilter(
 											RowFilter.regexFilter(text));
 								}//end try
+								catch (PatternSyntaxException pse)
+								{
+									JOptionPane.showMessageDialog(null,
+											"Bad regex patterm", "Bad regex pattern",
+											JOptionPane.ERROR_MESSAGE);
+								}//end catch
+							}//end else
+						}//end method actionPerformed
+					}//end annonymous inner class
+					);//end call to addAction inner class
+					
+			}//end try
+
 
 
 
