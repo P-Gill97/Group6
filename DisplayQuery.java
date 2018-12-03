@@ -136,6 +136,16 @@ public class DisplayQuery extends JFrame
 							}//end action Performed
 						}//end ActionListener inner class	
 					) ;//end call to addActionListener
+				final TableRowSorter<TableModel>sorter=
+						new TableRowSorter<TableModel>(tableModel);
+				resultTable.setRowSorter(sorter);
+				setSize(500,250);
+				setVisible(true);
+				
+				//create listener for filterButton
+				
+				filterButton.addActionListener(
+						new ActionListener()
 
 
 				
