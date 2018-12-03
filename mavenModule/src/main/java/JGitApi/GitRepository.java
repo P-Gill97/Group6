@@ -21,6 +21,7 @@ public class GitRepository {
 }
     public ArrayList<File> getJavaFiles (){
         //Todo: need to add get java files from repo directory by using the extention
+
        return javaFiles;
     }
 
