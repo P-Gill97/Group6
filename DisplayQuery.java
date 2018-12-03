@@ -100,4 +100,19 @@ public class DisplayQuery extends JFrame
 				submitButton.addActionListener(
 						
 						new ActionListener()
+						{
+							//pass query to table model
+							public void actionPerformed(ActionEvent event)
+							{
+								//perform a new query
+								try
+								{
+									tableModel.setQuery(queryArea.getText());
+								}//end try
+								catch (SQLException sqlException)
+								{
+									JOptionPane.showMessageDialog(null,
+											sqlException.getMessage(), "Database Error",
+											JOptionPane.ERROR_MESSAGE);
+
 				
