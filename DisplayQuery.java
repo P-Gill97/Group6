@@ -180,6 +180,27 @@ public class DisplayQuery extends JFrame
 			tableModel.disconnectFromDatabase();
 			
 			System.exit(1 );//terminate application
+		}// end catch
+		
+		//dispose of window when user quits application (this overrides
+		//the default of HIDE_ON_CLOSE)
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		
+		//ensure database connection is closed when user quits application
+		addWindowListener(
+				//disconnect from database and exit when window has closed
+				new WindowAdapter()
+				{
+					public void windowClosed(WindowEvent event)
+					{
+						tableModel.disconnectFromDatabase();
+						System.exit(0);
+					}//end method windowClosed
+				}//endWindowAdapter inner class
+				);
+	}
+	}
+		
 
 
 
