@@ -7,17 +7,19 @@ public class DB
 {
 	static Connection connect=null;
 	static String databaseName= "";
-	//static String url = "jdbc:mysql://localhost:3306/FileDB?"+databaseName;
+	static String url = "jdbc:mysql://localhost:3306/FileDB?"+databaseName;
 	
 	//original code wont compile
-	static String url = "jdbc:mysql://localhost:3306/FileDB?useSSL=false"+databaseName;
+	//static String url = "jdbc:mysql://localhost:3306/FileDB?useSSL=false"+databaseName;
 	static String username ="root";
     static String password = "SJ9Qwq27md9XcpK";
+   
+	
     public static void main(String[] args)throws InstantiationException,IllegalAccessException,ClassNotFoundException, SQLException
     {
     	
     	
-    	String txt= "10th.txt";
+    	String txt= "11th.txt";
     	Class.forName("com.mysql.jdbc.Driver").newInstance();
     	connect = DriverManager.getConnection(url,username,password);
     	PreparedStatement ps= connect.prepareStatement("INSERT INTO `FileDB`.`Files`(`FileName`) VALUES ('"+txt+"');");
@@ -25,7 +27,7 @@ public class DB
     	
     	
     	int status =ps.executeUpdate();
-
+   
     	if(status !=0 ) 
     	{
     		System.out.println("Database was Connceted");
@@ -34,3 +36,19 @@ public class DB
     	new DisplayQuery();
     }
 }
+
+
+//include DisplayQueryResults
+
+
+/* Querie to Delete
+DELETE 
+FROM Files
+WHERE FileName='2nd.txt' AND
+FileName='3nd.txt';
+*/
+
+/*Querie to Display all
+Select *
+From Files ;
+*/
