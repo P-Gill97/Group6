@@ -82,3 +82,12 @@ public class DisplayQuery extends JFrame
 				
 				//create JTable based on the tableModel1
 				JTable resultTable = new JTable (tableModel);
+				//Incorporates filter Button
+				JLabel filter = new JLabel ("Filter:");
+				final JTextField textForFilter = new JTextField();
+				JButton filterButton= new JButton ("Filter");
+				Box boxSouth = Box.createHorizontalBox();
+				
+				boxSouth.add(filter);
+				boxSouth.add(textForFilter);
+				boxSouth.add(filterButton);
