@@ -20,3 +20,8 @@ public class DB
     	String txt= "10th.txt";
     	Class.forName("com.mysql.jdbc.Driver").newInstance();
     	connect = DriverManager.getConnection(url,username,password);
+    	PreparedStatement ps= connect.prepareStatement("INSERT INTO `FileDB`.`Files`(`FileName`) VALUES ('"+txt+"');");
+    	//PreparedStatement ps= connection.prepareStatement("INSERT INTO `FileDB`.`Files`(`FileName`) VALUES ('"+txt+"');");
+    	
+    	
+    	int status =ps.executeUpdate();
