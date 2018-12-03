@@ -1,7 +1,8 @@
 package JGitApi;
 import org.eclipse.jgit.api.errors.GitAPIException;
-
+import java.io.FilenameFilter;
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.ArrayList;
 /*
 contributor: Perry Gill
@@ -19,7 +20,12 @@ public class GitRepository {
 
 }
     public ArrayList<File> getJavaFiles (){
-
+        //Todo: need to add get java files from repo directory by using the extention
        return javaFiles;
+    }
+
+    public ArrayList<File> getCFiles (){
+        //Todo: need to add get C files from repo directory by using the extention
+        return Cfiles;
     }
 }
