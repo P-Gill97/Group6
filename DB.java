@@ -13,3 +13,10 @@ public class DB
 	static String url = "jdbc:mysql://localhost:3306/FileDB?useSSL=false"+databaseName;
 	static String username ="root";
     static String password = "SJ9Qwq27md9XcpK";
+    public static void main(String[] args)throws InstantiationException,IllegalAccessException,ClassNotFoundException, SQLException
+    {
+    	
+    	
+    	String txt= "10th.txt";
+    	Class.forName("com.mysql.jdbc.Driver").newInstance();
+    	connect = DriverManager.getConnection(url,username,password);
