@@ -1,4 +1,5 @@
 package JGitApi;
+
 import org.eclipse.jgit.api.errors.GitAPIException;
 
 import java.io.FilenameFilter;
@@ -17,40 +18,52 @@ public class GitRepository {
     private File repo;
 
 
-    public GitRepository ( File repo) throws GitAPIException {
+    public GitRepository(File repo) throws GitAPIException {
 
         this.repo = repo;
 
-}
-    FilenameFilter  nameFilter = new FilenameFilter() {
+    }
+
+    FilenameFilter nameFilter = new FilenameFilter() {
         @Override
         public boolean accept(File dir, String name) {
-            if(name.endsWith(".java")||name.endsWith(".c")||name.endsWith(".h")
-                    ||name.endsWith(".cpp")||name.endsWith(".hpp")){
+            if (name.endsWith(".java") || name.endsWith(".c") || name.endsWith(".h")
+                    || name.endsWith(".cpp") || name.endsWith(".hpp")) {
                 return true;
-            }else {
+            } else {
                 return false;
             }
         }
 
     };
-    public ArrayList<File> getFiles (ArrayList<File> emptyArrayList){
+    /*
+     recursively get files and filter files that are not desired files.
+     Takes in a Arraylist<File>
+     returns an Arraylist<File>
+     that has all the java and C files.
+      */
 
-            File[] files = repo.listFiles();
-                for(File file: files){
-                    if(file.isDirectory()) {
+    public ArrayList<File> getFiles(ArrayList<File> emptyArrayList) {
 
+        File[] files = repo.listFiles();
+        for (File file : files) {
+            if (file.isDirectory()) {
+                getFiles(emptyArrayList);
 
-                    }
+            } else {
+                if (nameFilter.accept(file, file.getName())) {
+
+                    emptyArrayList.add(file);
                 }
-
-
-
-
-            return emptyArrayList;
+            }
 
         }
+        return emptyArrayList;
     }
+
+
+}
+
 
 
 
