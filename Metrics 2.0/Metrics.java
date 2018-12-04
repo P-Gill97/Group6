@@ -3,6 +3,8 @@ import picocli.CommandLine;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.StringTokenizer;
 
 import static java.util.Arrays.asList;
@@ -10,6 +12,7 @@ import static java.util.Arrays.asList;
 //READ ---------------
 //Commented out Halstead Metrics. Currently have it only taking in -l, -w, -c for the sake of testing with data base and gui. 
 public class Metrics implements Runnable, IMetrics {
+    /*Picocli lines*/
     @picocli.CommandLine.Option(names = {"-l", "--lines"})
     static ArrayList<String> lines;
     @picocli.CommandLine.Option(names = {"-w", "--words"})
@@ -26,11 +29,11 @@ public class Metrics implements Runnable, IMetrics {
     static ArrayList<String> hal;
     @picocli.CommandLine.Parameters
     static ArrayList<String> positional;
-
+    /* Picocli lines  */
 
     public void run() {
     }
-
+    /*Imetrics lines- unneeded*/
     @Override
     public boolean setPath(String path) {
         return readCorrect;
@@ -40,7 +43,9 @@ public class Metrics implements Runnable, IMetrics {
     public boolean isSource() {
         return jc;
     }
+    /*Imetrics lines- unneeded*/
 
+    /* Variables for Metrics Object*/
     static int totchar = 0;
     static int totcount = 0;
     static int totword = 0;
@@ -54,8 +59,16 @@ public class Metrics implements Runnable, IMetrics {
     static boolean readCorrect = true;
     static boolean wcParams = false;
     static boolean wasRead = false;
+    /* Variables for Metrics Object*/
+
+
+
 
     public static void main(String[] args) {
+        /* Date and time variable*/
+        Date date= Calendar.getInstance().getTime();
+        System.out.println(date);
+        /* Date and time variable*/
         boolean headerYes = false;
         jc = false;
         int tic = 0;
