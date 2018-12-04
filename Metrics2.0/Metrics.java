@@ -283,7 +283,46 @@ public class Metrics implements Runnable, IMetrics  {
             Connection conn = DriverManager.getConnection(urlStr, username, password);
             System.out.println("Connected to the MySQL database");
 
-            Statement st = conn.createStatement();
+            //Statement st = conn.createStatement();
+
+            String sql = "INSERT INTO Files(FileName,totChar,totCount,totWord,totComtrack," +
+                    "totSourcetrack,totalOperators,totalOperands)" + "VALUES (?,?,?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO `FileDB`.`Files`(`FileName`) VALUES ('" + nameOfFile + "');");
+
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+            //for(int i=0;i<=7;i++) {
+                preparedStatement.setString(1, nameOfFile);
+                preparedStatement.setInt(2, totchar);
+                preparedStatement.setInt(3, totcount);
+                preparedStatement.setInt(4, totword);
+                preparedStatement.setInt(5, totComTrack);
+                preparedStatement.setInt(6, totSourceTrack);
+                preparedStatement.setInt(7, totalOperators);
+                preparedStatement.setInt(8, totalOperands);
+            //}
+            preparedStatement.executeUpdate();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            /*
 
             st.executeUpdate("INSERT INTO `FileDB`.`Files`(`FileName`) VALUES ('" + nameOfFile + "');");
 
@@ -300,7 +339,7 @@ public class Metrics implements Runnable, IMetrics  {
             st.executeUpdate("INSERT INTO `FileDB`.`Files`(`totOperators`) VALUES ('" + totalOperators+ "');");
 
             st.executeUpdate("INSERT INTO `FileDB`.`Files`(`totOperands`) VALUES ('" + totalOperands+"');");
-
+            */
 
 
             /*try doing for loop to insert values into each column
