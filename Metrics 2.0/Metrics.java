@@ -11,7 +11,7 @@ import static java.util.Arrays.asList;
 
 //READ ---------------
 //Commented out Halstead Metrics. Currently have it only taking in -l, -w, -c for the sake of testing with data base and gui. 
-public class Metrics implements Runnable, IMetrics {
+public class Metrics implements Runnable/*,IMetrics*/ {
     /*Picocli lines*/
     @picocli.CommandLine.Option(names = {"-l", "--lines"})
     static ArrayList<String> lines;
@@ -34,12 +34,12 @@ public class Metrics implements Runnable, IMetrics {
     public void run() {
     }
     /*Imetrics lines- unneeded*/
-    @Override
+    //@Override
     public boolean setPath(String path) {
         return readCorrect;
     }
 
-    @Override
+    //@Override
     public boolean isSource() {
         return jc;
     }
@@ -67,8 +67,10 @@ public class Metrics implements Runnable, IMetrics {
     public static void main(String[] args) {
         /* Date and time variable*/
         Date date= Calendar.getInstance().getTime();
-        System.out.println(date);
+        //System.out.println(date);
         /* Date and time variable*/
+
+        /*Variable set up*/
         boolean headerYes = false;
         jc = false;
         int tic = 0;
@@ -79,6 +81,8 @@ public class Metrics implements Runnable, IMetrics {
         boolean combol = false;
         boolean multiComment = false;
         String fileName = "";
+        /*Variable set up*/
+
         CommandLine.run(new Metrics(), System.err, args);
         ArrayList<String> allArgs = groupFiles(lines, words, characters, sourcelines, commentlines, positional, hal);
         if (positional != null) {
@@ -284,69 +288,69 @@ public class Metrics implements Runnable, IMetrics {
          System.out.println("-H or --Halstead before a file name will print the Halstead metrics of a file");
     }
 
-    @Override
+    /*@Override
     public int getLineCount() {
         return totcount ;
     }
 
-    @Override
+    //@Override
     public int getWordCount() {
         return totword;
     }
 
-    @Override
+    //@Override
     public int getCharacterCount() {
         return totchar;
     }
 
-    @Override
-    public int getSourceLineCount() {
-        return totSourceTrack;
+    /*@Override
+    //public int getSourceLineCount() {
+    //    return totSourceTrack;
     }
 
-    @Override
+    //@Override
     public int getCommentLineCount() {
         return totComTrack;
     }
 
-    @Override
+    //@Override
     public int getHalsteadn1() {
         return uniqOperators.size();
     }
 
-    @Override
+    //@Override
     public int getHalsteadn2() {
         return uniqOperands.size();
     }
 
-    @Override
+    //@Override
     public int getHalsteadN1() {
         return totalOperators;
     }
 
-    @Override
+    //@Override
     public int getHalsteadN2() {
         return totalOperands;
     }
 
-    @Override
+    //@Override
     public int getHalsteadVocabulary() {
         return getHalsteadn1()+getHalsteadn2();
     }
 
-    @Override
+    //@Override
     public int getHalsteadProgramLength() {
         return getHalsteadN1()+getHalsteadn2();
     }
 
-    @Override
+    //@Override
     public int getHalsteadCalculatedProgramLenght() {
        int a=getHalsteadn1();
       int  b= getHalsteadn2();
         return (int) (a*(Math.log(a)/Math.log(2))+b*(Math.log(b)/Math.log(2)));
     }
 
-    @Override
+    //@Override
     public int getHalsteadVolume() {
         return (int) (getHalsteadProgramLength()*(Math.log(getHalsteadVocabulary())/Math.log(2)));
     }
@@ -372,11 +376,11 @@ public class Metrics implements Runnable, IMetrics {
     @Override
     public int getHalsteadBugs() {
         return getHalsteadVolume()/3000;
-    }
+    }*/
 
 
     public static void headerPrint(boolean l, boolean w, boolean c, boolean s, boolean cm){//this is actually never called yet
-         if(s||cm) {
+        // if(s||cm) {
              if (l) {
                  System.out.print("Lines   ");
              }
@@ -386,7 +390,7 @@ public class Metrics implements Runnable, IMetrics {
              if (c) {
                  System.out.print("Characters   ");
              }
-         }
+         //}
             if(s){
                 System.out.print("SourceLines   ");
                 if(!cm){
@@ -398,6 +402,7 @@ public class Metrics implements Runnable, IMetrics {
                 System.out.println("");
 
         }
+        System.out.println("");
    }
    public static ArrayList<String> groupFiles(ArrayList<String> l,ArrayList<String> w,ArrayList<String> c,ArrayList<String> s,ArrayList<String> cm,ArrayList<String> positional, ArrayList<String> h){
          ArrayList<String> ret = new ArrayList<String>();
@@ -495,7 +500,7 @@ class operatorz{
         return trands;
      }
  }
- class fundamental{
+ /*class fundamental{
     int progVocab;
     int progLength;
     double calcProgLength;
@@ -546,6 +551,6 @@ class operatorz{
      public double getBugs() {
          return bugs;
      }
- }
+ }*/
 
 
