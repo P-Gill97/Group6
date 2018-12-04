@@ -12,8 +12,7 @@ public class gitApiTest {
         try {
             GitRepository GitRepo = new GitRepository(Controller.getRepo(url)); // calling GitRepository constructor.
 
-            ArrayList<File> testjavafiles = GitRepo.getJavaFiles();
-            ArrayList<File> testCfiles = GitRepo.getCFiles();
+
 
 
             //Todo: add a for loop to display every item of the TestCfiles array list and testjavaFiles array list.

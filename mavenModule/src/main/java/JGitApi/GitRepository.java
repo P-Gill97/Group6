@@ -39,7 +39,7 @@ public class GitRepository {
     };
     public File[] getFiles (){
         File[] files = repo.listFiles(nameFilter);
-        //Todo: need to add get java files from repo directory by using the extention
+
 
         return files;
     }
