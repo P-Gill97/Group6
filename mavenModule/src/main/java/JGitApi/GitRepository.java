@@ -49,6 +49,7 @@ public class GitRepository {
         for (File file : files) {
             if (file.isDirectory()) {
                 // stack overflow error incoming.
+                // fix by using foreach for arraylists Numbers.forEach((n) -> System.out.println(n));
                 getFiles(emptyArrayList);
 
             } else {
