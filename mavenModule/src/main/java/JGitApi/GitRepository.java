@@ -19,10 +19,18 @@ public class GitRepository {
         this.repo = repo;
 
 }
+    FilenameFilter  nameFilter = new FilenameFilter() {
+        @Override
+        public boolean accept(File dir, String name) {
+            if(name.endsWith(".java")||name.endsWith(".c")||name.endsWith("."))
+            return false;
+        }
+
+    }
     public ArrayList<File> getFiles (){
         //Todo: need to add get java files from repo directory by using the extention
 
-       return allFIles;
+
     }
 
 
