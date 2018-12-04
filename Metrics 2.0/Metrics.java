@@ -7,8 +7,8 @@ import java.util.StringTokenizer;
 
 import static java.util.Arrays.asList;
 
-//current metics program. Needs to be tested again to make sure previous functions still work correctly.
-//Untouched currently but needs to be modified to work with our current Metrics group project.
+//READ ---------------
+//Commented out Halstead Metrics. Currently have it only taking in -l, -w, -c for the sake of testing with data base and gui. 
 public class Metrics implements Runnable, IMetrics {
     @picocli.CommandLine.Option(names = {"-l", "--lines"})
     static ArrayList<String> lines;
@@ -225,6 +225,10 @@ public class Metrics implements Runnable, IMetrics {
 
 }
     static void printer(boolean wcParams, boolean wasRead,ArrayList<String>allArgs){
+
+        if(allArgs.size()>=1) {
+            System.out.print("Totals: ");
+        }
         if(lines!=null||wcParams) {
             System.out.print("Lines "+totcount + "      ");
         }
@@ -240,9 +244,7 @@ public class Metrics implements Runnable, IMetrics {
         if (commentlines!=null) {
             System.out.print(totComTrack + "       ");
         }
-        if(wasRead&&allArgs.size()>=1) {
-            System.out.print("Total");
-        }
+
         System.out.println("");
         //Commented out to make easier to test basic functions
        /* System.out.println("total operators:"+totalOperators);
