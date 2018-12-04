@@ -8,6 +8,7 @@ contributor: Perry Gill
 Purpose:  This is the controller class
 that the metrics part of the app can call.
  */
+//NOT FINISHED.
 public class gitController {
     // directory where repos are saved for testing.
      private String fileDirectory = "/Users/pdippygill/desktop/DownloadedGitRepos";

@@ -1,7 +1,8 @@
 package JGitApi;
 import org.eclipse.jgit.api.errors.GitAPIException;
-
+import java.io.FilenameFilter;
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.ArrayList;
 /*
 contributor: Perry Gill
@@ -11,12 +12,18 @@ that the metrics part of the app can call.
  */
 public class GitRepository {
     private File repo;
-    private ArrayList<File> fileList = new ArrayList<>();
+    private ArrayList<File> allFIles;         //= new ArrayList<>();
 
     public GitRepository ( File repo) throws GitAPIException {
 
         this.repo = repo;
 
+}
+    public ArrayList<File> getFiles (){
+        //Todo: need to add get java files from repo directory by using the extention
+
+       return allFIles;
     }
+
 
 }

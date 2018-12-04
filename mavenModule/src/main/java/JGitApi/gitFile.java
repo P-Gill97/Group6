@@ -12,7 +12,7 @@ import java.io.File;
 public class gitFile
 {
     public File getRepo(String link, String location) throws GitAPIException {
-        File file = new File (location); // Math for mac chance this path to a path in your computer.
+        File file = new File (location);
         CloneRepo cloneFile = new CloneRepo();
         cloneFile.clone(link,file);
 
