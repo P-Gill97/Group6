@@ -275,6 +275,7 @@ public class Metrics implements Runnable, IMetrics  {
     //all values are overwritten
     //create method to open
     //create method here
+
     static void insertData(String urlStr, String username, String password) throws InstantiationException,IllegalAccessException,ClassNotFoundException, SQLException
     {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -282,25 +283,66 @@ public class Metrics implements Runnable, IMetrics  {
             Connection conn = DriverManager.getConnection(urlStr, username, password);
             System.out.println("Connected to the MySQL database");
 
-            /*1)Display all the students (ssn, student_Name) who enrolled in the courses of ìProgramming Languagesî.*/
-            Statement stmt1 = conn.createStatement();
+            Statement st = conn.createStatement();
 
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO `FileDB`.`Files`(`FileName`) VALUES ('" + nameOfFile + "');");
+            st.executeUpdate("INSERT INTO `FileDB`.`Files`(`FileName`) VALUES ('" + nameOfFile + "');");
+
+            st.executeUpdate("INSERT INTO `FileDB`.`Files`(`totChar`) VALUES ('"+totchar+"');");
+
+            st.executeUpdate("INSERT INTO `FileDB`.`Files`(`totCount`) VALUES ('"+totcount+"');");
+
+            st.executeUpdate("INSERT INTO `FileDB`.`Files`(`totWord`) VALUES ('" + totword+"');");
+
+            st.executeUpdate("INSERT INTO `FileDB`.`Files`(`totComtrack`) VALUES ('" + totComTrack+"');");
+
+            st.executeUpdate("INSERT INTO `FileDB`.`Files`(`totSourcetrack`) VALUES ('" + totSourceTrack+"');");
+
+            st.executeUpdate("INSERT INTO `FileDB`.`Files`(`totOperators`) VALUES ('" + totalOperators+ "');");
+
+            st.executeUpdate("INSERT INTO `FileDB`.`Files`(`totOperands`) VALUES ('" + totalOperands+"');");
+
+
+
+            /*try doing for loop to insert values into each column
+            for(int i=0;i<=7;i++) {
+                String sql = "INSERT INTO `FileDB`.`Files`(`FileName`) set FileName=?";
+                String sql1 = "INSERT INTO `FileDB`.`Files`(`totChar`) set totChar=?";
+                String sql2 = "INSERT INTO `FileDB`.`Files`(`totCount`) set totCount=?";
+                String sql3 = "INSERT INTO `FileDB`.`Files`(`totWord`) set totWord=?";
+                String sql4 = "INSERT INTO `FileDB`.`Files`(`totComtrack`) set totComtrack=?";
+                String sql5 = "INSERT INTO `FileDB`.`Files`(`totSourceaTrack`) set totSourceaTrack=?";
+                String sql6 = "INSERT INTO `FileDB`.`Files`(`totOperators`) set totOperators=?";
+                String sql7 = "INSERT INTO `FileDB`.`Files`(`totOperands`) set totOperands=?";
+                */
+
+
+
+        conn.close();
+
+
+                //Statement stmt1 = conn.createStatement();
+
+
+
+
+
+
+
+
+
+
+            //PreparedStatement ps = conn.prepareStatement("INSERT INTO `FileDB`.`Files`(`FileName`) VALUES ('" + nameOfFile + "');");
             //PreparedStatement ps= connection.prepareStatement("INSERT INTO `FileDB`.`Files`(`FileName`) VALUES ('"+txt+"');");
 
 
-            int status = ps.executeUpdate();
+            //int status = ps.executeUpdate();
 
-            if (status != 0) {
-                System.out.println("Database was Connceted");
-                System.out.println("Record WAS INSERTED");
-            }
+            //if (status != 0) {
+              //  System.out.println("Database was Connceted");
+                //System.out.println("Record WAS INSERTED");
+           // }
 
-        //catch(Exception e) {
-
-        //}
     }
-
 
 
 
