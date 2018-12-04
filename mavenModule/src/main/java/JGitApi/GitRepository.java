@@ -22,15 +22,19 @@ public class GitRepository {
     FilenameFilter  nameFilter = new FilenameFilter() {
         @Override
         public boolean accept(File dir, String name) {
-            if(name.endsWith(".java")||name.endsWith(".c")||name.endsWith("."))
-            return false;
+            if(name.endsWith(".java")||name.endsWith(".c")||name.endsWith(".h")
+                    ||name.endsWith(".cpp")||name.endsWith(".hpp")){
+                return true;
+            }else {
+                return false;
+            }
         }
 
-    }
+    };
     public ArrayList<File> getFiles (){
         //Todo: need to add get java files from repo directory by using the extention
 
-
+return null;
     }
 
 
