@@ -115,10 +115,7 @@ public class Metrics implements Runnable, IMetrics  {
         //for now will comment it out until merging of files is
         //successful
 
-
-
-
-        //new DisplayQuery();
+        new DisplayQuery();
     }
 
 
@@ -292,7 +289,7 @@ public class Metrics implements Runnable, IMetrics  {
 
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
 
-            //for(int i=0;i<=7;i++) {
+
                 preparedStatement.setString(1, nameOfFile);
                 preparedStatement.setInt(2, totchar);
                 preparedStatement.setInt(3, totcount);
@@ -301,85 +298,10 @@ public class Metrics implements Runnable, IMetrics  {
                 preparedStatement.setInt(6, totSourceTrack);
                 preparedStatement.setInt(7, totalOperators);
                 preparedStatement.setInt(8, totalOperands);
-            //}
+
             preparedStatement.executeUpdate();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            /*
-
-            st.executeUpdate("INSERT INTO `FileDB`.`Files`(`FileName`) VALUES ('" + nameOfFile + "');");
-
-            st.executeUpdate("INSERT INTO `FileDB`.`Files`(`totChar`) VALUES ('"+totchar+"');");
-
-            st.executeUpdate("INSERT INTO `FileDB`.`Files`(`totCount`) VALUES ('"+totcount+"');");
-
-            st.executeUpdate("INSERT INTO `FileDB`.`Files`(`totWord`) VALUES ('" + totword+"');");
-
-            st.executeUpdate("INSERT INTO `FileDB`.`Files`(`totComtrack`) VALUES ('" + totComTrack+"');");
-
-            st.executeUpdate("INSERT INTO `FileDB`.`Files`(`totSourcetrack`) VALUES ('" + totSourceTrack+"');");
-
-            st.executeUpdate("INSERT INTO `FileDB`.`Files`(`totOperators`) VALUES ('" + totalOperators+ "');");
-
-            st.executeUpdate("INSERT INTO `FileDB`.`Files`(`totOperands`) VALUES ('" + totalOperands+"');");
-            */
-
-
-            /*try doing for loop to insert values into each column
-            for(int i=0;i<=7;i++) {
-                String sql = "INSERT INTO `FileDB`.`Files`(`FileName`) set FileName=?";
-                String sql1 = "INSERT INTO `FileDB`.`Files`(`totChar`) set totChar=?";
-                String sql2 = "INSERT INTO `FileDB`.`Files`(`totCount`) set totCount=?";
-                String sql3 = "INSERT INTO `FileDB`.`Files`(`totWord`) set totWord=?";
-                String sql4 = "INSERT INTO `FileDB`.`Files`(`totComtrack`) set totComtrack=?";
-                String sql5 = "INSERT INTO `FileDB`.`Files`(`totSourceaTrack`) set totSourceaTrack=?";
-                String sql6 = "INSERT INTO `FileDB`.`Files`(`totOperators`) set totOperators=?";
-                String sql7 = "INSERT INTO `FileDB`.`Files`(`totOperands`) set totOperands=?";
-                */
-
-
-
         conn.close();
-
-
-                //Statement stmt1 = conn.createStatement();
-
-
-
-
-
-
-
-
-
-
-            //PreparedStatement ps = conn.prepareStatement("INSERT INTO `FileDB`.`Files`(`FileName`) VALUES ('" + nameOfFile + "');");
-            //PreparedStatement ps= connection.prepareStatement("INSERT INTO `FileDB`.`Files`(`FileName`) VALUES ('"+txt+"');");
-
-
-            //int status = ps.executeUpdate();
-
-            //if (status != 0) {
-              //  System.out.println("Database was Connceted");
-                //System.out.println("Record WAS INSERTED");
-           // }
 
     }
 
