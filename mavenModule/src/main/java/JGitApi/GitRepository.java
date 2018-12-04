@@ -1,9 +1,15 @@
 package JGitApi;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.util.FileUtils;
+
 import java.io.FilenameFilter;
 import java.io.File;
 import java.io.FilenameFilter;
-import java.util.ArrayList;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.Collection;
+
 /*
 contributor: Perry Gill
 Purpose: To Have an object of repository that holds the repo file and containts all the functions
@@ -12,7 +18,7 @@ that the metrics part of the app can call.
  */
 public class GitRepository {
     private File repo;
-    private ArrayList<File> allFIles;         //= new ArrayList<>();
+
 
     public GitRepository ( File repo) throws GitAPIException {
 
@@ -31,10 +37,11 @@ public class GitRepository {
         }
 
     };
-    public ArrayList<File> getFiles (){
+    public File[] getFiles (){
+        File[] files = repo.listFiles(nameFilter);
         //Todo: need to add get java files from repo directory by using the extention
 
-return null;
+        return files;
     }
 
 
