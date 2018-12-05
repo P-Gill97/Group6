@@ -2,7 +2,6 @@ package JGitApi;
 
 import java.io.File;
 import java.util.ArrayList;
-
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 
@@ -27,5 +26,8 @@ public class gitController {
         Repository.getFiles(Repository.filesTolook(Repository.getRepo()));
         return Repository.arrayListOfFiles;
     }
+    public void deleteDirectory(String filePath){
+        this.filePath = filePath;
 
+    }
 }
