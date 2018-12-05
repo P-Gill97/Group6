@@ -379,7 +379,7 @@ public class Metrics implements Runnable/*,IMetrics*/ {
     }*/
 
 
-    public static void headerPrint(boolean l, boolean w, boolean c, boolean s, boolean cm){//this is actually never called yet
+    public static void headerPrint(boolean l, boolean w, boolean c, boolean s, boolean cm){
         // if(s||cm) {
              if (l) {
                  System.out.print("Lines   ");
