@@ -304,8 +304,8 @@ public class UserInterface {
         makeEmptyFrame();
 
         // row one, header
-        JLabel header = new JLabel("Repo History:");
-        JLabel repoLabel = new JLabel(repoToGet);
+        JLabel header = new JLabel("<html>&nbsp;&nbsp;Repo History:&nbsp;&nbsp;</html>");
+        JLabel repoLabel = new JLabel("<html>" + repoToGet + "&nbsp;&nbsp;</html>");
         JButton backButton = new JButton("Back");
 
         // row two, metrics headers
@@ -318,17 +318,25 @@ public class UserInterface {
         JLabel comments = new JLabel("Comment Lines");
 
         JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(0,6));
         frame.add(panel);
+
+
 
         // adding row one
         panel.add(header);
         panel.add(repoLabel);
         panel.add(backButton);
-        for (int i = 0; i < 3; i++)
-            panel.add(blankLabel);
+        for (int i = 0; i < 3; i++) {
+            JLabel blankLabelRepeater = new JLabel("");
+            panel.add(blankLabelRepeater);
+        }
 
         // adding row two
         panel.add(timestamp);
+
+        frame.pack();
+        frame.setVisible(true);
     }
 
     /**
