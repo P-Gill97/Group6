@@ -120,12 +120,10 @@ public class UserInterface {
         makeEmptyFrame();
 
         // create text field for github repo and button
-        JLabel label = new JLabel();
+        JLabel label = new JLabel("Enter GitHub repo URL:");
         JTextField repoInputField = new JTextField(20);
         JButton addRepoButton = new JButton("Add");
         JButton cancelButton = new JButton("Cancel");
-
-        label.setText("Enter GitHub repo URL:");
 
         // add frame elements
         JPanel panel = new JPanel();
@@ -308,10 +306,8 @@ public class UserInterface {
         makeEmptyFrame();
         e.printStackTrace(); // print to console
 
-        JLabel errorHeader = new JLabel();
-        errorHeader.setText("<html>&nbsp;Caught an error:&nbsp;</html>");
-        JLabel errorText = new JLabel();
-        errorText.setText("<html>&nbsp;"+ e.toString() +"&nbsp;</html>");
+        JLabel errorHeader = new JLabel("<html>&nbsp;Caught an error:&nbsp;</html>");
+        JLabel errorText = new JLabel("<html>&nbsp;"+ e.toString() +"&nbsp;</html>");
         JButton restartButton = new JButton("Restart Program");
         JButton exitProgramButton = new JButton("Exit Program");
 
