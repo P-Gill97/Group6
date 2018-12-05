@@ -6,7 +6,6 @@ import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 
 /*
@@ -32,8 +31,9 @@ public class gitController {
         Repository.getFiles(Repository.filesTolook(Repository.getRepo()));
         return Repository.arrayListOfFiles;
     }
-    public void deleteDirectory(){
-        Path path = Paths.get(this.filePath) ;
+
+    public void deleteDirectory() {
+        Path path = Paths.get(this.filePath);
         try {
             Files.walk(path)
                     .sorted(Comparator.reverseOrder())
