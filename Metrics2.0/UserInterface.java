@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.lang.Exception;
+import java.util.*;
 
 public class UserInterface {
     private static JFrame frame;
@@ -342,6 +343,16 @@ public class UserInterface {
         panel.add(chars);
         panel.add(sources);
         panel.add(comments);
+
+        // add metrics history
+        Map<String, Map> databaseMetrics = new HashMap<String, Map>();
+            // GET MAP DATA FROM DATABASE. KEY = TIMESTAMP?
+            // MAP = MAP OF METRICS?
+
+        ArrayList<String> keys = new ArrayList(databaseMetrics.keySet());
+        for (String key : keys) {
+
+        }
 
         frame.pack();
         setFrameCentered();
