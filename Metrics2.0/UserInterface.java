@@ -310,12 +310,12 @@ public class UserInterface {
 
         // row two, metrics headers
         // date/time, lines, words, chars, source lines, comment lines
-        JLabel timestamp = new JLabel("Timestamp");
+        JLabel timestamp = new JLabel("<html>&nbsp;&nbsp;Timestamp</html>");
         JLabel lines = new JLabel("Lines");
         JLabel words = new JLabel("Words");
         JLabel chars = new JLabel("Characters");
         JLabel sources = new JLabel("Source Lines");
-        JLabel comments = new JLabel("Comment Lines");
+        JLabel comments = new JLabel("<html>Comment Lines&nbsp;&nbsp;</html>");
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(0,6));
@@ -333,12 +333,12 @@ public class UserInterface {
         }
 
         // adding row two
-        panel.add("<html>&nbsp;&nbsp;" + timestamp + "</html>");
+        panel.add(timestamp);
         panel.add(lines);
         panel.add(words);
         panel.add(chars);
         panel.add(sources);
-        panel.add("<html>" + comments + "&nbsp;&nbsp;</html>");
+        panel.add(comments);
 
         frame.pack();
         frame.setVisible(true);
