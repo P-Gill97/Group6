@@ -38,6 +38,9 @@ public class NewUserInterface extends JFrame implements ActionListener {
         addRepoScreen.add(addRepoButton);
         addRepoScreen.add(cancelButton);
 
+        addRepoButton.addActionListener(this);
+        oldRepolist.addActionListener(this);
+
 
 
 
@@ -48,7 +51,7 @@ public class NewUserInterface extends JFrame implements ActionListener {
         //Adds the different screens to the "main screen"
         screenController = new JPanel(new CardLayout());
         screenController.add(defaultScreen, "Default Screen");
-        screenController.add(addRepoScreen, "Add repo Screen");
+        screenController.add(addRepoScreen, "Add Repo Screen");
 
 
 
