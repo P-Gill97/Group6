@@ -1,10 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class NewUserInterface extends JFrame implements ActionListener {
     private static JPanel screenController;
-    private static JButton newRepo, oldRepolist, addRepoButton, cancelRepo, deleteButton, cancelButton;
+    private static JButton newRepo, oldRepolist, addRepoButton, cancelRepo, deleteButton, cancelButton, runMetricsButton, addNewRepoButton,deleteRepoButton;
+    private static JComboBox<String> repoDopdownList;
+    private static String[] reposArray = {"repo 1", "https://github.com/CSC131Fall2018/Group6", "repo 3"};
+    private static JTextField repoInputField;
 
     public NewUserInterface(){
         super("Group 6 GitHub Metrics"); //Title of program
@@ -39,8 +43,33 @@ public class NewUserInterface extends JFrame implements ActionListener {
         addRepoScreen.add(cancelButton);
 
         addRepoButton.addActionListener(this);
-        oldRepolist.addActionListener(this);
+        cancelButton.addActionListener(this);
 
+        //Third Screen - The main screen
+        JPanel mainScreen = new JPanel(new GridLayout(0,2));
+        repoDopdownList = new JComboBox<>(reposArray);
+        runMetricsButton = new JButton("Run Metrics");
+        addNewRepoButton = new JButton("Add New Repo");
+        deleteRepoButton = new JButton("Delete this Repo");
+
+        JLabel linesHeader = new JLabel("Lines");
+        JLabel wordsHeader = new JLabel("Words");
+
+        //first row
+        mainScreen.add(repoDopdownList);
+        mainScreen.add(runMetricsButton);
+
+        //second row
+        mainScreen.add(addNewRepoButton);
+        mainScreen.add(deleteRepoButton);
+
+        //third row
+        mainScreen.add(linesHeader);
+        mainScreen.add(wordsHeader);
+
+        addNewRepoButton.addActionListener(this);
+        deleteRepoButton.addActionListener(this);
+        runMetricsButton.addActionListener(this);
 
 
 
@@ -52,6 +81,7 @@ public class NewUserInterface extends JFrame implements ActionListener {
         screenController = new JPanel(new CardLayout());
         screenController.add(defaultScreen, "Default Screen");
         screenController.add(addRepoScreen, "Add Repo Screen");
+        screenController.add(mainScreen, "Main Screen");
 
 
 
@@ -81,6 +111,22 @@ public class NewUserInterface extends JFrame implements ActionListener {
         if (source == oldRepolist){
             screen.show(screenController, "Main Screen");
         }
+
+        if (source == addRepoButton) {
+            //reposArray.add(repoInputField.getText());
+            screen.show(screenController, "Main Screen");
+        }
+
+        if (source == cancelButton) {
+            screen.show(screenController, "Main Screen");
+        }
+
+
+
+        if (source == addNewRepoButton) {
+            screen.show(screenController, "Add Repo Screen");
+        }
+
     }
 
     public static void main(String[] args) {
