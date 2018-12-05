@@ -42,25 +42,27 @@ public class GitRepository {
      returns an Arraylist<File>
      that has all the java and C files.
       */
+//DOesnt work.
+    public ArrayList<File>  getFiles(File a) {
 
-    public ArrayList<File> getFiles(ArrayList<File> emptyArrayList) {
-
+// TODO stack overflow error.
         File[] files = repo.listFiles();
+
         for (File file : files) {
             if (file.isDirectory()) {
                 // stack overflow error incoming.
                 // fix by using foreach for arraylists Numbers.forEach((n) -> System.out.println(n));
-                getFiles(emptyArrayList);
+                getFiles(file);
 
             } else {
                 if (nameFilter.accept(file, file.getName())) {
 
-                    emptyArrayList.add(file);
+                  //  emptyArrayList.add(file);
                 }
             }
 
         }
-        return emptyArrayList;
+        return null;
     }
 
 
