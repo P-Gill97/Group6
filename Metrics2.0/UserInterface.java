@@ -41,6 +41,7 @@ public class UserInterface {
     private static void makeEmptyFrame() {
         // initialize location
         Point location = new Point();
+        Rectangle size = new Rectangle(); // can be used to base new frame off previous frame size
         boolean existingFrame = false;
 
         // check if frame already exists
@@ -49,6 +50,7 @@ public class UserInterface {
 
             // get old frame's location (if exists, otherwise null?)
             location = frame.getLocation();
+            size = frame.getBounds(); // can be used to base new frame off previous frame size
 
             frame.dispose();
         }
