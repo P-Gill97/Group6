@@ -257,6 +257,10 @@ public class UserInterface {
         // third row, metrics headers
         panel.add(linesHeader);
         panel.add(wordsHeader);
+        for (int i = 0; i < 2; i++) {
+            JLabel temp = new JLabel(i.toString());
+            panel.add(temp);
+        }
 
         frame.pack();
 
@@ -283,6 +287,7 @@ public class UserInterface {
                 /*
                     NEED ACCESS TO METRICS
                  */
+
             }
         });
 
