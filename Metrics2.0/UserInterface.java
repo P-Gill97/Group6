@@ -303,9 +303,19 @@ public class UserInterface {
     private static void repoHistoryBox(String repoToGet) {
         makeEmptyFrame();
 
+        // row one, header
         JLabel header = new JLabel("Repo History:");
         JLabel repoLabel = new JLabel(repoToGet);
         JButton backButton = new JButton("Back");
+
+        // row two, metrics headers
+        // date/time, lines, words, chars, source lines, comment lines
+        JLabel timestamp = new JLabel("Timestamp");
+        Jlabel lines = new JLabel("Lines");
+        JLabel words = new JLabel("Words");
+        JLabel chars = new JLabel("Characters");
+        JLabel sources = new JLabel("Source Lines");
+        JLabel comments = new JLabel("Comment Lines");
     }
 
     /**
