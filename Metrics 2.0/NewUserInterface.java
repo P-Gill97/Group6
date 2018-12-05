@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class NewUserInterface extends JFrame implements ActionListener {
     private static JPanel screenController;
-    private static JButton newRepo, oldRepolist, addRepoButton, cancelRepo, deleteButton, cancelButton, runMetricsButton, addNewRepoButton,deleteRepoButton;
-    private static JComboBox<String> repoDopdownList;
+    private static JButton newRepo, oldRepolist, addRepoButton, cancelDeleteButton, deleteButton, cancelButton, runMetricsButton, addNewRepoButton,deleteRepoButton;
+    private  JComboBox<String> repoDopdownList;
     private static String[] reposArray = {"repo 1", "https://github.com/CSC131Fall2018/Group6", "repo 3"};
     private static JTextField repoInputField;
 
@@ -72,15 +72,20 @@ public class NewUserInterface extends JFrame implements ActionListener {
         runMetricsButton.addActionListener(this);
 
         //Fourth Screen - Delete Screen
-        JPanel deleteScreen = new JPanel();
+        JPanel deleteScreen = new JPanel(new GridLayout(0,2));
+        deleteButton = new JButton("Delete");
+        cancelDeleteButton = new JButton("Cancel");
 
         JLabel header = new JLabel("<html>&nbsp;Would you like to delete the following repo?&nbsp;&nbsp;</html>");
-        JLabel repoAddressLabel = new JLabel("<html><li>" + repoDopdownList.getSelectedItem().toString() + "&nbsp;&nbsp;</html>");
+        JLabel repoAddressLabel = new JLabel("<html><li>" + repoDopdownList.getSelectedItem() + "&nbsp;&nbsp;</html>");
 
+        deleteScreen.add(header);
+        deleteScreen.add(repoAddressLabel);
+        deleteScreen.add(deleteButton);
+        deleteScreen.add(cancelDeleteButton);
 
-
-
-
+        deleteButton.addActionListener(this);
+        cancelDeleteButton.addActionListener(this);
 
 
         //Adds the different screens to the "main screen"
@@ -88,11 +93,7 @@ public class NewUserInterface extends JFrame implements ActionListener {
         screenController.add(defaultScreen, "Default Screen");
         screenController.add(addRepoScreen, "Add Repo Screen");
         screenController.add(mainScreen, "Main Screen");
-        screenController.add()
-
-
-
-
+        screenController.add(deleteScreen, "Delete Screen");
 
         getContentPane().add(screenController);
         setVisible(true);
@@ -132,9 +133,22 @@ public class NewUserInterface extends JFrame implements ActionListener {
         }
 
         if (source == deleteRepoButton) {
-            //reposArray.remove(repoDropdownList.getSelectedItem());
             showDeleteScreen();
         }
+
+        if (source == deleteButton) {
+            //delete from database
+            showMainScreen();
+        }
+
+        if (source == cancelDeleteButton) {
+            showMainScreen();
+        }
+
+        if (source == runMetricsButton) {
+            //run metrics on selected repo
+        }
+
     }
 
     public void showMainScreen() {
