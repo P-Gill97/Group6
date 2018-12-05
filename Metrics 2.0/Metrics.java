@@ -2,11 +2,11 @@ import picocli.CommandLine;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.StringTokenizer;
-
 import static java.util.Arrays.asList;
 
 //READ ---------------
@@ -59,12 +59,16 @@ public class Metrics implements Runnable/*,IMetrics*/ {
     static boolean readCorrect = true;
     static boolean wcParams = false;
     static boolean wasRead = false;
+
+
     /* Variables for Metrics Object*/
 
 
 
-
+    //public ArrayList metricsRun(String url)
     public static void main(String[] args) {
+
+
         /* Date and time variable*/
         Date date= Calendar.getInstance().getTime();
         //System.out.println(date);
