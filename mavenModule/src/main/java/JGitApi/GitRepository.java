@@ -44,13 +44,12 @@ public class GitRepository {
      that has all the java and C files.
       */
 //DOesnt work.
-    public ArrayList<File>  getFiles(File[] files) {
+    public void  getFiles(File[] files) {
 
 
         for (File file : files) {
             if (file.isDirectory()) {
-                // stack overflow error incoming.
-                // fix by using foreach for arraylists Numbers.forEach((n) -> System.out.println(n));
+               getFiles(file.listFiles());
 
 
             } else {
@@ -61,7 +60,7 @@ public class GitRepository {
             }
 
         }
-        return arrayListOfFiles;
+
     }
 
 
