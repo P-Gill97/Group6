@@ -16,7 +16,7 @@ Refrences : https://stackoverflow.com/questions/2056221/recursively-list-files-i
  */
 public class GitRepository {
     private File repo;
-    File[] files = repo.listFiles();
+
     ArrayList<File> arrayListOfFiles = new ArrayList<>();
 
     public GitRepository(File repo) throws GitAPIException {
@@ -58,10 +58,13 @@ public class GitRepository {
                     arrayListOfFiles.add(file);
                 }
             }
-
         }
-
     }
-
-
+    public File[] filesTolook(File repository){
+        File[] files = repository.listFiles();
+        return files;
+    }
+    public File getRepo(){
+        return repo;
+    }
 }
