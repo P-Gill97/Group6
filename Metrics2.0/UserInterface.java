@@ -344,6 +344,12 @@ public class UserInterface {
         frame.pack();
         setFrameCentered();
         frame.setVisible(true);
+
+        backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                repoListBox();
+            }
+        });
     }
 
     /**
