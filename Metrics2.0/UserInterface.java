@@ -285,6 +285,10 @@ public class UserInterface {
         });
     }
 
+    private static void repoHistoryBox() {
+        
+    }
+
     /**
      * this will take any exceptions and open a jframe
      * that will display the error message to user
