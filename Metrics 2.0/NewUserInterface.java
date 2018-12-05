@@ -71,6 +71,12 @@ public class NewUserInterface extends JFrame implements ActionListener {
         deleteRepoButton.addActionListener(this);
         runMetricsButton.addActionListener(this);
 
+        //Fourth Screen - Delete Screen
+        JPanel deleteScreen = new JPanel();
+
+        JLabel header = new JLabel("<html>&nbsp;Would you like to delete the following repo?&nbsp;&nbsp;</html>");
+        JLabel repoAddressLabel = new JLabel("<html><li>" + repoDopdownList.getSelectedItem().toString() + "&nbsp;&nbsp;</html>");
+
 
 
 
@@ -82,7 +88,7 @@ public class NewUserInterface extends JFrame implements ActionListener {
         screenController.add(defaultScreen, "Default Screen");
         screenController.add(addRepoScreen, "Add Repo Screen");
         screenController.add(mainScreen, "Main Screen");
-
+        screenController.add()
 
 
 
@@ -105,29 +111,47 @@ public class NewUserInterface extends JFrame implements ActionListener {
 
         //If button is pressed, do this
         if (source == newRepo){
-            screen.show(screenController, "Add Repo Screen");
+            showAddRepoScreen();
         }
 
         if (source == oldRepolist){
-            screen.show(screenController, "Main Screen");
+            showMainScreen();
         }
 
         if (source == addRepoButton) {
             //reposArray.add(repoInputField.getText());
-            screen.show(screenController, "Main Screen");
+           showMainScreen();
         }
 
         if (source == cancelButton) {
-            screen.show(screenController, "Main Screen");
+           showMainScreen();
         }
-
-
 
         if (source == addNewRepoButton) {
-            screen.show(screenController, "Add Repo Screen");
+            showAddRepoScreen();
         }
 
+        if (source == deleteRepoButton) {
+            //reposArray.remove(repoDropdownList.getSelectedItem());
+            showDeleteScreen();
+        }
     }
+
+    public void showMainScreen() {
+        CardLayout screen = (CardLayout) screenController.getLayout();
+        screen.show(screenController, "Main Screen");
+    }
+
+    public void showAddRepoScreen(){
+        CardLayout screen = (CardLayout) screenController.getLayout();
+        screen.show(screenController, "Add Repo Screen");
+    }
+
+    public void showDeleteScreen(){
+        CardLayout screen = (CardLayout) screenController.getLayout();
+        screen.show(screenController, "Delete Screen");
+    }
+
 
     public static void main(String[] args) {
         NewUserInterface start = new NewUserInterface();
