@@ -168,15 +168,10 @@ public class UserInterface {
     private static void deleteRepo(String repoAddress) {
         makeEmptyFrame();
 
-        JLabel header = new JLabel();
-        JLabel repoAddressLabel = new JLabel();
+        JLabel header = new JLabel("<html>&nbsp;Would you like to delete the following repo?&nbsp;&nbsp;</html>");
+        JLabel repoAddressLabel = new JLabel("<html><li>" + repoAddress + "&nbsp;&nbsp;</html>");
         JButton deleteButton = new JButton("Delete");
         JButton cancelButton = new JButton("Cancel");
-
-
-
-        header.setText("<html>&nbsp;Would you like to delete the following repo?&nbsp;&nbsp;</html>");
-        repoAddressLabel.setText("<html><li>" + repoAddress + "&nbsp;&nbsp;</html>");
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(0, 2));
@@ -231,13 +226,14 @@ public class UserInterface {
         JButton addNewRepoButton = new JButton("Add New Repo");
         // button to delete this repo
         JButton deleteRepoButton = new JButton("Delete This Repo");
+        // button to go to history
+        JButton historyRepoButton = new JButton("Get Repo History");
 
         // metrics
         // metrics labels
-        JLabel linesHeader = new JLabel();
-        linesHeader.setText("Lines");
-        JLabel wordsHeader = new JLabel();
-        wordsHeader.setText("Words");
+        JLabel linesHeader = new JLabel("Lines");
+        JLabel wordsHeader = new JLabel("Words");
+        JLabel charsHeader = new JLabel("Characters");
 
 
         // add frame elements
@@ -250,17 +246,15 @@ public class UserInterface {
         panel.add(repoDropdownList);
         panel.add(runMetricsButton);
 
-        // second row, buttons
+        //  buttons
         panel.add(addNewRepoButton);
         panel.add(deleteRepoButton);
+        panel.add(historyRepoButton);
 
         // third row, metrics headers
         panel.add(linesHeader);
         panel.add(wordsHeader);
-        for (int i = 0; i < 2; i++) {
-            JLabel temp = new JLabel(i.toString());
-            panel.add(temp);
-        }
+        panel.add(charsHeader);
 
         frame.pack();
 
