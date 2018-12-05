@@ -262,8 +262,7 @@ public class UserInterface {
 
         frame.setVisible(true);
 
-        thread.pause(2000);
-        runMetricsButton.setText("test");
+
 
         // action listeners on buttons
         addNewRepoButton.addActionListener(new ActionListener() {
@@ -286,6 +285,7 @@ public class UserInterface {
                  */
             }
         });
+
     }
 
     /**
