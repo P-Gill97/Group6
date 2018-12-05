@@ -99,15 +99,7 @@ public class NewUserInterface extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-
-
-
-
-
-
-
     public void actionPerformed(ActionEvent e) {
-        CardLayout screen = (CardLayout) screenController.getLayout();
         Object source = e.getSource();
 
         //If button is pressed, do this
