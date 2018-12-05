@@ -14,8 +14,9 @@ Purpose:  This is the controller class
 that the metrics part of the app can call.
 Refrences: https://softwarecave.org/2018/03/24/delete-directory-with-contents-in-java/
 i used this source for help with the deletion algorithm.
+NOTE TO USER: After you get the repofiles call deleteDirectory() function
  */
-//NOT FINISHED.
+
 public class gitController {
     // directory where repos are saved for testing.
     //TODO: If YOU WANT TO RUN ON YOUR COMPUTER CHANGE THE FILE PATH TO SOME RANDOM FOLDER OR DESKTOP .
