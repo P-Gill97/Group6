@@ -316,6 +316,19 @@ public class UserInterface {
         JLabel chars = new JLabel("Characters");
         JLabel sources = new JLabel("Source Lines");
         JLabel comments = new JLabel("Comment Lines");
+
+        JPanel panel = new JPanel();
+        frame.add(panel);
+
+        // adding row one
+        panel.add(header);
+        panel.add(repoLabel);
+        panel.add(backButton);
+        for (int i = 0; i < 3; i++)
+            panel.add(blankLabel);
+
+        // adding row two
+        panel.add(timestamp);
     }
 
     /**
