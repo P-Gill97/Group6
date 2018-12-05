@@ -295,7 +295,8 @@ public class UserInterface {
         makeEmptyFrame();
 
         JLabel header = new JLabel("Repo History:");
-        
+        JLabel repoLabel = new JLabel(repoToGet);
+        JButton backButton = new JButton("Back");
     }
 
     /**
