@@ -15,7 +15,6 @@ public class gitApiTest {
 
 
 
-            //Todo: add a for loop to display every item of the TestCfiles array list and testjavaFiles array list.
 
 
 

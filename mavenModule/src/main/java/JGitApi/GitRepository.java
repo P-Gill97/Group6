@@ -43,26 +43,29 @@ public class GitRepository {
      that has all the java and C files.
       */
 //DOesnt work.
-    public ArrayList<File>  getFiles(File a) {
+    public ArrayList<File>  getFiles(File repo) {
 
 // TODO stack overflow error.
+        ArrayList<File> arrayListOfFiles = new ArrayList<>();
         File[] files = repo.listFiles();
 
         for (File file : files) {
             if (file.isDirectory()) {
                 // stack overflow error incoming.
                 // fix by using foreach for arraylists Numbers.forEach((n) -> System.out.println(n));
+                if(!file.exists()){
                 getFiles(file);
+                }
 
             } else {
                 if (nameFilter.accept(file, file.getName())) {
 
-                  //  emptyArrayList.add(file);
+                    arrayListOfFiles.add(file);
                 }
             }
 
         }
-        return null;
+        return arrayListOfFiles;
     }
 
 
