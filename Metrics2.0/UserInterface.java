@@ -292,7 +292,10 @@ public class UserInterface {
      * @param repoToGet is from the dropdown in repoListBox()
      */
     private static void repoHistoryBox(String repoToGet) {
+        makeEmptyFrame();
 
+        JLabel header = new JLabel("Repo History:");
+        
     }
 
     /**
