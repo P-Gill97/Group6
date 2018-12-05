@@ -285,6 +285,13 @@ public class UserInterface {
             }
         });
 
+        historyRepoButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                repoHistoryBox(repoDropdownList.getSelectedItem()toString());
+
+            }
+        });
+
     }
 
     /**
