@@ -285,8 +285,14 @@ public class UserInterface {
         });
     }
 
-    private static void repoHistoryBox() {
-        
+    /**
+     * this will take in the repo that is selected in repoListBox()
+     * and get a history of progress for the repo's metrics
+     *
+     * @param repoToGet is from the dropdown in repoListBox()
+     */
+    private static void repoHistoryBox(String repoToGet) {
+
     }
 
     /**
