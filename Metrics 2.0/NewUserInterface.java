@@ -1,12 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 
 public class NewUserInterface extends JFrame implements ActionListener {
     private static JPanel screenController;
     private static JButton newRepo, oldRepolist, addRepoButton, cancelDeleteButton, deleteButton, cancelButton, runMetricsButton, addNewRepoButton,deleteRepoButton;
-    private  JComboBox<String> repoDopdownList;
+    private  JComboBox<String> repoDropdownList;
     private static String[] reposArray = {"repo 1", "https://github.com/CSC131Fall2018/Group6", "repo 3"};
     private static JTextField repoInputField;
 
@@ -47,7 +46,7 @@ public class NewUserInterface extends JFrame implements ActionListener {
 
         //Third Screen - The main screen
         JPanel mainScreen = new JPanel(new GridLayout(0,2));
-        repoDopdownList = new JComboBox<>(reposArray);
+        repoDropdownList = new JComboBox<>(reposArray);
         runMetricsButton = new JButton("Run Metrics");
         addNewRepoButton = new JButton("Add New Repo");
         deleteRepoButton = new JButton("Delete this Repo");
@@ -56,7 +55,7 @@ public class NewUserInterface extends JFrame implements ActionListener {
         JLabel wordsHeader = new JLabel("Words");
 
         //first row
-        mainScreen.add(repoDopdownList);
+        mainScreen.add(repoDropdownList);
         mainScreen.add(runMetricsButton);
 
         //second row
@@ -77,7 +76,7 @@ public class NewUserInterface extends JFrame implements ActionListener {
         cancelDeleteButton = new JButton("Cancel");
 
         JLabel header = new JLabel("<html>&nbsp;Would you like to delete the following repo?&nbsp;&nbsp;</html>");
-        JLabel repoAddressLabel = new JLabel("<html><li>" + repoDopdownList.getSelectedItem() + "&nbsp;&nbsp;</html>");
+        JLabel repoAddressLabel = new JLabel("<html><li>" + repoDropdownList.getSelectedItem() + "&nbsp;&nbsp;</html>");
 
         deleteScreen.add(header);
         deleteScreen.add(repoAddressLabel);
@@ -112,7 +111,7 @@ public class NewUserInterface extends JFrame implements ActionListener {
         }
 
         if (source == addRepoButton) {
-            //reposArray.add(repoInputField.getText());
+           //add repo to database
            showMainScreen();
         }
 
