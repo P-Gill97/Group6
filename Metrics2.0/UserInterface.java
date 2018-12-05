@@ -7,6 +7,7 @@ import java.lang.Exception;
 public class UserInterface {
     private static JFrame frame;
     private final static String frameName = "Group 6 GitHub Metrics";
+    private static JLabel blankLabel = new JLabel("");
 
     // START TEST CODE //////////////////////////////////////
     public static void main(String[] args) {
@@ -248,6 +249,7 @@ public class UserInterface {
         panel.add(addNewRepoButton);
         panel.add(deleteRepoButton);
         panel.add(historyRepoButton);
+        panel.add(blankLabel); //blank spot
 
         // third row, metrics headers
         panel.add(linesHeader);
