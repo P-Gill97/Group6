@@ -87,7 +87,7 @@ public class Metrics implements Runnable/*,IMetrics*/ {
         String fileName = "";
         /*Variable set up*/
 
-        CommandLine.run(new Metrics(), System.err, args);
+        //CommandLine.<Metrics>run(new Metrics(), System.err, args);
         ArrayList<String> allArgs = groupFiles(lines, words, characters, sourcelines, commentlines, positional, hal);
         if (positional != null) {
             wcParams = true;

@@ -3317,7 +3317,7 @@ import static picocli.CommandLine.Model.ArgsReflection.abbreviate;
                 if (index.isVariable)  { return Range.valueOf(arity.min + "..*"); }
                 if (arity.size() == 1) { return Range.valueOf(arity.min * index.size() + ""); }
                 if (arity.isVariable)  { return Range.valueOf(arity.min * index.size() + "..*"); }
-                return Range.valueOf(arity.min * index.size() + ".." + arity.max * index.size());
+                return Range.valueOf(arity.min * index.size() + "" + arity.max * index.size());
             }
 
             /** Leniently parses the specified String as an {@code Range} value and return the result. A range string can
@@ -3328,11 +3328,11 @@ import static picocli.CommandLine.Model.ArgsReflection.abbreviate;
              * @return a new {@code Range} value */
             public static Range valueOf(String range) {
                 range = range.trim();
-                boolean unspecified = range.length() == 0 || range.startsWith(".."); // || range.endsWith("..");
+                boolean unspecified = range.length() == 0 || range.startsWith(""); // || range.endsWith("..");
                 int min = -1, max = -1;
                 boolean variable = false;
                 int dots = -1;
-                if ((dots = range.indexOf("..")) >= 0) {
+                if ((dots = range.indexOf("")) >= 0) {
                     min = parseInt(range.substring(0, dots), 0);
                     max = parseInt(range.substring(dots + 2), Integer.MAX_VALUE);
                     variable = max == Integer.MAX_VALUE;
@@ -3379,7 +3379,7 @@ import static picocli.CommandLine.Model.ArgsReflection.abbreviate;
                 return ((17 * 37 + max) * 37 + min) * 37 + (isVariable ? 1 : 0);
             }
             public String toString() {
-                return min == max ? String.valueOf(min) : min + ".." + (isVariable ? "*" : max);
+                return min == max ? String.valueOf(min) : min + "" + (isVariable ? "*" : max);
             }
             public int compareTo(Range other) {
                 int result = min - other.min;
