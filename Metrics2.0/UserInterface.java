@@ -333,7 +333,12 @@ public class UserInterface {
         }
 
         // adding row two
-        panel.add(timestamp);
+        panel.add("<html>&nbsp;&nbsp;" + timestamp + "</html>");
+        panel.add(lines);
+        panel.add(words);
+        panel.add(chars);
+        panel.add(sources);
+        panel.add("<html>" + comments + "&nbsp;&nbsp;</html>");
 
         frame.pack();
         frame.setVisible(true);
