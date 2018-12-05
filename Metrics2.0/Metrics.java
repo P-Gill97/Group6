@@ -3,8 +3,11 @@ import picocli.CommandLine;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.StringTokenizer;
 import java.sql.*;
+
 
 import static java.util.Arrays.asList;
 
@@ -59,6 +62,11 @@ public class Metrics implements Runnable, IMetrics  {
 
     public static void main(String[] args)throws InstantiationException,IllegalAccessException,ClassNotFoundException, SQLException
     {
+        /* Date and time variable*/
+        Date date= Calendar.getInstance().getTime();
+        //System.out.println(date);
+        /* Date and time variable*/
+
         boolean headerYes = false;
         jc = false;
         int tic = 0;
@@ -308,6 +316,9 @@ public class Metrics implements Runnable, IMetrics  {
 
 
     static void printer(boolean wcParams, boolean wasRead,ArrayList<String>allArgs){
+        if(allArgs.size()>=1) {
+            System.out.print("Total: ");
+        }
         if(lines!=null||wcParams) {
             System.out.print("Lines "+totcount + "      ");
         }
@@ -323,9 +334,7 @@ public class Metrics implements Runnable, IMetrics  {
         if (commentlines!=null) {
             System.out.print(totComTrack + "       ");
         }
-        if(wasRead&&allArgs.size()>=1) {
-            System.out.print("Total");
-        }
+
         System.out.println("");
         //Commented out to make easier to test basic functions
        /* System.out.println("total operators:"+totalOperators);
@@ -444,7 +453,7 @@ public class Metrics implements Runnable, IMetrics  {
 
 
     public static void headerPrint(boolean l, boolean w, boolean c, boolean s, boolean cm){//this is actually never called yet
-        if(s||cm) {
+       // if(s||cm) {
             if (l) {
                 System.out.print("Lines   ");
             }
@@ -454,7 +463,7 @@ public class Metrics implements Runnable, IMetrics  {
             if (c) {
                 System.out.print("Characters   ");
             }
-        }
+        //}
         if(s){
             System.out.print("SourceLines   ");
             if(!cm){
@@ -608,7 +617,7 @@ class fundamental{
     }
 
     public double getTimeReq() {
-        return timeReq;
+      return timeReq;
     }
 
     public double getBugs() {
