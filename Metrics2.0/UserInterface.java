@@ -311,7 +311,7 @@ public class UserInterface {
         // row two, metrics headers
         // date/time, lines, words, chars, source lines, comment lines
         JLabel timestamp = new JLabel("Timestamp");
-        Jlabel lines = new JLabel("Lines");
+        JLabel lines = new JLabel("Lines");
         JLabel words = new JLabel("Words");
         JLabel chars = new JLabel("Characters");
         JLabel sources = new JLabel("Source Lines");
