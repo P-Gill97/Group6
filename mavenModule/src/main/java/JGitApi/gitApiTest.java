@@ -11,6 +11,9 @@ public class gitApiTest {
         gitController Controller = new gitController();
         try {
             ArrayList<File> Arraylistoffiles = Controller.getRepo(url);
+
+            Arraylistoffiles.forEach((File) -> System.out.println(File.getName()));
+            Controller.deleteDirectory();
         } catch (GitAPIException e) {
             e.printStackTrace();
         }

@@ -3,10 +3,12 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.lang.Exception;
+import java.util.*;
 
 public class UserInterface {
     private static JFrame frame;
     private final static String frameName = "Group 6 GitHub Metrics";
+    private static JLabel blankLabel = new JLabel("");
 
     // START TEST CODE //////////////////////////////////////
     public static void main(String[] args) {
@@ -40,6 +42,7 @@ public class UserInterface {
     private static void makeEmptyFrame() {
         // initialize location
         Point location = new Point();
+        Rectangle size = new Rectangle(); // can be used to base new frame off previous frame size
         boolean existingFrame = false;
 
         // check if frame already exists
@@ -48,6 +51,7 @@ public class UserInterface {
 
             // get old frame's location (if exists, otherwise null?)
             location = frame.getLocation();
+            size = frame.getBounds(); // can be used to base new frame off previous frame size
 
             frame.dispose();
         }
@@ -120,12 +124,10 @@ public class UserInterface {
         makeEmptyFrame();
 
         // create text field for github repo and button
-        JLabel label = new JLabel();
+        JLabel label = new JLabel("Enter GitHub repo URL:");
         JTextField repoInputField = new JTextField(20);
         JButton addRepoButton = new JButton("Add");
         JButton cancelButton = new JButton("Cancel");
-
-        label.setText("Enter GitHub repo URL:");
 
         // add frame elements
         JPanel panel = new JPanel();
@@ -168,15 +170,10 @@ public class UserInterface {
     private static void deleteRepo(String repoAddress) {
         makeEmptyFrame();
 
-        JLabel header = new JLabel();
-        JLabel repoAddressLabel = new JLabel();
+        JLabel header = new JLabel("<html>&nbsp;Would you like to delete the following repo?&nbsp;&nbsp;</html>");
+        JLabel repoAddressLabel = new JLabel("<html><li>" + repoAddress + "&nbsp;&nbsp;</html>");
         JButton deleteButton = new JButton("Delete");
         JButton cancelButton = new JButton("Cancel");
-
-
-
-        header.setText("<html>&nbsp;Would you like to delete the following repo?&nbsp;&nbsp;</html>");
-        repoAddressLabel.setText("<html><li>" + repoAddress + "&nbsp;&nbsp;</html>");
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(0, 2));
@@ -231,13 +228,14 @@ public class UserInterface {
         JButton addNewRepoButton = new JButton("Add New Repo");
         // button to delete this repo
         JButton deleteRepoButton = new JButton("Delete This Repo");
+        // button to go to history
+        JButton historyRepoButton = new JButton("Get Repo History");
 
         // metrics
         // metrics labels
-        JLabel linesHeader = new JLabel();
-        linesHeader.setText("Lines");
-        JLabel wordsHeader = new JLabel();
-        wordsHeader.setText("Words");
+        JLabel linesHeader = new JLabel("Lines");
+        JLabel wordsHeader = new JLabel("Words");
+        JLabel charsHeader = new JLabel("Characters");
 
 
         // add frame elements
@@ -250,17 +248,22 @@ public class UserInterface {
         panel.add(repoDropdownList);
         panel.add(runMetricsButton);
 
-        // second row, buttons
+        //  buttons
         panel.add(addNewRepoButton);
         panel.add(deleteRepoButton);
+        panel.add(historyRepoButton);
+        panel.add(blankLabel); //blank spot
 
         // third row, metrics headers
         panel.add(linesHeader);
         panel.add(wordsHeader);
+        panel.add(charsHeader);
 
         frame.pack();
 
         frame.setVisible(true);
+
+
 
         // action listeners on buttons
         addNewRepoButton.addActionListener(new ActionListener() {
@@ -281,6 +284,83 @@ public class UserInterface {
                 /*
                     NEED ACCESS TO METRICS
                  */
+
+            }
+        });
+
+        historyRepoButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                repoHistoryBox(repoDropdownList.getSelectedItem().toString());
+
+            }
+        });
+
+    }
+
+    /**
+     * this will take in the repo that is selected in repoListBox()
+     * and get a history of progress for the repo's metrics
+     *
+     * @param repoToGet is from the dropdown in repoListBox()
+     */
+    private static void repoHistoryBox(String repoToGet) {
+        makeEmptyFrame();
+
+        // row one, header
+        JLabel header = new JLabel("<html>&nbsp;&nbsp;Repo History:&nbsp;&nbsp;</html>");
+        JLabel repoLabel = new JLabel("<html>" + repoToGet + "&nbsp;&nbsp;</html>");
+        JButton backButton = new JButton("Back");
+
+        // row two, metrics headers
+        // date/time, lines, words, chars, source lines, comment lines
+        JLabel timestamp = new JLabel("<html>&nbsp;&nbsp;Timestamp</html>");
+        JLabel lines = new JLabel("Lines");
+        JLabel words = new JLabel("Words");
+        JLabel chars = new JLabel("Characters");
+        JLabel sources = new JLabel("Source Lines");
+        JLabel comments = new JLabel("<html>Comment Lines&nbsp;&nbsp;</html>");
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(0,6));
+        frame.add(panel);
+
+
+
+        // adding row one
+        panel.add(header);
+        panel.add(repoLabel);
+        for (int i = 0; i < 3; i++) {
+            JLabel blankLabelRepeater = new JLabel("");
+            panel.add(blankLabelRepeater);
+        }
+        panel.add(backButton);
+
+
+        // adding row two
+        panel.add(timestamp);
+        panel.add(lines);
+        panel.add(words);
+        panel.add(chars);
+        panel.add(sources);
+        panel.add(comments);
+
+        // add metrics history
+        Map<String, Map> databaseMetrics = new HashMap<String, Map>();
+            // GET MAP DATA FROM DATABASE. KEY = TIMESTAMP?
+            // MAP = MAP OF METRICS?
+
+        ArrayList<String> keys = new ArrayList(databaseMetrics.keySet());
+        for (String key : keys) {
+
+        }
+
+        frame.pack();
+        setFrameCentered();
+        frame.setVisible(true);
+
+        backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                repoListBox();
             }
         });
     }
@@ -296,10 +376,8 @@ public class UserInterface {
         makeEmptyFrame();
         e.printStackTrace(); // print to console
 
-        JLabel errorHeader = new JLabel();
-        errorHeader.setText("<html>&nbsp;Caught an error:&nbsp;</html>");
-        JLabel errorText = new JLabel();
-        errorText.setText("<html>&nbsp;"+ e.toString() +"&nbsp;</html>");
+        JLabel errorHeader = new JLabel("<html>&nbsp;Caught an error:&nbsp;</html>");
+        JLabel errorText = new JLabel("<html>&nbsp;"+ e.toString() +"&nbsp;</html>");
         JButton restartButton = new JButton("Restart Program");
         JButton exitProgramButton = new JButton("Exit Program");
 

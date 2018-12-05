@@ -1,15 +1,19 @@
 package JGitApi;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 
-import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 
 /*
 contributor: Perry Gill
 Purpose:  This is the controller class
 that the metrics part of the app can call.
+Refrences: https://softwarecave.org/2018/03/24/delete-directory-with-contents-in-java/
+i used this source for help with the deletion algorithm.
  */
 //NOT FINISHED.
 public class gitController {
@@ -28,4 +32,16 @@ public class gitController {
         return Repository.arrayListOfFiles;
     }
 
+    public void deleteDirectory() {
+        Path path = Paths.get(this.filePath);
+        try {
+            Files.walk(path)
+                    .sorted(Comparator.reverseOrder())
+                    .map(Path::toFile)
+                    .forEach(File::delete);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
