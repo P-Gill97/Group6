@@ -326,11 +326,12 @@ public class UserInterface {
         // adding row one
         panel.add(header);
         panel.add(repoLabel);
-        panel.add(backButton);
         for (int i = 0; i < 3; i++) {
             JLabel blankLabelRepeater = new JLabel("");
             panel.add(blankLabelRepeater);
         }
+        panel.add(backButton);
+
 
         // adding row two
         panel.add(timestamp);
@@ -341,6 +342,7 @@ public class UserInterface {
         panel.add(comments);
 
         frame.pack();
+        setFrameCentered();
         frame.setVisible(true);
     }
 
