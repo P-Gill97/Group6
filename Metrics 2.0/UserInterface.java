@@ -1,3 +1,5 @@
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -144,10 +146,7 @@ public class UserInterface {
 
         addRepoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                // add text box repo to database
-                /*
-                    NEED TO ACCESS AND ADD TO REPO DATABASE
-                 */
+
 
                 repoListBox();
             }
@@ -266,6 +265,7 @@ public class UserInterface {
         addNewRepoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 addNewRepo();
+
             }
         });
 

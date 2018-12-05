@@ -6,20 +6,14 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class gitApiTest {
-    public static void main(String[] args){
-        String url = "";
+    public static void main(String[] args) {
+        String url = "https://github.com/CSC131Fall2018/Group6";
         gitController Controller = new gitController();
         try {
-            GitRepository GitRepo = new GitRepository(Controller.getRepo(url)); // calling GitRepository constructor.
+            ArrayList<File> Arraylistoffiles = Controller.getRepo(url);
 
-            ArrayList<File> testjavafiles = GitRepo.getJavaFiles();
-            ArrayList<File> testCfiles = GitRepo.getCFiles();
-
-
-            //Todo: add a for loop to display every item of the TestCfiles array list and testjavaFiles array list.
-
-
-
+            Arraylistoffiles.forEach((File) -> System.out.println(File.getName()));
+            Controller.deleteDirectory();
         } catch (GitAPIException e) {
             e.printStackTrace();
         }
