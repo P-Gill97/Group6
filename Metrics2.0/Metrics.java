@@ -114,6 +114,9 @@ public class Metrics implements Runnable, IMetrics  {
         }
 
         printer(wcParams, wasRead, allArgs);
+        //testing
+        //ArrayList c = returnMetrics();
+        //System.out.println(c.get(0)+" "+c.get(1));
 
 
          String databaseName= "";
@@ -319,7 +322,28 @@ public class Metrics implements Runnable, IMetrics  {
 
     }
 
+    public static ArrayList returnMetrics()
+    {
+            ArrayList a= new ArrayList();
+        a.add(0,nameOfFile);
+        if(totcount>0) {
+            a.add(1, totcount);
+        }
+        if(totword>0) {
+            a.add(2, totword);
+        }
+        if(totchar>0) {
+            a.add(3, totchar);
+        }
+        if(totSourceTrack>0) {
+            a.add(4, totSourceTrack);
+        }
+        if(totComTrack>0) {
+            a.add(5, totComTrack);
+        }
 
+        return a;
+    }
 
     static void printer(boolean wcParams, boolean wasRead,ArrayList<String>allArgs){
         if(allArgs.size()>=1) {
