@@ -37,6 +37,36 @@ public class DB
     	}
     	new DisplayQuery();
     }
+
+	//this should work
+	public void deleteRecord(String repo) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+
+			conn = DriverManager.getConnection(url, username, password);
+
+			String sql = "Delete FROM FileDB " +
+					"WHERE FileName = ? ";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, repo);
+			pstmt.executeUpdate(sql);
+
+			conn.close();
+
+
+
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }
 
 
