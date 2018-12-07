@@ -266,7 +266,16 @@ public class UserInterface {
         // metrics definitions
         panel.add(linesHeader);
         panel.add(wordsHeader);
+        panel.add(lines);
+        panel.add(words);
         panel.add(charsHeader);
+        panel.add(sourceHeader);
+        panel.add(chars);
+        panel.add(sources);
+        panel.add(commentHeader);
+        JLabel blankLabel2 = new JLabel("");
+        panel.add(blankLabel2);
+        panel.add(comments);
 
         frame.pack();
 
