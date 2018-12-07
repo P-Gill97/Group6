@@ -301,15 +301,17 @@ public class UserInterface {
                 // run metrics and update
                 /*
                     NEED ACCESS TO METRICS
-                    get from metrics.java
+                    get from metrics.java {
+                        lines.setText("12313");
+                        words.setText("12341");
+                        chars.setText("98384");
+                        sources.setText("234");
+                        comments.setText("93948");
+                    }
                     change each metrics label
                     store into history sql
                  */
-                lines.setText("12313");
-                words.setText("12341");
-                chars.setText("98384");
-                sources.setText("234");
-                comments.setText("93948");
+
 
             }
         });
