@@ -13,10 +13,8 @@ public class retMets {
         return m.runzit(URL,pass);
     }
     public static void main(String[] args) throws ClassNotFoundException, SQLException, InstantiationException, GitAPIException, IllegalAccessException {
-        System.out.println("Why");
         ArrayList grab = getMetrics("https://github.com/Jovanyp23/WordCountProject");
-        System.out.println("is this working");
-        System.out.println(grab.get(0)+" "+grab.get(1));
+        System.out.println("Date: "+grab.get(0)+"  URL:"+grab.get(1)+"  Lines:"+grab.get(2));
 
     }
 }
