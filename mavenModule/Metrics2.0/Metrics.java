@@ -64,19 +64,21 @@ public class Metrics implements Runnable, IMetrics  {
     static boolean wasRead = false;
     static String push;
     static ArrayList<File> Arraylistoffiles= new ArrayList<>();
+    static Date date;
+    static String URL;
 
 
    public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, GitAPIException {
         runzit(args[0],args);
     }
-    public static ArrayList<String> runzit(String URL, String[] args) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, GitAPIException {
+    public static ArrayList<String> runzit(String UR, String[] args) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, GitAPIException {
         /* Date and time variable*/
-        Date date= Calendar.getInstance().getTime();
+        date= Calendar.getInstance().getTime();
         //System.out.println(date);
         /* Date and time variable*/
         gitController Controller = new gitController();
         //Controller.deleteDirectory();
-
+        URL=UR;
         try {
             Arraylistoffiles = Controller.getRepo(URL);
 
@@ -136,6 +138,7 @@ public class Metrics implements Runnable, IMetrics  {
         }
 
         printer(wcParams, wasRead, allArgs);
+        Controller.deleteDirectory();
         return returnMetrics();
 
         //testing
@@ -350,24 +353,25 @@ public class Metrics implements Runnable, IMetrics  {
 
     }
 
-    public static ArrayList<String> returnMetrics( ) throws ClassNotFoundException, SQLException, InstantiationException, GitAPIException, IllegalAccessException {
+    public static ArrayList returnMetrics( ) throws ClassNotFoundException, SQLException, InstantiationException, GitAPIException, IllegalAccessException {
 
         ArrayList a= new ArrayList();
-        a.add(0,nameOfFile);
+        a.add(0,date);
+        a.add(1,URL);
         if(totcount>0) {
-            a.add(1, totcount);
+            a.add(2, totcount);
         }
         if(totword>0) {
-            a.add(2, totword);
+            a.add(3, totword);
         }
         if(totchar>0) {
-            a.add(3, totchar);
+            a.add(4, totchar);
         }
         if(totSourceTrack>0) {
-            a.add(4, totSourceTrack);
+            a.add(5, totSourceTrack);
         }
         if(totComTrack>0) {
-            a.add(5, totComTrack);
+            a.add(6, totComTrack);
         }
 
         return a;
