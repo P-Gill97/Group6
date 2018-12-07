@@ -70,7 +70,7 @@ public class Metrics implements Runnable, IMetrics  {
         //Temporary lines to override the String[] Args array in order to make it independent from Picocli and the command line
         //OVERRIDE COMMAND LINE
         args[0]="-l";//Override Picocli option names
-        args[1]="DisplayQuery.java";//Override name of file being read
+        args[1]= "thisIsATestClass.java";//Override name of file being read
         //OVERRIDE COMMAND LINE
 
         boolean headerYes = false;
