@@ -21,7 +21,9 @@ public class gitController {
     // directory where repos are saved for testing.
     //TODO: If YOU WANT TO RUN ON YOUR COMPUTER CHANGE THE FILE PATH TO SOME RANDOM FOLDER OR DESKTOP .
 
-    private String filePath = "/Users/pdippygill/desktop/DownloadedGitRepos";
+    //Original line of code//private String filePath = "/Users/pdippygill/desktop/DownloadedGitRepos";
+
+    private String filePath = "iCloud Drive\u2069 ▸ \u2068Desktop\u2069 ▸ \u2068CurrentJava\u2069";
 
     public ArrayList<File> getRepo(String url) throws GitAPIException {
 

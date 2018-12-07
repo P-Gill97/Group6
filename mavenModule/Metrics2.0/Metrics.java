@@ -1,6 +1,9 @@
+import JGitApi.gitController;
+import org.eclipse.jgit.api.errors.GitAPIException;
 import picocli.CommandLine;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -59,13 +62,23 @@ public class Metrics implements Runnable, IMetrics  {
     static boolean readCorrect = true;
     static boolean wcParams = false;
     static boolean wasRead = false;
+    static gitController test= new gitController();
 
-    public static void main(String[] args)throws InstantiationException,IllegalAccessException,ClassNotFoundException, SQLException
-    {
+
+    public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, GitAPIException {
         /* Date and time variable*/
         Date date= Calendar.getInstance().getTime();
         //System.out.println(date);
         /* Date and time variable*/
+        gitController Controller = new gitController();
+        try {
+            ArrayList<File> Arraylistoffiles = Controller.getRepo("https://github.com/CSC131Fall2018/Group6");
+
+            Arraylistoffiles.forEach((File) -> System.out.println(File.getName()));
+            Controller.deleteDirectory();
+        } catch (GitAPIException e) {
+            e.printStackTrace();
+        }
 
         //Temporary lines to override the String[] Args array in order to make it independent from Picocli and the command line
         //OVERRIDE COMMAND LINE
