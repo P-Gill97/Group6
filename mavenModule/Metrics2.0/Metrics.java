@@ -66,7 +66,10 @@ public class Metrics implements Runnable, IMetrics  {
     static ArrayList<File> Arraylistoffiles= new ArrayList<>();
 
 
-    public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, GitAPIException {
+   public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, GitAPIException {
+        runzit(args[0],args);
+    }
+    public static ArrayList<String> runzit(String URL, String[] args) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, GitAPIException {
         /* Date and time variable*/
         Date date= Calendar.getInstance().getTime();
         //System.out.println(date);
@@ -75,7 +78,7 @@ public class Metrics implements Runnable, IMetrics  {
         //Controller.deleteDirectory();
 
         try {
-            Arraylistoffiles = Controller.getRepo(args[0]);
+            Arraylistoffiles = Controller.getRepo(URL);
 
             Arraylistoffiles.forEach((File) -> System.out.println(File.getName()));
             //Controller.deleteDirectory();
@@ -86,8 +89,8 @@ public class Metrics implements Runnable, IMetrics  {
         //Temporary lines to override the String[] Args array in order to make it independent from Picocli and the command line
         //OVERRIDE COMMAND LINE
 //        args[0]="-l";//Override Picocli option names
- //       args[1]= "thisIsATestClass.java";
-       //Override name of file being read
+        //       args[1]= "thisIsATestClass.java";
+        //Override name of file being read
         //OVERRIDE COMMAND LINE
 
         boolean headerYes = false;
@@ -123,7 +126,7 @@ public class Metrics implements Runnable, IMetrics  {
             combol = true;
         }
         if (args.length == 0) {
-         //   System.out.println("0 0 0 ");
+            //   System.out.println("0 0 0 ");
         } else if (help != null) {
             instructions();
         }
@@ -133,17 +136,20 @@ public class Metrics implements Runnable, IMetrics  {
         }
 
         printer(wcParams, wasRead, allArgs);
+        return returnMetrics();
+
         //testing
         //ArrayList c = returnMetrics();
         //System.out.println(c.get(0)+" "+c.get(1));
 
+        //Commented out database code
+        /*String databaseName= "";
+        String url = "jdbc:mysql://localhost:3306/FileDB?useSSL=false"+databaseName;
+        String username ="root";
+        String password = "SJ9Qwq27md9XcpK";
 
-         String databaseName= "";
-         String url = "jdbc:mysql://localhost:3306/FileDB?useSSL=false"+databaseName;
-         String username ="root";
-         String password = "SJ9Qwq27md9XcpK";
-
-         insertData(url,username,password);
+        insertData(url,username,password);*/
+        //Commented out database code
 
 
 
@@ -151,7 +157,10 @@ public class Metrics implements Runnable, IMetrics  {
         //for now will comment it out until merging of files is
         //successful
 
-        new DisplayQuery();
+        //Commented out database code
+        /*new DisplayQuery();*/
+        //Commented out database code
+
     }
 
 
@@ -341,11 +350,8 @@ public class Metrics implements Runnable, IMetrics  {
 
     }
 
-    public static ArrayList<String> returnMetrics( String URL) throws ClassNotFoundException, SQLException, InstantiationException, GitAPIException, IllegalAccessException {
-        Metrics m= new Metrics();
-        String[] bleh = new String[1];
-        bleh[0]=URL;
-        m.main(bleh);
+    public static ArrayList<String> returnMetrics( ) throws ClassNotFoundException, SQLException, InstantiationException, GitAPIException, IllegalAccessException {
+
         ArrayList a= new ArrayList();
         a.add(0,nameOfFile);
         if(totcount>0) {

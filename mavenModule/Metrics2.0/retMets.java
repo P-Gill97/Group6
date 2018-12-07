@@ -10,11 +10,11 @@ public class retMets {
         Metrics m= new Metrics();
         String[] pass =new String[1];
         pass[0]=URL;
-        return m.returnMetrics(pass[0]);
+        return m.runzit(URL,pass);
     }
     public static void main(String[] args) throws ClassNotFoundException, SQLException, InstantiationException, GitAPIException, IllegalAccessException {
         System.out.println("Why");
-        ArrayList<String> grab = getMetrics("https://github.com/Jovanyp23/WordCountProject");
+        ArrayList grab = getMetrics("https://github.com/Jovanyp23/WordCountProject");
         System.out.println("is this working");
         System.out.println(grab.get(0)+" "+grab.get(1));
 
