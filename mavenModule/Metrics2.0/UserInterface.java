@@ -305,6 +305,11 @@ public class UserInterface {
                     change each metrics label
                     store into history sql
                  */
+                lines.setText("12313");
+                words.setText("12341");
+                chars.setText("98384");
+                sources.setText("234");
+                comments.setText("93948");
 
             }
         });
