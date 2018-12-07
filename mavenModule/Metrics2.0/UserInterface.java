@@ -301,6 +301,9 @@ public class UserInterface {
                 // run metrics and update
                 /*
                     NEED ACCESS TO METRICS
+                    get from metrics.java
+                    change each metrics label
+                    store into history sql
                  */
 
             }
