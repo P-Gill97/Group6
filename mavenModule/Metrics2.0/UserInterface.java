@@ -236,6 +236,8 @@ public class UserInterface {
         JLabel linesHeader = new JLabel("Lines");
         JLabel wordsHeader = new JLabel("Words");
         JLabel charsHeader = new JLabel("Characters");
+        JLabel sourceHeader = new JLabel("Source Lines");
+        JLabel commentHeader = new JLabel("Comment Lines");
 
 
         // add frame elements
@@ -254,7 +256,7 @@ public class UserInterface {
         panel.add(historyRepoButton);
         panel.add(blankLabel); //blank spot
 
-        // third row, metrics headers
+        // metrics definitions
         panel.add(linesHeader);
         panel.add(wordsHeader);
         panel.add(charsHeader);
