@@ -239,6 +239,13 @@ public class UserInterface {
         JLabel sourceHeader = new JLabel("Source Lines");
         JLabel commentHeader = new JLabel("Comment Lines");
 
+        // metrics numbers
+        JLabel lines = new JLabel("-");
+        JLabel words = new JLabel("-");
+        JLabel chars = new JLabel("-");
+        JLabel sources = new JLabel("-");
+        JLabel comments = new JLabel("-");
+
 
         // add frame elements
         JPanel panel = new JPanel();
