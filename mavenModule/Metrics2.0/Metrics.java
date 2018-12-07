@@ -62,7 +62,8 @@ public class Metrics implements Runnable, IMetrics  {
     static boolean readCorrect = true;
     static boolean wcParams = false;
     static boolean wasRead = false;
-    static gitController test= new gitController();
+    static String push;
+    static ArrayList<File> Arraylistoffiles= new ArrayList<>();
 
 
     public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, GitAPIException {
@@ -71,24 +72,27 @@ public class Metrics implements Runnable, IMetrics  {
         //System.out.println(date);
         /* Date and time variable*/
         gitController Controller = new gitController();
+        //Controller.deleteDirectory();
+
         try {
-            ArrayList<File> Arraylistoffiles = Controller.getRepo("https://github.com/CSC131Fall2018/Group6");
+            Arraylistoffiles = Controller.getRepo(args[0]);
 
             Arraylistoffiles.forEach((File) -> System.out.println(File.getName()));
-            Controller.deleteDirectory();
+            //Controller.deleteDirectory();
         } catch (GitAPIException e) {
             e.printStackTrace();
         }
 
         //Temporary lines to override the String[] Args array in order to make it independent from Picocli and the command line
         //OVERRIDE COMMAND LINE
-        args[0]="-l";//Override Picocli option names
-        args[1]= "thisIsATestClass.java";//Override name of file being read
+//        args[0]="-l";//Override Picocli option names
+ //       args[1]= "thisIsATestClass.java";
+       //Override name of file being read
         //OVERRIDE COMMAND LINE
 
         boolean headerYes = false;
         jc = false;
-        int tic = 0;
+        int tic = 1;
         boolean linesbol = false;
         boolean wordsbol = false;
         boolean charbol = false;
@@ -97,7 +101,9 @@ public class Metrics implements Runnable, IMetrics  {
         boolean multiComment = false;
         String fileName = "";
         CommandLine.run(new Metrics(), System.err, args);
-        ArrayList<String> allArgs = groupFiles(lines, words, characters, sourcelines, commentlines, positional, hal);
+        ArrayList<String> tester= new ArrayList<>();
+        tester.add("-l");
+        ArrayList<String> allArgs = tester;//groupFiles(lines, words, characters, sourcelines, commentlines, positional, hal);
         if (positional != null) {
             wcParams = true;
         }
@@ -117,13 +123,13 @@ public class Metrics implements Runnable, IMetrics  {
             combol = true;
         }
         if (args.length == 0) {
-            System.out.println("0 0 0 ");
+         //   System.out.println("0 0 0 ");
         } else if (help != null) {
             instructions();
         }
         headerPrint(linesbol, wordsbol, charbol, srcbol, combol);
         if (help == null) {
-            reader(fileName,allArgs,tic,headerYes,wasRead,multiComment,wcParams);
+            reader(fileName,Arraylistoffiles,tic,headerYes,wasRead,multiComment,wcParams);
         }
 
         printer(wcParams, wasRead, allArgs);
@@ -163,7 +169,7 @@ public class Metrics implements Runnable, IMetrics  {
 
 
 
-    static void reader(String fileName, ArrayList<String> allArgs, int tic,boolean headerYes,boolean wasRead,boolean multiComment,boolean wcParams){
+    static void reader(String fileName, ArrayList<File> allArgs, int tic,boolean headerYes,boolean wasRead,boolean multiComment,boolean wcParams){
         hal abc = new hal();
         int charz = 0;
         int count = 0;
@@ -174,12 +180,12 @@ public class Metrics implements Runnable, IMetrics  {
         {
             try {
 
-                fileName = allArgs.get(tic);
+                fileName = allArgs.get(tic).getName();
 
                 //will store the name of file
                 nameOfFile=fileName;
                 //
-                FileReader reading = new FileReader(fileName);
+                FileReader reading = new FileReader(allArgs.get(tic));
                 BufferedReader buff = new BufferedReader(reading);
                 String line;
                 while ((line = buff.readLine()) != null) {
@@ -235,7 +241,7 @@ public class Metrics implements Runnable, IMetrics  {
                 buff.close();
             } catch (Exception FileNotFoundException) {
                 readCorrect = false;
-                System.out.println("Not able to read file");
+                //System.out.println("Not able to read file");
             }
             if (sourcelines != null || commentlines != null) {
                 headerYes = true;
@@ -335,9 +341,12 @@ public class Metrics implements Runnable, IMetrics  {
 
     }
 
-    public static ArrayList returnMetrics()
-    {
-            ArrayList a= new ArrayList();
+    public static ArrayList<String> returnMetrics( String URL) throws ClassNotFoundException, SQLException, InstantiationException, GitAPIException, IllegalAccessException {
+        Metrics m= new Metrics();
+        String[] bleh = new String[1];
+        bleh[0]=URL;
+        m.main(bleh);
+        ArrayList a= new ArrayList();
         a.add(0,nameOfFile);
         if(totcount>0) {
             a.add(1, totcount);
@@ -362,21 +371,21 @@ public class Metrics implements Runnable, IMetrics  {
         if(allArgs.size()>=1) {
             System.out.print("Total: ");
         }
-        if(lines!=null||wcParams) {
+        //if(lines!=null||wcParams) {
             System.out.print("Lines "+totcount + "      ");
-        }
-        if(words!=null||wcParams) {
+        //}
+        //if(words!=null||wcParams) {
             System.out.print("Words "+totword + "     ");
-        }
-        if (characters!=null||wcParams) {
+        //}
+        //if (characters!=null||wcParams) {
             System.out.print("Characters "+totchar + "        ");
-        }
-        if (sourcelines!=null) {
+        //}
+       // if (sourcelines!=null) {
             System.out.print(totSourceTrack + "           ");
-        }
-        if (commentlines!=null) {
+        //}
+        //if (commentlines!=null) {
             System.out.print(totComTrack + "       ");
-        }
+       // }
 
         System.out.println("");
         //Commented out to make easier to test basic functions
