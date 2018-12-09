@@ -1,19 +1,173 @@
+import org.eclipse.jgit.api.errors.GitAPIException;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.lang.Exception;
+import java.sql.SQLException;
 import java.util.*;
+import java.util.ArrayList;
+import java.sql.*;
+
+/*
+Inside DB
+Url     char
+Lines   char
+Words   char
+Characters   char
+SourceLines char
+CommentLines char
+
+ */
+
+
+
+class Database  {
+    Connection conn;
+    Statement st;
+
+    public Database() throws SQLException , ClassNotFoundException {
+        Class.forName("com.mysql.jdbc.Driver");//.newInstance();
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FileDB?useSSL=false", "root", "SJ9Qwq27md9XcpK");
+
+
+        System.out.println("Connected to the MySQL database");
+        st = conn.createStatement();/*Creating Statement Class's object which is responsible for performing all db tasks*/
+    }
+
+    public void fetchData() throws Exception
+    {
+        String query = "SELECT * FROM Files";
+        ResultSet rs = st.executeQuery(query);
+
+
+        /*used to verify database returned values
+        while(rs.next())
+        {
+            System.out.println("Name : "+rs.getString("name"));
+            System.out.println("age : "+rs.getInt("age"));
+        }
+        */
+
+    }
+
+
+    public void insertUrl(String Url ) throws SQLException
+    {
+        String sql = "INSERT INTO Files(Url)" + "VALUES ('"+Url+"')";
+
+        st.executeUpdate(sql);
+
+
+
+       /*
+
+
+
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+        // preparedStatement.setString(1, nameOfFile);
+        preparedStatement.setString(1, Url);
+
+        // String query = "insert into user values(\""+name+"\","+age+")";
+        // int a = stObj.executeUpdate(query);
+        */
+
+    }
+
+
+
+
+    public void insertData(String u,String Lines,String Words, String Characters,String SourceLines, String CommentLines ) throws SQLException
+    {
+
+        System.out.println("database");
+       // String sql = "INSERT INTO Files(Lines,Words,Characters,SourceLines,CommentLines," +
+         //       "totSourcetrack,totalOperators,totalOperands)" + "VALUES (?,?,?,?,?)"
+
+       String sql = ("INSERT INTO Files(Url,Lines,Words,Characters,SourceLines,CommentLines ) VALUES ('"+u+"','"+Lines+"','"+Words+"','"+Characters+"','"+SourceLines+"'','"+CommentLines+"')");
+
+        //s.executeUpdate("INSERT INTO `time_entry`(pid,tid,rid,tspend,description) VALUE ('"+pid+"','"+tid+"','"+rid+"',"+tspent+",'"+des+"')");
+
+        //st.executeUpdate(sql);
+
+
+/*
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+       // preparedStatement.setString(1, nameOfFile);
+        preparedStatement.setString(2, lines);
+        preparedStatement.setString(3, Words);
+        preparedStatement.setString(4, Characters);
+        preparedStatement.setString(5, SourceLines);
+        preparedStatement.setString(6, CommentLines);
+
+       // String query = "insert into user values(\""+name+"\","+age+")";
+       // int a = stObj.executeUpdate(query);
+
+
+*/
+    }
+
+
+
+    void deleteData(String Url) throws Exception
+    {
+        String query = "Delete FROM Files WHERE Files \""+Url+"\"";
+        int a = st.executeUpdate(query);
+
+        if(a == 1)
+        {
+            System.out.println("delete Successful");
+        }
+        else
+        {
+            System.out.println("deletion Failed");
+        }
+    }
+}
+
+
+
 
 public class UserInterface {
+    public static Database d;
     private static JFrame frame;
     private final static String frameName = "Group 6 GitHub Metrics";
     private static JLabel blankLabel = new JLabel("");
 
+
+
+    static
+    {
+        try{
+            d = new Database();
+        }
+        catch(Exception e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
     // START TEST CODE //////////////////////////////////////
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
 
         run();
+        //String databaseName= "";
+
+
+
+
+
+
+        //will call GUI to display contents of the DB
+        //for now will comment it out until merging of files is
+        //successful
+
+       // new DisplayQuery();
+
 
     }
     // END TEST CODE ////////////////////////////////////////
@@ -23,7 +177,7 @@ public class UserInterface {
      * This will intake the database of git repos
      * Then it will run the JFrames
      */
-    public static void run() {
+    public static void run(){
         try {
             init();
         } catch (Exception e) {
@@ -74,7 +228,7 @@ public class UserInterface {
      *
      * This will set the frame to the center of the user's screen.
      */
-    private static void setFrameCentered() {
+    private static void setFrameCentered(){
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height / 2 - frame.getSize().height / 2);
     }
@@ -85,7 +239,7 @@ public class UserInterface {
      * one will allow the user to input a new github repo
      * the other will allow the user to select between repos that they already have used
      */
-    private static void init() throws Exception {
+    private static void init() throws Exception{
         makeEmptyFrame();
 
         // create buttons
@@ -104,7 +258,7 @@ public class UserInterface {
         });
 
         // go straight to previous list
-        oldRepoList.addActionListener(new ActionListener() {
+        oldRepoList.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent arg0) {
                 // add text box repo to database
 
@@ -167,7 +321,7 @@ public class UserInterface {
      *
      * @param repoAddress
      */
-    private static void deleteRepo(String repoAddress) {
+    private static void deleteRepo(String repoAddress){
         makeEmptyFrame();
 
         JLabel header = new JLabel("<html>&nbsp;Would you like to delete the following repo?&nbsp;&nbsp;</html>");
@@ -210,7 +364,7 @@ public class UserInterface {
      * of the repos. It will also display metrics and a button
      * that allows the user to refresh the metrics
      */
-    private static void repoListBox() {
+    private static void repoListBox(){
         makeEmptyFrame();
 
         // drop down list of repos
@@ -218,7 +372,10 @@ public class UserInterface {
             NEED TO ACCESS OLD REPOS
             reposArray will be filled from database
          */
-        String[] reposArray = {"repo 1", "https://github.com/CSC131Fall2018/Group6", "repo 3"};
+        String[] reposArray = {"https://github.com/Jovanyp23/WordCountProject", "https://github.com/CSC131Fall2018/Group6", "repo 3"};
+
+
+
 
         JComboBox<String> repoDropdownList = new JComboBox<String>(reposArray);
 
@@ -266,6 +423,9 @@ public class UserInterface {
         // metrics definitions
         panel.add(linesHeader);
         panel.add(wordsHeader);
+
+
+
         panel.add(lines);
         panel.add(words);
         panel.add(charsHeader);
@@ -284,7 +444,7 @@ public class UserInterface {
 
 
         // action listeners on buttons
-        addNewRepoButton.addActionListener(new ActionListener() {
+        addNewRepoButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent arg0) {
                 addNewRepo();
             }
@@ -292,7 +452,7 @@ public class UserInterface {
 
         deleteRepoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                deleteRepo(repoDropdownList.getSelectedItem().toString());
+               // deleteRepo(repoDropdownList.getSelectedItem().toString());
             }
         });
 
@@ -313,6 +473,36 @@ public class UserInterface {
                  */
 
 
+                //at reposArray
+                //will add dummy repo here to test values
+                String Url= "u";
+                //d.insertUrl(Url);
+                retMets temp = new retMets();
+                try {
+                    ArrayList metrics = temp.getMetrics(repoDropdownList.getSelectedItem().toString());
+                    lines.setText(metrics.get(2).toString());
+                    words.setText(metrics.get(3).toString());
+                    chars.setText(metrics.get(4).toString());
+                    sources.setText(metrics.get(5).toString());
+                    comments.setText(metrics.get(6).toString());
+
+                    //String l2 = lines.setText(metrics.get(2).toString());
+                String u="1";
+                String l="3";
+                    String w="4";
+                    String c="5";
+                    String s="6";
+                    String cd="7";
+
+             d.insertData(u,l,w,c,s,cd);
+                    // send to sql
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    handleError(e);
+                }
+
+
+
             }
         });
 
@@ -331,7 +521,7 @@ public class UserInterface {
      *
      * @param repoToGet is from the dropdown in repoListBox()
      */
-    private static void repoHistoryBox(String repoToGet) {
+    private static void repoHistoryBox(String repoToGet){
         makeEmptyFrame();
 
         // row one, header
@@ -393,13 +583,15 @@ public class UserInterface {
         });
     }
 
+
+
     /**
      * this will take any exceptions and open a jframe
      * that will display the error message to user
      *
      * @param e is the exception that is thrown
      */
-    private static void handleError(Exception e) {
+    private static void handleError(Exception e){
         // error caught, close everything, make empty frame
         makeEmptyFrame();
         e.printStackTrace(); // print to console
