@@ -90,7 +90,7 @@ class Database  {
 
         //s.executeUpdate("INSERT INTO `time_entry`(pid,tid,rid,tspend,description) VALUE ('"+pid+"','"+tid+"','"+rid+"',"+tspent+",'"+des+"')");
 
-        //st.executeUpdate(sql);
+        st.executeUpdate(sql);
 
 
 /*
