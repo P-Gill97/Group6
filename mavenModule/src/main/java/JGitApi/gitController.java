@@ -23,7 +23,7 @@ public class gitController {
 
     //Original line of code//private String filePath = "/Users/pdippygill/desktop/DownloadedGitRepos";
 
-    private String filePath = "iCloud Drive\u2069 ▸ \u2068Desktop\u2069 ▸ \u2068CurrentJava\u2069";
+    private String filePath = "currentMetricsPath";
 
     public ArrayList<File> getRepo(String url) throws GitAPIException {
 
