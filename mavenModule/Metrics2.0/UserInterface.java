@@ -4,10 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.lang.Exception;
 import java.sql.SQLException;
 import java.util.*;
@@ -177,10 +174,14 @@ public class UserInterface {
 
         addRepoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                // add text box repo to database
-                /*
-                    NEED TO ACCESS AND ADD TO REPO DATABASE
-                 */
+               String string = repoInputField.getText();
+                try {
+                    FileWriter fw = new FileWriter("repos.txt", true);
+                    fw.write(string + "\n");
+                    fw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 try {
                     repoListBox();
