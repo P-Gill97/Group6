@@ -260,6 +260,7 @@ public class UserInterface {
             throw new IOException();
         }
 
+        reposList = new ArrayList<>();
         while (reader.hasNextLine()) {
             String temp = reader.nextLine();
             reposList.add(temp);
@@ -347,23 +348,10 @@ public class UserInterface {
 
         runMetricsButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                // run metrics and update
-                /*
-                    NEED ACCESS TO METRICS
-                    get from metrics.java {
-                        lines.setText("12313");
-                        words.setText("12341");
-                        chars.setText("98384");
-                        sources.setText("234");
-                        comments.setText("93948");
-                    }
-                    change each metrics label
-                    store into history sql
-                 */
                 retMets temp = new retMets();
                 try {
                     ArrayList metrics = temp.getMetrics(repoDropdownList.getSelectedItem().toString());
-                    lines.setText(metrics.get(2).toString());
+                    lines.setText(metrics.get(0).getLine.toString());
                     words.setText(metrics.get(3).toString());
                     chars.setText(metrics.get(4).toString());
                     sources.setText(metrics.get(5).toString());
