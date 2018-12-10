@@ -483,8 +483,10 @@ public class UserInterface {
                 break; // previous was last
             }
 
-            panel.add(new JLabel("<html>&nbsp;&nbsp;" + historyLine[0] + "&nbsp;&nbsp;</html>"));
-            for (int i = 1; i < historyLine.length; i++) {
+            panel.add(new JLabel("<html>&nbsp;&nbsp;" + historyLine[0] + "&nbsp;" + historyLine[1] + "&nbsp;" +
+                    historyLine[2] + "&nbsp;" + historyLine[3] + "&nbsp;" + historyLine[4] + "&nbsp;" + historyLine[5]
+                    + "&nbsp;&nbsp;</html>"));
+            for (int i = 6; i < historyLine.length; i++) {
                 panel.add(new JLabel(historyLine[i]));
             }
         }
