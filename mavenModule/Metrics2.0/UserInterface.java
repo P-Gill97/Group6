@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.lang.Exception;
 import java.sql.SQLException;
 import java.util.*;
@@ -237,12 +238,15 @@ public class UserInterface {
             NEED TO ACCESS OLD REPOS
             reposArray will be filled from database
          */
-        String[] reposArray = {"https://github.com/Jovanyp23/WordCountProject", "https://github.com/CSC131Fall2018/Group6", "repo 3"};
+
+        Scanner reader = new Scanner(new File("repos.txt"));
+        ArrayList<String> reposList = new ArrayList<String>();
 
 
 
 
-        JComboBox<String> repoDropdownList = new JComboBox<String>(reposArray);
+
+        JComboBox<String> repoDropdownList = new JComboBox<String>(reposList.toArray(new String[ArrayList.size()]));
 
         // button to run metrics
         JButton runMetricsButton = new JButton("Run Metrics");
