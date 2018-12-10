@@ -351,11 +351,13 @@ public class UserInterface {
                 retMets temp = new retMets();
                 try {
                     ArrayList metrics = temp.getMetrics(repoDropdownList.getSelectedItem().toString());
-                    lines.setText(metrics.get(0).getLines.toString());
-                    words.setText(metrics.get(3).toString());
-                    chars.setText(metrics.get(4).toString());
-                    sources.setText(metrics.get(5).toString());
-                    comments.setText(metrics.get(6).toString());
+                    lines.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getLines()));
+                    words.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getWord()));
+                    chars.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getCharacters()));
+                    sources.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getSourcelines()));
+                    comments.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getCommentlines()));
+
+
                 } catch (Exception e) {
                     e.printStackTrace();
                     handleError(e);
