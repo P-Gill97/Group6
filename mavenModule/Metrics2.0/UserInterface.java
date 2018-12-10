@@ -5,6 +5,9 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.Exception;
 import java.sql.SQLException;
 import java.util.*;
@@ -230,7 +233,7 @@ public class UserInterface {
      * of the repos. It will also display metrics and a button
      * that allows the user to refresh the metrics
      */
-    private static void repoListBox(){
+    private static void repoListBox() throws IOException {
         makeEmptyFrame();
 
         // drop down list of repos
@@ -238,8 +241,22 @@ public class UserInterface {
             NEED TO ACCESS OLD REPOS
             reposArray will be filled from database
          */
+        try {
+            File repos = new File("repos.txt");
+            repos.createNewFile();
+        } catch(IOException e) {
+            System.out.println("could not create file");
+            throw new IOException();
+        }
 
-        Scanner reader = new Scanner(new File("repos.txt"));
+
+        try {
+            Scanner reader = new Scanner(new File("repos.txt"));
+        } catch(Exception e) {
+            System.out.println("file not found, didn't create?");
+            throw new IOException();
+        }
+
         ArrayList<String> reposList = new ArrayList<String>();
 
 
