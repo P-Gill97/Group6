@@ -20,22 +20,7 @@ public class UserInterface {
     // START TEST CODE //////////////////////////////////////
     public static void main(String[] args)
     {
-
         run();
-        //String databaseName= "";
-
-
-
-
-
-
-        //will call GUI to display contents of the DB
-        //for now will comment it out until merging of files is
-        //successful
-
-        // new DisplayQuery();
-
-
     }
     // END TEST CODE ////////////////////////////////////////
 
