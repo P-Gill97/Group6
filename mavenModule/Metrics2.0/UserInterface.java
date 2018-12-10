@@ -18,6 +18,7 @@ public class UserInterface {
     private static JFrame frame;
     private final static String frameName = "Group 6 GitHub Metrics";
     private static JLabel blankLabel = new JLabel("");
+    private static ArrayList<String> reposList = new ArrayList<>();
 
     // START TEST CODE //////////////////////////////////////
     public static void main(String[] args)
@@ -131,7 +132,11 @@ public class UserInterface {
             public void actionPerformed(ActionEvent arg0) {
                 // add text box repo to database
 
-                repoListBox();
+                try {
+                    repoListBox();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -174,13 +179,21 @@ public class UserInterface {
                     NEED TO ACCESS AND ADD TO REPO DATABASE
                  */
 
-                repoListBox();
+                try {
+                    repoListBox();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
         cancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                repoListBox();
+                try {
+                    repoListBox();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -217,13 +230,21 @@ public class UserInterface {
                     NEED TO ACCESS AND DELETE FROM REPO DATABASE
                  */
 
-                repoListBox();
+                try {
+                    repoListBox();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
         cancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                repoListBox();
+                try {
+                    repoListBox();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -257,13 +278,13 @@ public class UserInterface {
             throw new IOException();
         }
 
-        ArrayList<String> reposList = new ArrayList<String>();
 
 
 
 
 
-        JComboBox<String> repoDropdownList = new JComboBox<String>(reposList.toArray(new String[ArrayList.size()]));
+
+        JComboBox<String> repoDropdownList = new JComboBox<>(reposList.toArray(new String[reposList.size()]));
 
         // button to run metrics
         JButton runMetricsButton = new JButton("Run Metrics");
@@ -447,7 +468,11 @@ public class UserInterface {
 
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                repoListBox();
+                try {
+                    repoListBox();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
