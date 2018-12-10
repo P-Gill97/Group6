@@ -154,7 +154,7 @@ public class UserInterface {
 
         addRepoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                String string = repoInputField.getText();
+                String string = repoInputField.getText().trim();
                 try {
                     FileWriter fw = new FileWriter("repos.txt", true);
                     fw.write(string + "\n");
@@ -262,12 +262,6 @@ public class UserInterface {
      */
     private static void repoListBox() throws IOException {
         makeEmptyFrame();
-
-        // drop down list of repos
-        /*
-            NEED TO ACCESS OLD REPOS
-            reposArray will be filled from database
-         */
 
         Scanner reader;
         try {
