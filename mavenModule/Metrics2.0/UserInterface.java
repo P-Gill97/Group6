@@ -225,6 +225,7 @@ public class UserInterface {
                     }
                     writer.close();
                     reader.close();
+
                     System.out.println(inputFile.delete());
                     System.out.println(tempFile.renameTo(inputFile));
                 } catch (FileNotFoundException e) {
@@ -276,6 +277,8 @@ public class UserInterface {
             String temp = reader.nextLine();
             reposList.add(temp);
         }
+
+        reader.close();
 
         Collections.reverse(reposList);
         JComboBox<String> repoDropdownList = new JComboBox<>(reposList.toArray(new String[reposList.size()]));
@@ -461,6 +464,8 @@ public class UserInterface {
                 panel.add(new JLabel(historyLine[i]));
             }
         }
+
+        reader.close();
 
         frame.pack();
         setFrameCentered();
