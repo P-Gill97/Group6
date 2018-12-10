@@ -49,6 +49,9 @@ public class UserInterface {
      */
     public static void run(){
         try {
+            File repos = new File("repos.txt");
+            repos.createNewFile();
+
             init();
         } catch (Exception e) {
             // catch works on init exceptions, but doesn't catch entire program?
@@ -262,13 +265,6 @@ public class UserInterface {
             NEED TO ACCESS OLD REPOS
             reposArray will be filled from database
          */
-        try {
-            File repos = new File("repos.txt");
-            repos.createNewFile();
-        } catch(IOException e) {
-            System.out.println("could not create file");
-            throw new IOException();
-        }
 
         Scanner reader;
         try {
@@ -279,11 +275,13 @@ public class UserInterface {
         }
 
         while (reader.hasNextLine()) {
-            reposList.add(reader.nextLine());
+            String temp = reader.nextLine();
+            reposList.add(temp);
+            System.out.println("test " + temp);
         }
 
 
-        System.out.println(reposList.toArray());
+        System.out.println(reposList.toArray()[0]);
 
 
         JComboBox<String> repoDropdownList = new JComboBox<>(reposList.toArray(new String[reposList.size()]));
