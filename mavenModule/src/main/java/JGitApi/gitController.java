@@ -29,8 +29,7 @@ public class gitController {
 
     public ArrayList<File> getRepo(String url) throws GitAPIException {
         gitFile gitFileMaker = new gitFile();
-        Random rand = new Random();
-        File repo = gitFileMaker.getRepo(url, filePath + Integer.toString(rand.nextInt()));
+        File repo = gitFileMaker.getRepo(url, filePath);
 
         GitRepository Repository = new GitRepository(repo);
         Repository.getFiles(Repository.filesTolook(Repository.getRepo()));
@@ -39,15 +38,15 @@ public class gitController {
     }
 
     public void deleteDirectory() {
-        //Path path = Paths.get(this.filePath);
-        /*try {
+        Path path = Paths.get(this.filePath);
+        try {
             Files.walk(path)
                     .sorted(Comparator.reverseOrder())
                     .map(Path::toFile)
                     .forEach(File::delete);
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
 
     }
 }

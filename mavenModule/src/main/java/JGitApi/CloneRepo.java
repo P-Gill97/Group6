@@ -23,6 +23,10 @@ public class CloneRepo {
                 .setDirectory(file)
                 .call();
 
+        if (cloneResult != null) {
+            cloneResult.getRepository().close();
+        }
+
 
     }
 
