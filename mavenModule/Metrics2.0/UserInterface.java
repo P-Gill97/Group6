@@ -373,7 +373,13 @@ public class UserInterface {
 
                     String historyLine = ((SingleFileMetrics) metrics.get(0)).getDate()+""+((SingleFileMetrics) metrics.get(0)).getLines()+" "+((SingleFileMetrics) metrics.get(0)).getWord()+" "+((SingleFileMetrics) metrics.get(0)).getCharacters()+" "+((SingleFileMetrics) metrics.get(0)).getSourcelines()+" "+((SingleFileMetrics) metrics.get(0)).getCommentlines();
 
-
+                    ArrayList<String> history = new ArrayList<>();
+                    history.add(historyLine);
+                    FileWriter fw = new FileWriter("history.txt");
+                    for(String str : history){
+                        fw.write(str);
+                    }
+                    fw.close();
 
 
 
