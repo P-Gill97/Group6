@@ -5,11 +5,33 @@
 - Perry Gill
 - Sam Low
 - Brent Paterson
-- Jovany Pena
+- Jovany Pena(#heading)
+##Table of Contents 
+#### 1 Introduction
+    -1.1 Purpose
+    -1.2 Document Convention
+    -1.2 Scope
+    -1.3 Refrences
+    
+#### 2 Overall Description
+    -2.1 Product Perspective
+    -2.2 Document Convention
+    -2.3 User Characteristics 
+    -2.4 General Constraints
+    -2.5 Assumptions and Dependencies 
+
+### 3. Detailed Requirements 
+    -3.1 External Interface Requirements
+        3.1.1 User Interfaces
+        3.1.2 Hardware Interfaces
+        3.1.3 Software Interfaces
+        3.1.4 Communication Interfaces
+    -3.2Functional Requirements 
+    -3.3 Performance Requirements  
 
 # Software Requirements Specification
 # 1 Introduction
-### 1.1 Purpose
+### 1.1 Purpose 
 The basic purpose of this program is to take in java files, analyze them, and return back a set of metrics that can be compared with any other file analyzed in the same fashion. The program takes in a Github url and imports the files in the repository so multiple files can be analyzed.
 ### 1.2 Document Convention
 Will be added later
