@@ -368,7 +368,7 @@ public class Metrics implements Runnable, IMetrics  {
         ArrayList b= new ArrayList();
         b=allIndivMetrics;
         ArrayList a= new ArrayList();
-        SingleFileMetrics c = new SingleFileMetrics("Total",totcount,totword,totchar,totSourceTrack,totComTrack);
+        SingleFileMetrics c = new SingleFileMetrics("TotalRun",totcount,totword,totchar,totSourceTrack,totComTrack);
         c.setDate(date);
         c.setUrl(URL);
         //a.add(0,date);

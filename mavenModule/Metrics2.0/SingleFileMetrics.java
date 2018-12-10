@@ -9,17 +9,20 @@ public class SingleFileMetrics {
     int commentlines;
     String url;
     Date date;
+    //Default constructor
     public SingleFileMetrics(){
 
     }
+    //Constructor with most Metrics
     public SingleFileMetrics(String n, int l, int w, int c, int s, int cm){
         nameOfFile=n;
         lines=l;
         words=w;
         characters=c;
         sourcelines=s;
-        commentlines=c;
+        commentlines=cm;
     }
+    //Getters and Setters
     public String getName(){
         return nameOfFile;
     }
@@ -38,6 +41,7 @@ public class SingleFileMetrics {
     public int getCommentlines(){
         return commentlines;
     }
+    //Date and URL Specific to the total
     public Date getDate(){
         return date;
     }
