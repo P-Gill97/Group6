@@ -263,13 +263,9 @@ public class UserInterface {
         while (reader.hasNextLine()) {
             String temp = reader.nextLine();
             reposList.add(temp);
-            System.out.println("test " + temp);
         }
 
-
-        System.out.println(reposList.toArray()[0]);
-
-
+        Collections.reverse(reposList);
         JComboBox<String> repoDropdownList = new JComboBox<>(reposList.toArray(new String[reposList.size()]));
 
         // button to run metrics
