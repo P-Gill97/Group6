@@ -20,7 +20,7 @@ The user can only use GitHub repo links and only java,C/C++ files can be process
 
 ## 2 Overall Description:
 ### 2.1  Product Perspective
-  _
+  The user is expected to sle
 ### 2.2 Product Functions
 _
 ### 2.3 User Characteristics
