@@ -5,7 +5,7 @@
 - Perry Gill
 - Sam Low
 - Brent Paterson
-- Jovany Pena(#heading)
+- Jovany Pena
 ##Table of Contents 
 #### 1 Introduction
     1.1 Purpose
