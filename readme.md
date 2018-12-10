@@ -20,7 +20,7 @@ The user can only use GitHub repo links and only java,C/C++ files can be process
 
 ## 2 Overall Description:
 ### 2.1  Product Perspective
-GUI app that will use a URL to rerun to user metrics. 
+A Metrics program with a GUI interface that will allow you to download a repository from GitHub and view various metrics on all the total java and C files in the repository. 
 ### 2.2 Product Functions
 Once the GUI is called it wil prompt user to select two options "Add repo" and "List repos"
 ### 2.3 User Characteristics
