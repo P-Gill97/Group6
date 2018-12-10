@@ -33,6 +33,8 @@ public class UserInterface {
         try {
             File repos = new File("repos.txt");
             repos.createNewFile();
+            File history = new File("history.txt");
+            history.createNewFile();
 
             init();
         } catch (Exception e) {
@@ -357,6 +359,7 @@ public class UserInterface {
                     sources.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getSourcelines()));
                     comments.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getCommentlines()));
 
+                    String historyLine = "JOVANY FILL THIS IN"; // timestamp + " " + lines + " " .....
 
                 } catch (Exception e) {
                     e.printStackTrace();
