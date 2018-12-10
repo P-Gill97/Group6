@@ -352,7 +352,7 @@ public class UserInterface {
                     sources.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getSourcelines()));
                     comments.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getCommentlines()));
 
-                    String historyLine = "JOVANY FILL THIS IN"; // timestamp + " " + lines + " " .....
+                    String historyLine = "Time: "+ ((SingleFileMetrics) metrics.get(0)).getDate() + " "+" URL: "+ ((SingleFileMetrics) metrics.get(0)).getUrl()+" " + "Lines: "+((SingleFileMetrics) metrics.get(0)).getLines()+" "+"Words: "+((SingleFileMetrics) metrics.get(0)).getWord()+" "+" Characters: "+((SingleFileMetrics) metrics.get(0)).getCharacters()+" "+" Sourcelines: "+((SingleFileMetrics) metrics.get(0)).getCommentlines()+" "+" CommentLines: "+((SingleFileMetrics) metrics.get(0)).getCommentlines();
 
                 } catch (Exception e) {
                     e.printStackTrace();

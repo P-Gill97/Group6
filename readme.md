@@ -28,12 +28,15 @@ Once the GUI is called it wil prompt user to select two options "Add repo" and "
 ### 2.4 General Constraints
 The user can only enter one URL at a time and the program will remove non Java and C files from the repo to be used in metrics. 
 ### 2.5 Assumptions and Dependencies
-
+This project uses the maven framework to get the Jgit dependencies. The user will enter a valid url and select the appropriate options.  
 ## 3. Detailed Requirements
-_
-#####     3.1 External Interface Requirements
+ 
+###      3.1 External Interface Requirements
 #####     3.1.1 User Interfaces
+The GUI will launch and prompt the user to select two an option. Add new repo or look at old repos. If the user decides to add new repo then the URL will be added. If the user decided to look at list of repos metrics. If the list of repo metrics is selected then the user will be promted to select run metrics on a selected repo or delete repo. 
+ 
 #####   3.1.2 Hardware Interfaces
+
 #####       3.1.3 Software Interfaces
 #####    3.1.4 Communication Interfaces
 _
