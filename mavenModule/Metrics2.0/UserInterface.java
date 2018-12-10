@@ -270,18 +270,20 @@ public class UserInterface {
             throw new IOException();
         }
 
-
+        Scanner reader;
         try {
-            Scanner reader = new Scanner(new File("repos.txt"));
+            reader = new Scanner(new File("repos.txt"));
         } catch(Exception e) {
             System.out.println("file not found, didn't create?");
             throw new IOException();
         }
 
+        while (reader.hasNextLine()) {
+            reposList.add(reader.nextLine());
+        }
 
 
-
-
+        System.out.println(reposList.toArray());
 
 
         JComboBox<String> repoDropdownList = new JComboBox<>(reposList.toArray(new String[reposList.size()]));
