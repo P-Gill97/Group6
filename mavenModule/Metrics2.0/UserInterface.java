@@ -375,6 +375,9 @@ public class UserInterface {
 
                     ArrayList<String> history = new ArrayList<>();
                     FileReader fr = new FileReader("history.txt");
+                    BufferedReader br = new BufferedReader(fr);
+
+                    
 
 
 
