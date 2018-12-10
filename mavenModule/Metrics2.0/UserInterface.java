@@ -13,13 +13,10 @@ public class UserInterface {
     private static JLabel blankLabel = new JLabel("");
     private static ArrayList<String> reposList = new ArrayList<>();
 
-    // START TEST CODE //////////////////////////////////////
     public static void main(String[] args)
     {
         run();
     }
-    // END TEST CODE ////////////////////////////////////////
-
 
     /**
      * This will intake the database of git repos
