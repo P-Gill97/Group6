@@ -209,10 +209,32 @@ public class UserInterface {
 
         deleteButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                // delete repoAddress from repo database
-                /*
-                    NEED TO ACCESS AND DELETE FROM REPO DATABASE
-                 */
+                File inputFile = new File("repos.txt");
+                File tempFile = new File("temp.txt");
+
+                try {
+                    BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+
+                    String repoToDelete = repoAddress;
+                    String currentLine;
+                    while((currentLine = reader.readLine()) != null) {
+                        String trimmedLine = currentLine.trim();
+                        if(trimmedLine.equals(repoToDelete)) continue;
+                        writer.write(currentLine + System.getProperty("line.separator"));
+                    }
+                    writer.close();
+                    reader.close();
+                    System.out.println(inputFile.delete());
+                    System.out.println(tempFile.renameTo(inputFile));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+
 
                 try {
                     repoListBox();
@@ -337,7 +359,7 @@ public class UserInterface {
 
         deleteRepoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                // deleteRepo(repoDropdownList.getSelectedItem().toString());
+                deleteRepo(repoDropdownList.getSelectedItem().toString());
             }
         });
 
