@@ -4,188 +4,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.Exception;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.ArrayList;
 import java.sql.*;
 
-/*
-Inside DB
-Url     char
-Lines   char
-Words   char
-Characters   char
-SourceLines char
-CommentLines char
-
- */
-
-
-
-class Database  {
-    Connection conn;
-    //Statement st;
-    PreparedStatement upDateAll = null;
-    PreparedStatement updateTotal = null;
-
-
-
-    public Database() throws SQLException , ClassNotFoundException {
-        Class.forName("com.mysql.jdbc.Driver");//.newInstance();
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FileDB?useSSL=false", "root", "SJ9Qwq27md9XcpK");
-
-
-        System.out.println("Connected to the MySQL database");
-        //st = conn.createStatement();/*Creating Statement Class's object which is responsible for performing all db tasks*/
-        //PreparedStatement st = conn.prepareStatement();
-         String sql = "INSERT INTO Files(Lines,Words,Characters,SourceLines,CommentLines," +
-               "totSourcetrack,totalOperators,totalOperands)" + "VALUES (?,?,?,?,?)";
-    }
-
-
-    /*
-
-      // the mysql insert statement
-      String query = " insert into users (first_name, last_name, date_created, is_admin, num_points)"
-        + " values (?, ?, ?, ?, ?)";
-
-      // create the mysql insert preparedstatement
-      PreparedStatement preparedStmt = conn.prepareStatement();
-     */
-
-
-
-
-
-
-
-    public void fetchData() throws Exception
-    {
-        String query = "SELECT * FROM Files";
-        //ResultSet rs = st.executeQuery(query);
-
-
-        /*used to verify database returned values
-        while(rs.next())
-        {
-            System.out.println("Name : "+rs.getString("name"));
-            System.out.println("age : "+rs.getInt("age"));
-        }
-        */
-
-    }
-
-
-//    public void insertUrl(String Url ) throws SQLException
-  //  {
-    //    String sql = "INSERT INTO Files(Url)" + "VALUES ('"+Url+"')";
-
-        //st.executeUpdate(sql);
-
-
-
-       /*
-
-
-
-        PreparedStatement preparedStatement = conn.prepareStatement(sql);
-
-        // preparedStatement.setString(1, nameOfFile);
-        preparedStatement.setString(1, Url);
-
-        // String query = "insert into user values(\""+name+"\","+age+")";
-        // int a = stObj.executeUpdate(query);
-        */
-
-   // }
-
-
-
-
-    public void insertData(String Url,String Lines,String Words, String Characters,String SourceLines, String CommentLines ) throws SQLException
-    {
-
-        System.out.println("database");
-        //updateSales = con.prepareStatement(updateString);
-       // String sql = "INSERT INTO Files(Lines,Words,Characters,SourceLines,CommentLines," +
-         //       "totSourcetrack,totalOperators,totalOperands)" + "VALUES (?,?,?,?,?)"
-        String sql = "INSERT INTO Files(Url,Lines,Words,Characters,SourceLines,CommentLines," +
-                "totSourcetrack,totalOperators,totalOperands)" + "VALUES (?,?,?,?,?,?)";
-
-        //String sql = "INSERT INTO Files VALUE (\""+u+"\",\""+Lines+"\",\""+Words+"\",\""+Characters+"\",\""+SourceLines+"\",\""+CommentLines+"\")";
-
-
-        //String sql = "INSERT INTO `Files`(Url,Lines,Words,Characters,SourceLines,CommentLines) VALUE ('"+u+"','"+Lines+"','"+Words+"','"+Characters+"','"+SourceLines+"'','"+CommentLines+"')";
-
-        //s.executeUpdate("INSERT INTO `time_entry`(pid,tid,rid,tspend,description) VALUE ('"+pid+"','"+tid+"','"+rid+"',"+tspent+",'"+des+"')");
-
-        updateTotal = conn.prepareStatement(sql);
-
-        //st.execute(sql);
-
-
-
-        PreparedStatement preparedStatement = conn.prepareStatement(sql);
-
-        preparedStatement.setString(1, Url);
-        preparedStatement.setString(2, Lines);
-        preparedStatement.setString(3, Words);
-        preparedStatement.setString(4, Characters);
-        preparedStatement.setString(5, SourceLines);
-        preparedStatement.setString(6, CommentLines);
-
-       // String query = "insert into user values(\""+name+"\","+age+")";
-       // int a = stObj.executeUpdate(query);
-
-       // st.execute(sql);
-        updateTotal.executeUpdate();
-    }
-
-
-
-    void deleteData(String Url) throws Exception
-    {
-
-       /*
-        String query = "Delete FROM Files WHERE Files \""+Url+"\"";
-        //int a = st.executeUpdate(query);
-
-        //if(a == 1)
-        {
-            System.out.println("delete Successful");
-        }
-        else
-        {
-            System.out.println("deletion Failed");
-
-        }
-        */
-    }
-
-}
-
-
-
-
 public class UserInterface {
-    public static Database d;
     private static JFrame frame;
     private final static String frameName = "Group 6 GitHub Metrics";
     private static JLabel blankLabel = new JLabel("");
-
-
-
-    static
-    {
-        try{
-            d = new Database();
-        }
-        catch(Exception e)
-        {
-            throw new RuntimeException(e);
-        }
-    }
+    private static ArrayList<String> reposList = new ArrayList<>();
 
     // START TEST CODE //////////////////////////////////////
     public static void main(String[] args)
@@ -203,7 +36,7 @@ public class UserInterface {
         //for now will comment it out until merging of files is
         //successful
 
-       // new DisplayQuery();
+        // new DisplayQuery();
 
 
     }
@@ -216,6 +49,9 @@ public class UserInterface {
      */
     public static void run(){
         try {
+            File repos = new File("repos.txt");
+            repos.createNewFile();
+
             init();
         } catch (Exception e) {
             // catch works on init exceptions, but doesn't catch entire program?
@@ -299,7 +135,11 @@ public class UserInterface {
             public void actionPerformed(ActionEvent arg0) {
                 // add text box repo to database
 
-                repoListBox();
+                try {
+                    repoListBox();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -342,13 +182,21 @@ public class UserInterface {
                     NEED TO ACCESS AND ADD TO REPO DATABASE
                  */
 
-                repoListBox();
+                try {
+                    repoListBox();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
         cancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                repoListBox();
+                try {
+                    repoListBox();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -385,13 +233,21 @@ public class UserInterface {
                     NEED TO ACCESS AND DELETE FROM REPO DATABASE
                  */
 
-                repoListBox();
+                try {
+                    repoListBox();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
         cancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                repoListBox();
+                try {
+                    repoListBox();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -401,7 +257,7 @@ public class UserInterface {
      * of the repos. It will also display metrics and a button
      * that allows the user to refresh the metrics
      */
-    private static void repoListBox(){
+    private static void repoListBox() throws IOException {
         makeEmptyFrame();
 
         // drop down list of repos
@@ -409,12 +265,26 @@ public class UserInterface {
             NEED TO ACCESS OLD REPOS
             reposArray will be filled from database
          */
-        String[] reposArray = {"https://github.com/Jovanyp23/WordCountProject", "https://github.com/CSC131Fall2018/Group6", "repo 3"};
+
+        Scanner reader;
+        try {
+            reader = new Scanner(new File("repos.txt"));
+        } catch(Exception e) {
+            System.out.println("file not found, didn't create?");
+            throw new IOException();
+        }
+
+        while (reader.hasNextLine()) {
+            String temp = reader.nextLine();
+            reposList.add(temp);
+            System.out.println("test " + temp);
+        }
 
 
+        System.out.println(reposList.toArray()[0]);
 
 
-        JComboBox<String> repoDropdownList = new JComboBox<String>(reposArray);
+        JComboBox<String> repoDropdownList = new JComboBox<>(reposList.toArray(new String[reposList.size()]));
 
         // button to run metrics
         JButton runMetricsButton = new JButton("Run Metrics");
@@ -489,7 +359,7 @@ public class UserInterface {
 
         deleteRepoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-               // deleteRepo(repoDropdownList.getSelectedItem().toString());
+                // deleteRepo(repoDropdownList.getSelectedItem().toString());
             }
         });
 
@@ -508,12 +378,6 @@ public class UserInterface {
                     change each metrics label
                     store into history sql
                  */
-
-
-                //at reposArray
-                //will add dummy repo here to test values
-                String Url= "u";
-                //d.insertUrl(Url);
                 retMets temp = new retMets();
                 try {
                     ArrayList metrics = temp.getMetrics(repoDropdownList.getSelectedItem().toString());
@@ -522,17 +386,6 @@ public class UserInterface {
                     chars.setText(metrics.get(4).toString());
                     sources.setText(metrics.get(5).toString());
                     comments.setText(metrics.get(6).toString());
-
-                    //String l2 = lines.setText(metrics.get(2).toString());
-                String u="1";
-                String l="3";
-                    String w="4";
-                    String c="5";
-                    String s="6";
-                    String cd="7";
-
-             d.insertData(u,l,w,c,s,cd);
-                    // send to sql
                 } catch (Exception e) {
                     e.printStackTrace();
                     handleError(e);
@@ -601,8 +454,8 @@ public class UserInterface {
 
         // add metrics history
         Map<String, Map> databaseMetrics = new HashMap<String, Map>();
-            // GET MAP DATA FROM DATABASE. KEY = TIMESTAMP?
-            // MAP = MAP OF METRICS?
+        // GET MAP DATA FROM DATABASE. KEY = TIMESTAMP?
+        // MAP = MAP OF METRICS?
 
         ArrayList<String> keys = new ArrayList(databaseMetrics.keySet());
         for (String key : keys) {
@@ -615,7 +468,11 @@ public class UserInterface {
 
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                repoListBox();
+                try {
+                    repoListBox();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
