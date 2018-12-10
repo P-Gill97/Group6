@@ -20,15 +20,15 @@ The user can only use GitHub repo links and only java,C/C++ files can be process
 
 ## 2 Overall Description:
 ### 2.1  Product Perspective
-  The user is expected to sle
+GUI app that will use a URL to rerun to user metrics. 
 ### 2.2 Product Functions
-_
+Once the GUI is called it wil prompt user to select two options "Add repo" and "List repos"
 ### 2.3 User Characteristics
-_
+ The user should know basic computed skills like copy and paste. Some knowledge of github is also needed.
 ### 2.4 General Constraints
-_
+The user can only enter one URL at a time and the program will remove non Java and C files from the repo to be used in metrics. 
 ### 2.5 Assumptions and Dependencies
-_
+
 ## 3. Detailed Requirements
 _
 #####     3.1 External Interface Requirements
