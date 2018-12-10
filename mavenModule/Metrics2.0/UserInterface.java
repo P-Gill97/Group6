@@ -4,10 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.lang.Exception;
 import java.sql.SQLException;
 import java.util.*;
@@ -23,22 +20,7 @@ public class UserInterface {
     // START TEST CODE //////////////////////////////////////
     public static void main(String[] args)
     {
-
         run();
-        //String databaseName= "";
-
-
-
-
-
-
-        //will call GUI to display contents of the DB
-        //for now will comment it out until merging of files is
-        //successful
-
-        // new DisplayQuery();
-
-
     }
     // END TEST CODE ////////////////////////////////////////
 
@@ -177,10 +159,14 @@ public class UserInterface {
 
         addRepoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                // add text box repo to database
-                /*
-                    NEED TO ACCESS AND ADD TO REPO DATABASE
-                 */
+               String string = repoInputField.getText();
+                try {
+                    FileWriter fw = new FileWriter("repos.txt", true);
+                    fw.write(string + "\n");
+                    fw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 try {
                     repoListBox();
@@ -274,16 +260,13 @@ public class UserInterface {
             throw new IOException();
         }
 
+        reposList = new ArrayList<>();
         while (reader.hasNextLine()) {
             String temp = reader.nextLine();
             reposList.add(temp);
-            System.out.println("test " + temp);
         }
 
-
-        System.out.println(reposList.toArray()[0]);
-
-
+        Collections.reverse(reposList);
         JComboBox<String> repoDropdownList = new JComboBox<>(reposList.toArray(new String[reposList.size()]));
 
         // button to run metrics
@@ -365,23 +348,10 @@ public class UserInterface {
 
         runMetricsButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                // run metrics and update
-                /*
-                    NEED ACCESS TO METRICS
-                    get from metrics.java {
-                        lines.setText("12313");
-                        words.setText("12341");
-                        chars.setText("98384");
-                        sources.setText("234");
-                        comments.setText("93948");
-                    }
-                    change each metrics label
-                    store into history sql
-                 */
                 retMets temp = new retMets();
                 try {
                     ArrayList metrics = temp.getMetrics(repoDropdownList.getSelectedItem().toString());
-                    lines.setText(metrics.get(2).toString());
+                    lines.setText(metrics.get(0).getLines.toString());
                     words.setText(metrics.get(3).toString());
                     chars.setText(metrics.get(4).toString());
                     sources.setText(metrics.get(5).toString());

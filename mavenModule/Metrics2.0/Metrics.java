@@ -33,6 +33,7 @@ public class Metrics implements Runnable, IMetrics  {
     static ArrayList<String> hal;
     @picocli.CommandLine.Parameters
     static ArrayList<String> positional;
+    private static Object SingleFileMetrics;
 
 
     public void run() {
@@ -66,19 +67,21 @@ public class Metrics implements Runnable, IMetrics  {
     static ArrayList<File> Arraylistoffiles= new ArrayList<>();
     static Date date;
     static String URL;
+    private static ArrayList<SingleFileMetrics> allIndivMetrics = new ArrayList();
 
 
-   public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, GitAPIException {
+
+    public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, GitAPIException {
         runzit(args[0],args);
     }
-    public static ArrayList<String> runzit(String UR, String[] args) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, GitAPIException {
+    public static ArrayList<SingleFileMetrics> runzit(String UR, String[] args) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, GitAPIException {
         /* Date and time variable*/
-        date= Calendar.getInstance().getTime();
+        date = Calendar.getInstance().getTime();
         //System.out.println(date);
         /* Date and time variable*/
         gitController Controller = new gitController();
         //Controller.deleteDirectory();
-        URL=UR;
+        URL = UR;
         try {
             Arraylistoffiles = Controller.getRepo(URL);
 
@@ -106,7 +109,7 @@ public class Metrics implements Runnable, IMetrics  {
         boolean multiComment = false;
         String fileName = "";
         CommandLine.run(new Metrics(), System.err, args);
-        ArrayList<String> tester= new ArrayList<>();
+        ArrayList<String> tester = new ArrayList<>();
         tester.add("-l");
         ArrayList<String> allArgs = tester;//groupFiles(lines, words, characters, sourcelines, commentlines, positional, hal);
         if (positional != null) {
@@ -133,13 +136,14 @@ public class Metrics implements Runnable, IMetrics  {
             instructions();
         }
         headerPrint(linesbol, wordsbol, charbol, srcbol, combol);
-        if (help == null) {
-            reader(fileName,Arraylistoffiles,tic,headerYes,wasRead,multiComment,wcParams);
-        }
+
+        reader(fileName, Arraylistoffiles, tic, headerYes, wasRead, multiComment, wcParams);
+
 
         printer(wcParams, wasRead, allArgs);
         Controller.deleteDirectory();
-        return returnMetrics();
+        return returnMetrics(allIndivMetrics);
+
 
         //testing
         //ArrayList c = returnMetrics();
@@ -188,6 +192,8 @@ public class Metrics implements Runnable, IMetrics  {
         int wordz = 0;
         int comtrack = 0;
         int sourcetrack = 0;
+
+
         for(int i = 0; i<allArgs.size();i++)
         {
             try {
@@ -296,6 +302,9 @@ public class Metrics implements Runnable, IMetrics  {
                     System.out.print(fileName);
                 }
             }
+
+            SingleFileMetrics individual = new SingleFileMetrics(fileName,count,wordz,charz,comtrack,sourcetrack);
+            allIndivMetrics.add(individual);
             System.out.println(" ");
             totchar = totchar + charz;
             totcount = totcount + count;
@@ -308,6 +317,7 @@ public class Metrics implements Runnable, IMetrics  {
             sourcetrack = 0;
             comtrack = 0;
             tic++;
+
         }
 
     }
@@ -353,26 +363,34 @@ public class Metrics implements Runnable, IMetrics  {
 
     }
 
-    public static ArrayList returnMetrics( ) throws ClassNotFoundException, SQLException, InstantiationException, GitAPIException, IllegalAccessException {
+    public static ArrayList<SingleFileMetrics> returnMetrics( ArrayList<SingleFileMetrics> allIndivMetrics) throws ClassNotFoundException, SQLException, InstantiationException, GitAPIException, IllegalAccessException {
 
+        ArrayList b= new ArrayList();
+        b=allIndivMetrics;
         ArrayList a= new ArrayList();
-        a.add(0,date);
-        a.add(1,URL);
-        if(totcount>0) {
-            a.add(2, totcount);
-        }
-        if(totword>0) {
-            a.add(3, totword);
-        }
-        if(totchar>0) {
-            a.add(4, totchar);
-        }
-        if(totSourceTrack>0) {
-            a.add(5, totSourceTrack);
-        }
-        if(totComTrack>0) {
-            a.add(6, totComTrack);
-        }
+        SingleFileMetrics c = new SingleFileMetrics("TotalRun",totcount,totword,totchar,totSourceTrack,totComTrack);
+        c.setDate(date);
+        c.setUrl(URL);
+        //a.add(0,date);
+       // a.add(1,URL);
+        //if(totcount>0) {
+        //    a.add(2, totcount);
+        //}
+        //if(totword>0) {
+        //    a.add(3, totword);
+       // }
+        //if(totchar>0) {
+        //    a.add(4, totchar);
+        //}
+        //if(totSourceTrack>0) {
+        //    a.add(5, totSourceTrack);
+        //}
+        //if(totComTrack>0) {
+        //    a.add(6, totComTrack);
+        //}
+        a.add(c);
+        a.addAll(b);
+
 
         return a;
     }
