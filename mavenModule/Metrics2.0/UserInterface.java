@@ -459,7 +459,7 @@ public class UserInterface {
                 break; // previous was last
             }
 
-            panel.add(new JLabel("<html>&nbsp;&nbsp;" + historyLine[0] + "</html>"));
+            panel.add(new JLabel("<html>&nbsp;&nbsp;" + historyLine[0] + "&nbsp;&nbsp;</html>"));
             for (int i = 1; i < historyLine.length; i++) {
                 panel.add(new JLabel(historyLine[i]));
             }
