@@ -368,8 +368,9 @@ public class UserInterface {
                     sources.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getSourcelines()));
                     comments.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getCommentlines()));
 
-                    String historyLine = "Date: "+((SingleFileMetrics) metrics.get(0)).getDate()+" URL: "+((SingleFileMetrics) metrics.get(0)).getUrl()+" Lines: "+metrics.get(0)+" Words: "+((SingleFileMetrics) metrics.get(0)).getWord()+" Characters "+((SingleFileMetrics) metrics.get(0)).getCharacters()+" SourceLines: "+((SingleFileMetrics) metrics.get(0)).getSourcelines()+" CommentLines "+((SingleFileMetrics) metrics.get(0)).getCommentlines();
+                    String historyLine = ((SingleFileMetrics) metrics.get(0)).getDate()+" "+((SingleFileMetrics) metrics.get(0)).getUrl()+" "+metrics.get(0)+" "+((SingleFileMetrics) metrics.get(0)).getWord()+" "+((SingleFileMetrics) metrics.get(0)).getCharacters()+" "+((SingleFileMetrics) metrics.get(0)).getSourcelines()+" "+((SingleFileMetrics) metrics.get(0)).getCommentlines();
 
+                    System.out.println(historyLine);
                 } catch (Exception e) {
                     e.printStackTrace();
                     handleError(e);
