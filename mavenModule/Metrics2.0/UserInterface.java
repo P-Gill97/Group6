@@ -154,7 +154,7 @@ public class UserInterface {
 
         addRepoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-               String string = repoInputField.getText();
+                String string = repoInputField.getText();
                 try {
                     FileWriter fw = new FileWriter("repos.txt", true);
                     fw.write(string + "\n");
@@ -352,7 +352,7 @@ public class UserInterface {
                     sources.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getSourcelines()));
                     comments.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getCommentlines()));
 
-                    String historyLine = "Time: "+ ((SingleFileMetrics) metrics.get(0)).getDate() + " "+" URL: "+ ((SingleFileMetrics) metrics.get(0)).getUrl()+" " + "Lines: "+((SingleFileMetrics) metrics.get(0)).getLines()+" "+"Words: "+((SingleFileMetrics) metrics.get(0)).getWord()+" "+" Characters: "+((SingleFileMetrics) metrics.get(0)).getCharacters()+" "+" Sourcelines: "+((SingleFileMetrics) metrics.get(0)).getCommentlines()+" "+" CommentLines: "+((SingleFileMetrics) metrics.get(0)).getCommentlines();
+                    String historyLine = "JOVANY FILL THIS IN"; // timestamp + " " + lines + " " .....
 
                 } catch (Exception e) {
                     e.printStackTrace();
