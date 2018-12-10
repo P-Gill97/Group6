@@ -1,15 +1,11 @@
-import org.eclipse.jgit.api.errors.GitAPIException;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.*;
 import java.lang.Exception;
-import java.sql.SQLException;
 import java.util.*;
 import java.util.ArrayList;
-import java.sql.*;
 
 public class UserInterface {
     private static JFrame frame;
@@ -17,13 +13,10 @@ public class UserInterface {
     private static JLabel blankLabel = new JLabel("");
     private static ArrayList<String> reposList = new ArrayList<>();
 
-    // START TEST CODE //////////////////////////////////////
     public static void main(String[] args)
     {
         run();
     }
-    // END TEST CODE ////////////////////////////////////////
-
 
     /**
      * This will intake the database of git repos
@@ -161,7 +154,7 @@ public class UserInterface {
 
         addRepoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-               String string = repoInputField.getText();
+                String string = repoInputField.getText();
                 try {
                     FileWriter fw = new FileWriter("repos.txt", true);
                     fw.write(string + "\n");
@@ -359,7 +352,7 @@ public class UserInterface {
                     sources.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getSourcelines()));
                     comments.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getCommentlines()));
 
-                    String historyLine = "Time: "+ ((SingleFileMetrics) metrics.get(0)).getDate() + " "+" URL: "+ ((SingleFileMetrics) metrics.get(0)).getUrl()+" " + "Lines: "+((SingleFileMetrics) metrics.get(0)).getLines()+" "+"Words: "+((SingleFileMetrics) metrics.get(0)).getWord()+" "+" Characters: "+((SingleFileMetrics) metrics.get(0)).getCharacters()+" "+" Sourcelines: "+((SingleFileMetrics) metrics.get(0)).getCommentlines()+" "+" CommentLines: "+((SingleFileMetrics) metrics.get(0)).getCommentlines();
+                    String historyLine = "JOVANY FILL THIS IN"; // timestamp + " " + lines + " " .....
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -373,7 +366,11 @@ public class UserInterface {
 
         historyRepoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                repoHistoryBox(repoDropdownList.getSelectedItem().toString());
+                try {
+                    repoHistoryBox(repoDropdownList.getSelectedItem().toString());
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
 
             }
         });
@@ -386,7 +383,7 @@ public class UserInterface {
      *
      * @param repoToGet is from the dropdown in repoListBox()
      */
-    private static void repoHistoryBox(String repoToGet){
+    private static void repoHistoryBox(String repoToGet) throws FileNotFoundException {
         makeEmptyFrame();
 
         // row one, header
@@ -407,8 +404,6 @@ public class UserInterface {
         panel.setLayout(new GridLayout(0,6));
         frame.add(panel);
 
-
-
         // adding row one
         panel.add(header);
         panel.add(repoLabel);
@@ -417,7 +412,6 @@ public class UserInterface {
             panel.add(blankLabelRepeater);
         }
         panel.add(backButton);
-
 
         // adding row two
         panel.add(timestamp);
@@ -428,13 +422,27 @@ public class UserInterface {
         panel.add(comments);
 
         // add metrics history
-        Map<String, Map> databaseMetrics = new HashMap<String, Map>();
-        // GET MAP DATA FROM DATABASE. KEY = TIMESTAMP?
-        // MAP = MAP OF METRICS?
+        Scanner reader = new Scanner(new File("history.txt"));
+        boolean found = false;
+        while (reader.hasNextLine()) {
+            String temp = reader.nextLine();
+            if (temp.equalsIgnoreCase(repoToGet)) {
+                found = true;
+                break;
+            } else continue;
+        }
 
-        ArrayList<String> keys = new ArrayList(databaseMetrics.keySet());
-        for (String key : keys) {
+        // found repo
+        while (reader.hasNextLine() && found) {
+            String[] historyLine = reader.nextLine().split("\\s+");
+            if (historyLine[0].equalsIgnoreCase("EOR")) {
+                break; // previous was last
+            }
 
+            panel.add(new JLabel("<html>&nbsp;&nbsp;" + historyLine[0] + "</html>"));
+            for (int i = 1; i < historyLine.length; i++) {
+                panel.add(new JLabel(historyLine[i]));
+            }
         }
 
         frame.pack();
