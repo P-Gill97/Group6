@@ -1,15 +1,11 @@
-import org.eclipse.jgit.api.errors.GitAPIException;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.*;
 import java.lang.Exception;
-import java.sql.SQLException;
 import java.util.*;
 import java.util.ArrayList;
-import java.sql.*;
 
 public class UserInterface {
     private static JFrame frame;
@@ -411,8 +407,6 @@ public class UserInterface {
         panel.setLayout(new GridLayout(0,6));
         frame.add(panel);
 
-
-
         // adding row one
         panel.add(header);
         panel.add(repoLabel);
@@ -421,7 +415,6 @@ public class UserInterface {
             panel.add(blankLabelRepeater);
         }
         panel.add(backButton);
-
 
         // adding row two
         panel.add(timestamp);
@@ -453,9 +446,6 @@ public class UserInterface {
             for (int i = 1; i < historyLine.length; i++) {
                 panel.add(new JLabel(historyLine[i]));
             }
-
-
-
         }
 
         frame.pack();
