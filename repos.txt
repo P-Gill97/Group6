@@ -1,4 +1,2 @@
-Url 1
-Url 2
-Url 3
-Url 4
+https://github.com/CSC131Fall2018/Group6.git
+https://github.com/Jovanyp23/WordCountProject.git

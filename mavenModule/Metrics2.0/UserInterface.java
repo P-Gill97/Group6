@@ -226,8 +226,8 @@ public class UserInterface {
                     writer.close();
                     reader.close();
 
-                    System.out.println(inputFile.delete());
-                    System.out.println(tempFile.renameTo(inputFile));
+                    inputFile.delete();
+                    tempFile.renameTo(inputFile);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -371,7 +371,18 @@ public class UserInterface {
                     sources.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getSourcelines()));
                     comments.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getCommentlines()));
 
-                    String historyLine = ((SingleFileMetrics) metrics.get(0)).getDate()+" "+((SingleFileMetrics) metrics.get(0)).getWord()+" "+((SingleFileMetrics) metrics.get(0)).getCharacters()+" "+((SingleFileMetrics) metrics.get(0)).getSourcelines()+" "+((SingleFileMetrics) metrics.get(0)).getCommentlines();
+                    String historyLine = ((SingleFileMetrics) metrics.get(0)).getDate()+""+((SingleFileMetrics) metrics.get(0)).getLines()+" "+((SingleFileMetrics) metrics.get(0)).getWord()+" "+((SingleFileMetrics) metrics.get(0)).getCharacters()+" "+((SingleFileMetrics) metrics.get(0)).getSourcelines()+" "+((SingleFileMetrics) metrics.get(0)).getCommentlines();
+
+                    ArrayList<String> history = new ArrayList<>();
+                    history.add(historyLine);
+                    FileWriter fw = new FileWriter("history.txt");
+                    for(String str : history){
+                        fw.write(str);
+                    }
+                    fw.close();
+
+
+
 
                     System.out.println(historyLine);
                 } catch (Exception e) {
