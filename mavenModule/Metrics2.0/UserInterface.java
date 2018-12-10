@@ -379,27 +379,37 @@ public class UserInterface {
                     String stringRead = br.readLine();
                     while(stringRead != null) {
                         history.add(stringRead);
+                        stringRead = br.readLine();
                     }
 
                     String url = repoDropdownList.getSelectedItem().toString();
 
-                    //for(int i = 0; history.size() )
 
 
+                    //Loops and compares each element to url
+                    int index;
+                    boolean exist = false;
+                    for(index = 0; index < history.size(); index++) {
+                        if(history.get(index).equalsIgnoreCase(url)) {
+                            exist = true;
+                            break;
+                        }
+                    }
 
-
-
-
-                    history.add(repoDropdownList.getSelectedItem().toString());
-
-                    history.add(historyLine);
+                    if(exist) {
+                        history.add(index + 1, historyLine);
+                    }
+                    else {
+                        history.add(url);
+                        history.add(historyLine);
+                        history.add("EOR");
+                    }
 
                     FileWriter fw = new FileWriter("history.txt", false);
                     for(String str : history){
                         fw.write(str+ "\n");
 
                     }
-                    fw.write("EOR");
                     fw.close();
 
 
