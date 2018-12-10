@@ -432,7 +432,7 @@ public class UserInterface {
         panel.add(comments);
 
         // add metrics history
-        Scanner reader = new Scanner(new File("histories.txt"));
+        Scanner reader = new Scanner(new File("history.txt"));
         boolean found = false;
         while (reader.hasNextLine()) {
             String temp = reader.nextLine();
