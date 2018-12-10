@@ -376,8 +376,14 @@ public class UserInterface {
                     ArrayList<String> history = new ArrayList<>();
                     FileReader fr = new FileReader("history.txt");
                     BufferedReader br = new BufferedReader(fr);
+                    String stringRead = br.readLine();
+                    while(stringRead != null) {
+                        history.add(stringRead);
+                    }
 
-                    
+                    String url = repoDropdownList.getSelectedItem().toString();
+
+                    //for(int i = 0; history.size() )
 
 
 
