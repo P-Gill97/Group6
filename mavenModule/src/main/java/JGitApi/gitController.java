@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Random;
 
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.util.FileUtils;
 
 /*
 contributor: Perry Gill
@@ -26,25 +28,26 @@ public class gitController {
     private String filePath = "currentMetricsPath";
 
     public ArrayList<File> getRepo(String url) throws GitAPIException {
-
         gitFile gitFileMaker = new gitFile();
-        File repo = gitFileMaker.getRepo(url, filePath);
+        Random rand = new Random();
+        File repo = gitFileMaker.getRepo(url, filePath + Integer.toString(rand.nextInt()));
 
         GitRepository Repository = new GitRepository(repo);
         Repository.getFiles(Repository.filesTolook(Repository.getRepo()));
+
         return Repository.arrayListOfFiles;
     }
 
     public void deleteDirectory() {
-        Path path = Paths.get(this.filePath);
-        try {
+        //Path path = Paths.get(this.filePath);
+        /*try {
             Files.walk(path)
                     .sorted(Comparator.reverseOrder())
                     .map(Path::toFile)
                     .forEach(File::delete);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 }

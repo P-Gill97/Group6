@@ -83,6 +83,7 @@ public class Metrics implements Runnable, IMetrics  {
         //Controller.deleteDirectory();
         URL = UR;
         try {
+            Controller.deleteDirectory();
             Arraylistoffiles = Controller.getRepo(URL);
 
             Arraylistoffiles.forEach((File) -> System.out.println(File.getName()));

@@ -373,6 +373,12 @@ public class UserInterface {
 
                     String historyLine = ((SingleFileMetrics) metrics.get(0)).getDate()+" "+((SingleFileMetrics) metrics.get(0)).getLines()+" "+((SingleFileMetrics) metrics.get(0)).getWord()+" "+((SingleFileMetrics) metrics.get(0)).getCharacters()+" "+((SingleFileMetrics) metrics.get(0)).getSourcelines()+" "+((SingleFileMetrics) metrics.get(0)).getCommentlines();
 
+                    Metrics.totchar = 0;
+                    Metrics.totcount = 0;
+                    Metrics.totword = 0;
+                    Metrics.totComTrack = 0;
+                    Metrics.totSourceTrack = 0;
+
                     ArrayList<String> history = new ArrayList<>();
                     FileReader fr = new FileReader("history.txt");
                     BufferedReader br = new BufferedReader(fr);
