@@ -368,7 +368,12 @@ public class UserInterface {
                     sources.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getSourcelines()));
                     comments.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getCommentlines()));
 
-                    String historyLine = ((SingleFileMetrics) metrics.get(0)).getDate()+" "+((SingleFileMetrics) metrics.get(0)).getWord()+" "+((SingleFileMetrics) metrics.get(0)).getCharacters()+" "+((SingleFileMetrics) metrics.get(0)).getSourcelines()+" "+((SingleFileMetrics) metrics.get(0)).getCommentlines();
+                    String historyLine = ((SingleFileMetrics) metrics.get(0)).getDate()+""+((SingleFileMetrics) metrics.get(0)).getLines()+" "+((SingleFileMetrics) metrics.get(0)).getWord()+" "+((SingleFileMetrics) metrics.get(0)).getCharacters()+" "+((SingleFileMetrics) metrics.get(0)).getSourcelines()+" "+((SingleFileMetrics) metrics.get(0)).getCommentlines();
+
+
+
+
+
 
                     System.out.println(historyLine);
                 } catch (Exception e) {
