@@ -351,7 +351,7 @@ public class UserInterface {
                 retMets temp = new retMets();
                 try {
                     ArrayList metrics = temp.getMetrics(repoDropdownList.getSelectedItem().toString());
-                    lines.setText(metrics.get(0).getLine.toString());
+                    lines.setText(metrics.get(0).getLines.toString());
                     words.setText(metrics.get(3).toString());
                     chars.setText(metrics.get(4).toString());
                     sources.setText(metrics.get(5).toString());
