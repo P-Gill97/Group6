@@ -14,7 +14,7 @@ The basic purpose of this program is to take in java files, analyze them, and re
 ### 1.2 Document Convention
 Will be added later
 ### 1.3 Scope
-The user can only use GitHub repo links and only java,C/C++ files can be processed.
+The user can only use GitHub repo links and only java,C/C++ files can be processed. 
 ### 1.4 References
 -Jgit https://www.eclipse.org/jgit/
 
@@ -22,7 +22,7 @@ The user can only use GitHub repo links and only java,C/C++ files can be process
 ### 2.1  Product Perspective
 A Metrics program with a GUI interface that will allow you to download a repository from GitHub and view various metrics on all the total java and C files in the repository. 
 ### 2.2 Product Functions
-Once the GUI is called it wil prompt user to select two options "Add repo" and "List repos"
+Once the GUI is called it wil prompt user to select two options "Add repo" and "List repos". Add repo takes in a URL from Github and runs the actual Metric analysis. List repos gives you back a list of all the previous read repos with the totals for each metrics. 
 ### 2.3 User Characteristics
  The user should know basic computed skills like copy and paste. Some knowledge of github is also needed.
 ### 2.4 General Constraints
