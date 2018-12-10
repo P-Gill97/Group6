@@ -226,8 +226,8 @@ public class UserInterface {
                     writer.close();
                     reader.close();
 
-                    System.out.println(inputFile.delete());
-                    System.out.println(tempFile.renameTo(inputFile));
+                    inputFile.delete();
+                    tempFile.renameTo(inputFile);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
