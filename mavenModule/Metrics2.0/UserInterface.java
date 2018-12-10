@@ -371,7 +371,7 @@ public class UserInterface {
                     sources.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getSourcelines()));
                     comments.setText(String.valueOf(((SingleFileMetrics) metrics.get(0)).getCommentlines()));
 
-                    String historyLine = ((SingleFileMetrics) metrics.get(0)).getDate()+""+((SingleFileMetrics) metrics.get(0)).getLines()+" "+((SingleFileMetrics) metrics.get(0)).getWord()+" "+((SingleFileMetrics) metrics.get(0)).getCharacters()+" "+((SingleFileMetrics) metrics.get(0)).getSourcelines()+" "+((SingleFileMetrics) metrics.get(0)).getCommentlines();
+                    String historyLine = ((SingleFileMetrics) metrics.get(0)).getDate()+" "+((SingleFileMetrics) metrics.get(0)).getLines()+" "+((SingleFileMetrics) metrics.get(0)).getWord()+" "+((SingleFileMetrics) metrics.get(0)).getCharacters()+" "+((SingleFileMetrics) metrics.get(0)).getSourcelines()+" "+((SingleFileMetrics) metrics.get(0)).getCommentlines();
 
                     ArrayList<String> history = new ArrayList<>();
                     FileReader fr = new FileReader("history.txt");
@@ -493,8 +493,8 @@ public class UserInterface {
             }
 
             panel.add(new JLabel("<html>&nbsp;&nbsp;" + historyLine[0] + "&nbsp;" + historyLine[1] + "&nbsp;" +
-                    historyLine[2] + "&nbsp;" + historyLine[3] + "&nbsp;" + historyLine[4] + "&nbsp;&nbsp;</html>"));
-            for (int i = 5; i < historyLine.length; i++) {
+                    historyLine[2] + "&nbsp;" + historyLine[3] + "&nbsp;" + historyLine[4] + "&nbsp;" + historyLine[5] + "&nbsp;&nbsp;</html>"));
+            for (int i = 6; i < historyLine.length; i++) {
                 panel.add(new JLabel(historyLine[i]));
             }
         }
