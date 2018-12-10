@@ -373,7 +373,11 @@ public class UserInterface {
 
         historyRepoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                repoHistoryBox(repoDropdownList.getSelectedItem().toString());
+                try {
+                    repoHistoryBox(repoDropdownList.getSelectedItem().toString());
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
 
             }
         });
@@ -386,7 +390,7 @@ public class UserInterface {
      *
      * @param repoToGet is from the dropdown in repoListBox()
      */
-    private static void repoHistoryBox(String repoToGet){
+    private static void repoHistoryBox(String repoToGet) throws FileNotFoundException {
         makeEmptyFrame();
 
         // row one, header
@@ -428,12 +432,27 @@ public class UserInterface {
         panel.add(comments);
 
         // add metrics history
-        Map<String, Map> databaseMetrics = new HashMap<String, Map>();
-        // GET MAP DATA FROM DATABASE. KEY = TIMESTAMP?
-        // MAP = MAP OF METRICS?
+        Scanner reader = new Scanner(new File("histories.txt"));
+        boolean found = false;
+        while (reader.hasNextLine()) {
+            String temp = reader.nextLine();
+            if (temp.equalsIgnoreCase(repoToGet)) {
+                found = true;
+                break;
+            } else continue;
+        }
 
-        ArrayList<String> keys = new ArrayList(databaseMetrics.keySet());
-        for (String key : keys) {
+        // found repo
+        while (reader.hasNextLine() && found) {
+            String[] historyLine = reader.nextLine().split("\\s+");
+            if (historyLine[0].equalsIgnoreCase("EOR")) {
+                break; // previous was last
+            }
+            for (int i = 0; i < historyLine.length; i++) {
+                panel.add(new JLabel(historyLine[i]));
+            }
+
+
 
         }
 
