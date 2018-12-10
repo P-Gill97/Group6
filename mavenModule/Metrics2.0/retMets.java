@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class retMets {
 
 
-    public static ArrayList<String> getMetrics(String URL) throws ClassNotFoundException, SQLException, InstantiationException, GitAPIException, IllegalAccessException {
+    public static ArrayList<SingleFileMetrics> getMetrics(String URL) throws ClassNotFoundException, SQLException, InstantiationException, GitAPIException, IllegalAccessException {
         Metrics m= new Metrics();
         String[] pass =new String[1];
         pass[0]=URL;
@@ -14,7 +14,11 @@ public class retMets {
     }
     public static void main(String[] args) throws ClassNotFoundException, SQLException, InstantiationException, GitAPIException, IllegalAccessException {
         ArrayList grab = getMetrics("https://github.com/Jovanyp23/WordCountProject");
-        System.out.println("Date: "+grab.get(0)+"  URL:"+grab.get(1)+"  Lines:"+grab.get(2));
+        SingleFileMetrics a= (SingleFileMetrics) grab.get(0);
+        System.out.println("Date: "+a.getDate()+"  URL:"+a.getUrl()+"  Name of File: "+a.getName()+"  Lines:"+a.getLines()+" SourceLines: "+a.getSourcelines());
+
 
     }
-}
+
+    }
+
