@@ -25,7 +25,11 @@ CommentLines char
 
 class Database  {
     Connection conn;
-    Statement st;
+    //Statement st;
+    PreparedStatement upDateAll = null;
+    PreparedStatement updateTotal = null;
+
+
 
     public Database() throws SQLException , ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver");//.newInstance();
@@ -33,13 +37,33 @@ class Database  {
 
 
         System.out.println("Connected to the MySQL database");
-        st = conn.createStatement();/*Creating Statement Class's object which is responsible for performing all db tasks*/
+        //st = conn.createStatement();/*Creating Statement Class's object which is responsible for performing all db tasks*/
+        //PreparedStatement st = conn.prepareStatement();
+         String sql = "INSERT INTO Files(Lines,Words,Characters,SourceLines,CommentLines," +
+               "totSourcetrack,totalOperators,totalOperands)" + "VALUES (?,?,?,?,?)";
     }
+
+
+    /*
+
+      // the mysql insert statement
+      String query = " insert into users (first_name, last_name, date_created, is_admin, num_points)"
+        + " values (?, ?, ?, ?, ?)";
+
+      // create the mysql insert preparedstatement
+      PreparedStatement preparedStmt = conn.prepareStatement();
+     */
+
+
+
+
+
+
 
     public void fetchData() throws Exception
     {
         String query = "SELECT * FROM Files";
-        ResultSet rs = st.executeQuery(query);
+        //ResultSet rs = st.executeQuery(query);
 
 
         /*used to verify database returned values
@@ -53,11 +77,11 @@ class Database  {
     }
 
 
-    public void insertUrl(String Url ) throws SQLException
-    {
-        String sql = "INSERT INTO Files(Url)" + "VALUES ('"+Url+"')";
+//    public void insertUrl(String Url ) throws SQLException
+  //  {
+    //    String sql = "INSERT INTO Files(Url)" + "VALUES ('"+Url+"')";
 
-        st.executeUpdate(sql);
+        //st.executeUpdate(sql);
 
 
 
@@ -74,30 +98,38 @@ class Database  {
         // int a = stObj.executeUpdate(query);
         */
 
-    }
+   // }
 
 
 
 
-    public void insertData(String u,String Lines,String Words, String Characters,String SourceLines, String CommentLines ) throws SQLException
+    public void insertData(String Url,String Lines,String Words, String Characters,String SourceLines, String CommentLines ) throws SQLException
     {
 
         System.out.println("database");
+        //updateSales = con.prepareStatement(updateString);
        // String sql = "INSERT INTO Files(Lines,Words,Characters,SourceLines,CommentLines," +
          //       "totSourcetrack,totalOperators,totalOperands)" + "VALUES (?,?,?,?,?)"
+        String sql = "INSERT INTO Files(Url,Lines,Words,Characters,SourceLines,CommentLines," +
+                "totSourcetrack,totalOperators,totalOperands)" + "VALUES (?,?,?,?,?,?)";
 
-       String sql = ("INSERT INTO Files(Url,Lines,Words,Characters,SourceLines,CommentLines ) VALUES ('"+u+"','"+Lines+"','"+Words+"','"+Characters+"','"+SourceLines+"'','"+CommentLines+"')");
+        //String sql = "INSERT INTO Files VALUE (\""+u+"\",\""+Lines+"\",\""+Words+"\",\""+Characters+"\",\""+SourceLines+"\",\""+CommentLines+"\")";
+
+
+        //String sql = "INSERT INTO `Files`(Url,Lines,Words,Characters,SourceLines,CommentLines) VALUE ('"+u+"','"+Lines+"','"+Words+"','"+Characters+"','"+SourceLines+"'','"+CommentLines+"')";
 
         //s.executeUpdate("INSERT INTO `time_entry`(pid,tid,rid,tspend,description) VALUE ('"+pid+"','"+tid+"','"+rid+"',"+tspent+",'"+des+"')");
 
-        st.executeUpdate(sql);
+        updateTotal = conn.prepareStatement(sql);
+
+        //st.execute(sql);
 
 
-/*
+
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
 
-       // preparedStatement.setString(1, nameOfFile);
-        preparedStatement.setString(2, lines);
+        preparedStatement.setString(1, Url);
+        preparedStatement.setString(2, Lines);
         preparedStatement.setString(3, Words);
         preparedStatement.setString(4, Characters);
         preparedStatement.setString(5, SourceLines);
@@ -106,26 +138,31 @@ class Database  {
        // String query = "insert into user values(\""+name+"\","+age+")";
        // int a = stObj.executeUpdate(query);
 
-
-*/
+       // st.execute(sql);
+        updateTotal.executeUpdate();
     }
 
 
 
     void deleteData(String Url) throws Exception
     {
-        String query = "Delete FROM Files WHERE Files \""+Url+"\"";
-        int a = st.executeUpdate(query);
 
-        if(a == 1)
+       /*
+        String query = "Delete FROM Files WHERE Files \""+Url+"\"";
+        //int a = st.executeUpdate(query);
+
+        //if(a == 1)
         {
             System.out.println("delete Successful");
         }
         else
         {
             System.out.println("deletion Failed");
+
         }
+        */
     }
+
 }
 
 
