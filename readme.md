@@ -32,16 +32,19 @@ This project uses the maven framework to get the Jgit dependencies. The user wil
 ## 3. Detailed Requirements
  
 ###      3.1 External Interface Requirements
-#####     3.1.1 User Interfaces
+####     3.1.1 User Interfaces
+
 The GUI will launch and prompt the user to select two an option. Add new repo or look at old repos. If the user decides to add new repo then the URL will be added. If the user decided to look at list of repos metrics. If the list of repo metrics is selected then the user will be promted to select run metrics on a selected repo or delete repo. 
  
-#####   3.1.2 Hardware Interfaces
-
-#####       3.1.3 Software Interfaces
-#####    3.1.4 Communication Interfaces
-_
+####   3.1.2 Hardware Interfaces
+All hardware should have internet access and a screen to display the GUI.
+####       3.1.3 Software Interfaces
+The API module has a controller which can be called to communicate with the metrics module. The metrics uses a controller to send 
+an arraylist to the UI. 
+####    3.1.4 Communication Interfaces
+The api module uses the HTTP protocol to get the repository git object. 
 ### 3.2 Functional Requirements
-_
+
 ### 3.3 Performance Requirements
 _
 ### 3.4 Design Constraints 3.5 Attributes
