@@ -448,7 +448,9 @@ public class UserInterface {
             if (historyLine[0].equalsIgnoreCase("EOR")) {
                 break; // previous was last
             }
-            for (int i = 0; i < historyLine.length; i++) {
+
+            panel.add(new JLabel("<html>&nbsp;&nbsp;" + historyLine[0] + "</html>"));
+            for (int i = 1; i < historyLine.length; i++) {
                 panel.add(new JLabel(historyLine[i]));
             }
 
