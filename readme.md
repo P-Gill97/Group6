@@ -80,7 +80,7 @@ Metrics for the java and C files in the given repository
 
 ### 3.4 Design Constraints 
 No real design constraints were given. Most of the constraints came from times and the lack of knowledge to add varying functions
-###3.5 Attributes
+### 3.5 Attributes
 Uses a GUI for a more friendly interface. 
 ### 3.6 Other Requirements
 Add any Metrics that were thought to be necessary for the intended customer. 
