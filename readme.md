@@ -10,7 +10,7 @@
 ### Table of Contents 
 #### 1 Introduction
     1.1 Purpose
-    1.2 Document Convention
+    1.2 Description
     1.2 Scope
     1.3 Refrences
     
@@ -37,8 +37,8 @@
 # 1 Introduction
 ### 1.1 Purpose 
 The basic purpose of this program is to take in java files, analyze them, and return back a set of metrics that can be compared with any other file analyzed in the same fashion. The program takes in a Github url and imports the files in the repository so multiple files can be analyzed.
-### 1.2 Document Convention
-Will be added later
+### 1.2 Description
+This program is intended to be used by graders in order to have metrics to judge students work by as long as you have their Github repository. 
 ### 1.3 Scope
 The user can only use GitHub repo links and only java,C/C++ files can be processed. It will only the following Metrics: Lines, Words, Characters, Source Lines, and Comment Lines. 
 ### 1.4 References
@@ -75,7 +75,12 @@ The api module uses the HTTP protocol to get the repository git object. The GUI 
 * Functional Requirement 2: Using API get repo files and remove undesired files. 
 * Functional Requirement 3: Calculate metrics and add to a database file. 
 ### 3.3 Performance Requirements
+The main requirement is to take in a URL string and return a series of 
+Metrics for the java and C files in the given repository
 
-### 3.4 Design Constraints 3.5 Attributes
-_
+### 3.4 Design Constraints 
+No real design constraints were given. Most of the constraints came from times and the lack of knowledge to add varying functions
+###3.5 Attributes
+Uses a GUI for a more friendly interface. 
 ### 3.6 Other Requirements
+Add any Metrics that were thought to be necessary for the intended customer. 
